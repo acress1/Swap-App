@@ -1,0 +1,19 @@
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .calendar-day {
+    width: 5vh; 
+    height: 5vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.15vh solid #ccc; 
+    margin: 0.5vh;
+  }
+
+  .calendar-day:hover {
+    background-color: rgb(199, 253, 253);
+    cursor: pointer;
+  }
