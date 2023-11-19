@@ -65,7 +65,7 @@ const DayBox = ({ selectedDay }) => {
                 </tbody>
             </table>
         ) : (
-            <p>No shift on offer yet. Add yours 🤓</p>
+            <p>"No shift on offer yet. Add yours 🤓"</p>
         )}
         </div>
     );

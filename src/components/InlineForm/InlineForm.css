@@ -1,17 +1,34 @@
+.greetings {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-style: oblique;
+  margin: 2px;
+}
+
 .inline-form {
     display: flex;
     flex-direction: column;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-    input, label, span, button {
+    input, label, span, textarea, button {
         margin: 2px;
     }
-
-.greetings {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 3vh;
-}
+    input:hover, textarea:hover {
+      background-color: rgb(229, 255, 255);
+    }
+    button {
+      border-radius: 2px;
+      font-size: 0.88em;
+      background-color: rgb(0, 115, 236);
+      align-self: flex-end;
+      border-style: none;
+      color: rgb(255, 255, 255);
+      margin-bottom: 0px;
+      padding: 0.5em 0.75em;
+      min-width: 70px;
+      height: 30px;
+      cursor: pointer;
+    }
 
 /* OVERNIGHT SWITCH */
 .switch {

@@ -70,8 +70,10 @@ const InlineForm = ({ todayDate, timeZone }) => {
             <input type="checkbox" onChange={ovSwitch} checked={isOvernight} />
             <span className="slider round"></span>
             </label>
+          <div>
             <label>FIRST<input type="checkbox" name="FIRST" /></label>
             <label>BAR<input type="checkbox" name="BAR" /></label>
+          </div>
           </div>
           <div>
             <span> LOOKING FOR : </span>
