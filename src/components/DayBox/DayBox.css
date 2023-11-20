@@ -1,5 +1,6 @@
 .dayBox {
     display: flex;
+    min-width: fit-content;
     background-color: rgb(197, 197, 255);
     border: 0.15vh solid #ccc; 
     border-style: none;
