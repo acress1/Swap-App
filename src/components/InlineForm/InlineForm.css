@@ -6,7 +6,7 @@
 
 .inline-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -16,7 +16,7 @@
     input:hover, textarea:hover {
       background-color: rgb(229, 255, 255);
     }
-    button {
+    .submit {
       border-radius: 2px;
       font-size: 0.88em;
       background-color: rgb(0, 115, 236);
@@ -28,6 +28,41 @@
       min-width: 70px;
       height: 30px;
       cursor: pointer;
+    }
+    .add-line {
+      border-radius: 3px;
+      border-style: none;
+      background-color: rgb(0, 115, 236);
+      align-self: flex-end;
+      color: rgb(255, 255, 255);
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+      display: inline-block;
+      background:
+        linear-gradient(#fff 0 0),
+        linear-gradient(#fff 0 0),
+        rgb(0, 115, 236);
+      background-position: center;
+      background-size: 50% 2px,2px 50%;
+      background-repeat: no-repeat;
+    }
+    .delete-line {
+      border-radius: 3px;
+      border-style: none;
+      background-color: rgb(236, 0, 0);
+      align-self: flex-end;
+      color: rgb(255, 255, 255);
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+      display: inline-block;
+      background:
+        linear-gradient(#fff 0 0),
+        rgb(236, 0, 0);
+      background-position: center;
+      background-size: 50% 2px,2px 50%;
+      background-repeat: no-repeat;
     }
 
 /* OVERNIGHT SWITCH */
