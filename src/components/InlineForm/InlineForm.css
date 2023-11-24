@@ -29,41 +29,78 @@
       height: 30px;
       cursor: pointer;
     }
-    .add-line {
-      border-radius: 3px;
-      border-style: none;
-      background-color: rgb(0, 115, 236);
-      align-self: flex-end;
-      color: rgb(255, 255, 255);
-      height: 20px;
-      width: 20px;
-      cursor: pointer;
-      display: inline-block;
-      background:
-        linear-gradient(#fff 0 0),
-        linear-gradient(#fff 0 0),
-        rgb(0, 115, 236);
-      background-position: center;
-      background-size: 50% 2px,2px 50%;
-      background-repeat: no-repeat;
-    }
-    .delete-line {
-      border-radius: 3px;
-      border-style: none;
-      background-color: rgb(236, 0, 0);
-      align-self: flex-end;
-      color: rgb(255, 255, 255);
-      height: 20px;
-      width: 20px;
-      cursor: pointer;
-      display: inline-block;
-      background:
-        linear-gradient(#fff 0 0),
-        rgb(236, 0, 0);
-      background-position: center;
-      background-size: 50% 2px,2px 50%;
-      background-repeat: no-repeat;
-    }
+
+/* PLUS & MINUS */
+.add-line {
+  border-radius: 3px;
+  border-style: none;
+  background-color: rgb(0, 115, 236);
+  align-self: flex-end;
+  color: rgb(255, 255, 255);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  display: inline-block;
+  background:
+    linear-gradient(#fff 0 0),
+    linear-gradient(#fff 0 0),
+    rgb(0, 115, 236);
+  background-position: center;
+  background-size: 50% 2px,2px 50%;
+  background-repeat: no-repeat;
+}
+  .add-line:hover {
+    border-radius: 3px;
+    border-style: none;
+    background-color: rgb(96, 173, 255);
+    align-self: flex-end;
+    color: rgb(255, 255, 255);
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    display: inline-block;
+    background:
+      linear-gradient(#fff 0 0),
+      linear-gradient(#fff 0 0),
+      rgb(96, 173, 255);
+    background-position: center;
+    background-size: 50% 2px,2px 50%;
+    background-repeat: no-repeat;
+  }
+.delete-line {
+  border-radius: 3px;
+  border-style: none;
+  background-color: rgb(236, 0, 0);
+  align-self: flex-end;
+  color: rgb(255, 255, 255);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  display: inline-block;
+  background:
+    linear-gradient(#fff 0 0),
+    rgb(236, 0, 0);
+  background-position: center;
+  background-size: 50% 2px,2px 50%;
+  background-repeat: no-repeat;
+}
+  .delete-line:hover {
+    border-radius: 3px;
+    border-style: none;
+    background-color: rgb(239, 87, 87);
+    align-self: flex-end;
+    color: rgb(255, 255, 255);
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    display: inline-block;
+    background:
+      linear-gradient(#fff 0 0),
+      rgb(239, 87, 87);
+    background-position: center;
+    background-size: 50% 2px,2px 50%;
+    background-repeat: no-repeat;
+  }
 
 /* OVERNIGHT SWITCH */
 .switch {
