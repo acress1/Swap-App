@@ -20,23 +20,21 @@ const Calendar = () => {
   const months = [currentMonth];
   for (let i = 1; i < 2; i++) {months.push(startOfMonth(addMonths(currentMonth, i)))};
 
-  // DayBox Toggle
+  // Toggle Daybox.js
   const [selectedDay, setSelectedDay] = useState(null);
-  const handleDayToggle = (day) => { 
-    setSelectedDay(
-      prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day)
-      )
+  const toggleSelectedDay = (day) => { 
+    setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day))
   };
 
   return (
     <>
     <div className="calendar">
-      {months.map((month) => (
+      { months.map( month => (
         <div key={month} className="calendar-month">
-          <h3>{format(month, 'MMMM yyyy')}</h3>
+          <h3>{ format( month, 'MMMM yyyy') }</h3>
           <div className="calendar">
             {eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }).map((day) => (
-              <div key={day} className={`calendar-day ${selectedDay === day ? 'selected' : ''}`} onClick={() => handleDayToggle(day)}>
+              <div key={day} className={`calendar-day ${selectedDay && format(day, 'MMMM dd yyyy') === format(selectedDay, 'MMMM dd yyyy') ? 'calendar-day-selected' : ''}`} onClick={() => toggleSelectedDay(day)}>
                 {format(day, 'd')}
               </div>
             ))}

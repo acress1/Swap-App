@@ -1,9 +1,29 @@
 .dayBox {
     display: flex;
+    position: relative;
     min-width: fit-content;
     background-color: rgb(197, 197, 255);
-    border: 0.15vh solid #ccc; 
+    border: 1px solid #ccc; 
     border-style: none;
-    margin: 0.5vh;
     padding: 2px;
+    margin-top: 5px;
+    overflow-x: auto;
+}
+  
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th, td {
+padding: 8px;
+border-top: 1px solid #ddd;
+border-bottom: 1px solid #ddd;
+text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+    th, td {
+        font-size: 12px;
+    }
 }

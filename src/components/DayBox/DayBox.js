@@ -52,7 +52,7 @@ const DayBox = ({ selectedDay }) => {
                         <td><input type="checkbox" checked={dataItem.FIRST} disabled /></td>
                         <td><input type="checkbox" checked={dataItem.BAR} disabled /></td>
                         <td>{dataItem.Name}</td>
-                        <td>{dataItem.Email}</td>
+                        <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td></td>
                         <td><input type="checkbox" checked={dataItem.Early} disabled /></td>
                         <td><input type="checkbox" checked={dataItem.Late} disabled /></td>

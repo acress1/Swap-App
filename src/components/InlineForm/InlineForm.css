@@ -13,7 +13,7 @@
     input, label, span, textarea, button {
         margin: 2px;
     }
-    input:hover, textarea:hover {
+    input:hover, textarea:hover, input:focus, textarea:focus {
       background-color: rgb(229, 255, 255);
     }
     .submit {
