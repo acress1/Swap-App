@@ -33,6 +33,7 @@ const DayBox = ({ selectedDay }) => {
                         <th>Inbound</th>
                         <th>FIRST</th>
                         <th>BAR</th>
+                        <th>PURSER</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>LOOKING FOR:</th>
@@ -47,25 +48,26 @@ const DayBox = ({ selectedDay }) => {
                 <tbody>
                     {formData.data.map((dataItem, index) => (
                     <tr key={index}>
-                        <td>{dataItem.Outbound}</td>
-                        <td>{dataItem.Inbound}</td>
-                        <td><input type="checkbox" checked={dataItem.FIRST} disabled /></td>
-                        <td><input type="checkbox" checked={dataItem.BAR} disabled /></td>
+                        <td className="Outbound">{dataItem.Outbound}</td>
+                        <td className="Inbound">{dataItem.Inbound}</td>
+                        <td><input type="checkbox" checked={dataItem.FIRST} /></td>
+                        <td><input type="checkbox" checked={dataItem.BAR} /></td>
+                        <td><input type="checkbox" checked={dataItem.PURSER} /></td>
                         <td>{dataItem.Name}</td>
                         <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td></td>
-                        <td><input type="checkbox" checked={dataItem.Early} disabled /></td>
-                        <td><input type="checkbox" checked={dataItem.Late} disabled /></td>
-                        <td><input type="checkbox" checked={dataItem.LTA} disabled /></td>
-                        <td><input type="checkbox" checked={dataItem.DO} disabled /></td>
+                        <td><input type="checkbox" checked={dataItem.Early} /></td>
+                        <td><input type="checkbox" checked={dataItem.Late} /></td>
+                        <td><input type="checkbox" checked={dataItem.LTA} /></td>
+                        <td><input type="checkbox" checked={dataItem.DO} /></td>
                         <td>{dataItem.Note}</td>
-                        <td>{dataItem.Sent}</td>
+                        <td className="Sent">{dataItem.Sent}</td>
                     </tr>
                     ))}
                 </tbody>
             </table>
         ) : (
-            <p>"No shift on offer yet. Add yours 🤓"</p>
+            <p>No shift on offer yet. Add yours 🤓</p>
         )}
         </div>
     );

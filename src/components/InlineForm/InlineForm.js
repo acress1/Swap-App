@@ -2,10 +2,10 @@ import React from "react";
 import './InlineForm.css';
 
 const InlineForm = ({ todayDate, timeZone }) => {
-  const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', FIRST: false, BAR: false, Early: false, Late: false, LTA: false, DO: false}]);
+  const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', FIRST: false, BAR: false, PURSER: false, Early: false, Late: false, LTA: false, DO: false}]);
 
   const addShift = () => {
-    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', FIRST: false, BAR: false, Early: false, Late: false, LTA: false, DO: false}];
+    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', FIRST: false, BAR: false, PURSER: false, Early: false, Late: false, LTA: false, DO: false}];
     setShifts(newShifts)
   };
 
@@ -45,6 +45,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
         Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
         FIRST: shift.FIRST,
         BAR: shift.BAR,
+        PURSER: shift.PURSER,
         Early: shift.Early,
         Late: shift.Late,
         LTA: shift.LTA,
@@ -94,6 +95,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
                 </label>
                 <label>FIRST<input type="checkbox" name="FIRST" checked={shift.FIRST} onChange={(e) => handleChange(index, 'FIRST', e.target.checked)} /></label>
                 <label>BAR<input type="checkbox" name="BAR" checked={shift.BAR} onChange={(e) => handleChange(index, 'BAR', e.target.checked)} /></label>
+                <label>PURSER<input type="checkbox" name="PURSER" checked={shift.PURSER} onChange={(e) => handleChange(index, 'PURSER', e.target.checked)} /></label>
                 <span> LOOKING FOR : </span>
                 <label>Early<input type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
                 <label>Late<input type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
