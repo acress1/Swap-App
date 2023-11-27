@@ -1,4 +1,6 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
 const InlineForm = ({ todayDate, timeZone }) => {
@@ -32,7 +34,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
 
     const isValid = shifts.every(shift => shift.Date && shift.Outbound && shift.Inbound);
     if (!isValid) {
-      alert('Oops... Something\'s missing 🤓');
+      toast.error('Oops... Something\'s missing 🤓');
       return;
     }
 
@@ -65,11 +67,12 @@ const InlineForm = ({ todayDate, timeZone }) => {
         return response.json()
       })
       .then(data => {
-        console.log('Success', formData);
-        alert('Form submitted successfully!')
+        console.log('Success', data);
+        toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`)
       })
       .catch(error => {
         console.log(error);
+        toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`)
       });
     });
   };
@@ -111,6 +114,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
           <button className="submit" type="submit">Submit</button>
         </form>
       </div>
+      <ToastContainer />
     </>
   )
 };
