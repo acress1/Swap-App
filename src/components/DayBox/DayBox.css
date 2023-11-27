@@ -22,7 +22,7 @@ th, td {
     text-align: left;
 }
 
-input {
+.nohover {
     pointer-events: none;
 }
 

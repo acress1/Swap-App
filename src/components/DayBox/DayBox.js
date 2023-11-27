@@ -50,16 +50,16 @@ const DayBox = ({ selectedDay }) => {
                     <tr key={index}>
                         <td className="Outbound">{dataItem.Outbound}</td>
                         <td className="Inbound">{dataItem.Inbound}</td>
-                        <td><input type="checkbox" checked={dataItem.FIRST} /></td>
-                        <td><input type="checkbox" checked={dataItem.BAR} /></td>
-                        <td><input type="checkbox" checked={dataItem.PURSER} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.FIRST} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.BAR} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.PURSER} /></td>
                         <td>{dataItem.Name}</td>
                         <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td></td>
-                        <td><input type="checkbox" checked={dataItem.Early} /></td>
-                        <td><input type="checkbox" checked={dataItem.Late} /></td>
-                        <td><input type="checkbox" checked={dataItem.LTA} /></td>
-                        <td><input type="checkbox" checked={dataItem.DO} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.Early} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.Late} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.LTA} /></td>
+                        <td><input className="nohover" type="checkbox" checked={dataItem.DO} /></td>
                         <td>{dataItem.Note}</td>
                         <td className="Sent">{dataItem.Sent}</td>
                     </tr>
