@@ -34,7 +34,7 @@ const DayBox = ({ selectedDay }) => {
                         <th>FIRST</th>
                         <th>BAR</th>
                         <th>PURSER</th>
-                        <th>Name</th>
+                        {/* <th>Name</th> */}
                         <th>Email</th>
                         <th>LOOKING FOR:</th>
                         <th>Early</th>
@@ -53,7 +53,7 @@ const DayBox = ({ selectedDay }) => {
                         <td><input className="nohover" type="checkbox" checked={dataItem.FIRST} /></td>
                         <td><input className="nohover" type="checkbox" checked={dataItem.BAR} /></td>
                         <td><input className="nohover" type="checkbox" checked={dataItem.PURSER} /></td>
-                        <td>{dataItem.Name}</td>
+                        {/* <td>{dataItem.Name}</td> */}
                         <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td></td>
                         <td><input className="nohover" type="checkbox" checked={dataItem.Early} /></td>
