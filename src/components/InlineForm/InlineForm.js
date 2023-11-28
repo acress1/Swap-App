@@ -40,7 +40,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
 
     shifts.forEach((shift, index) => {
       const formData = {
-        Name: e.target.elements.Name.value,
+        // Name: e.target.elements.Name.value,
         Email: e.target.elements.Email.value,
         Date: shift.Date,
         Outbound: shift.Outbound,
@@ -83,7 +83,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
       <div className="inline-form">
         <form onSubmit={handleSubmit}>
           <div>
-            <input type="text" name="Name" placeholder="Name" />
+            {/* <input type="text" name="Name" placeholder="Name" /> */}
             <input type="email" name="Email" placeholder="Email" />
           </div>
             {shifts.map((shift, index) => (
