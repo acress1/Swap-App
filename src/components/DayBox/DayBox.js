@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import './DayBox.css';
 
 const DayBox = ({ selectedDay }) => {
+    
     const date = format(selectedDay, 'yyyy-MM-dd');
     const [formData, setFormData] = useState(null);
     const [search, setSearch] = useState('');
@@ -37,10 +38,7 @@ const DayBox = ({ selectedDay }) => {
                             </div>
                         </th>
                         <th></th>
-                        <th>FIRST</th>
-                        <th>BAR</th>
-                        <th>PURSER</th>
-                        {/* <th>Name</th> */}
+                        <th>Position</th>
                         <th>Email</th>
                         <th>LOOKING FOR:</th>
                         <th>Early</th>
@@ -61,10 +59,7 @@ const DayBox = ({ selectedDay }) => {
                     <tr key={index}>
                         <td className="Outbound">{dataItem.Outbound}</td>
                         <td className="Inbound">{dataItem.Inbound}</td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.FIRST} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.BAR} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.PURSER} /></td>
-                        {/* <td>{dataItem.Name}</td> */}
+                        <td className="Position">{dataItem.Position}</td>
                         <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td></td>
                         <td><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
