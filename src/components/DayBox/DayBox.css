@@ -9,6 +9,10 @@
     margin-top: 5px;
     overflow-x: auto;
 }
+
+.searchBox {
+    position: relative;
+}
   
 table {
     width: 100%;

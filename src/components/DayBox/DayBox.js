@@ -3,8 +3,10 @@ import { format } from 'date-fns';
 import './DayBox.css';
 
 const DayBox = ({ selectedDay }) => {
+    
     const date = format(selectedDay, 'yyyy-MM-dd');
     const [formData, setFormData] = useState(null);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         fetch(`http://localhost:3001/formData/${date}`, {
@@ -25,16 +27,18 @@ const DayBox = ({ selectedDay }) => {
 
     return (
         <div className="dayBox">
+        
         {formData && formData.data && formData.data.length > 0 ? (
             <table>
                 <thead>
                     <tr>
-                        <th>Outbound</th>
-                        <th>Inbound</th>
-                        <th>FIRST</th>
-                        <th>BAR</th>
-                        <th>PURSER</th>
-                        {/* <th>Name</th> */}
+                        <th>
+                            <div className="searchBox">
+                                <input type="number" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+                            </div>
+                        </th>
+                        <th></th>
+                        <th>Position</th>
                         <th>Email</th>
                         <th>LOOKING FOR:</th>
                         <th>Early</th>
@@ -46,14 +50,16 @@ const DayBox = ({ selectedDay }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {formData.data.map((dataItem, index) => (
+                    {formData.data
+                    .filter(dataItem => (
+                        dataItem.Inbound.toString().includes(search) ||
+                        dataItem.Outbound.toString().includes(search)  
+                    ))
+                    .map((dataItem, index) => (
                     <tr key={index}>
                         <td className="Outbound">{dataItem.Outbound}</td>
                         <td className="Inbound">{dataItem.Inbound}</td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.FIRST} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.BAR} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.PURSER} /></td>
-                        {/* <td>{dataItem.Name}</td> */}
+                        <td className="Position">{dataItem.Position}</td>
                         <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td></td>
                         <td><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>

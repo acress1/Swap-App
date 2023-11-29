@@ -4,10 +4,11 @@ import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
 const InlineForm = ({ todayDate, timeZone }) => {
-  const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', FIRST: false, BAR: false, PURSER: false, Early: false, Late: false, LTA: false, DO: false}]);
+  
+  const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
   const addShift = () => {
-    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', FIRST: false, BAR: false, PURSER: false, Early: false, Late: false, LTA: false, DO: false}];
+    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}];
     setShifts(newShifts)
   };
 
@@ -32,22 +33,19 @@ const InlineForm = ({ todayDate, timeZone }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isValid = shifts.every(shift => shift.Date && shift.Outbound && shift.Inbound);
+    const isValid = shifts.every(shift => shift.Date && shift.Outbound && shift.Inbound && shift.Position);
     if (!isValid) {
       toast.error('Oops... Something\'s missing 🤓');
       return;
     }
 
-    shifts.forEach((shift, index) => {
+    shifts.forEach((shift) => {
       const formData = {
-        // Name: e.target.elements.Name.value,
         Email: e.target.elements.Email.value,
         Date: shift.Date,
         Outbound: shift.Outbound,
         Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
-        FIRST: shift.FIRST,
-        BAR: shift.BAR,
-        PURSER: shift.PURSER,
+        Position: shift.Position,
         Early: shift.Early,
         Late: shift.Late,
         LTA: shift.LTA,
@@ -83,7 +81,6 @@ const InlineForm = ({ todayDate, timeZone }) => {
       <div className="inline-form">
         <form onSubmit={handleSubmit}>
           <div>
-            {/* <input type="text" name="Name" placeholder="Name" /> */}
             <input type="email" name="Email" placeholder="Email" />
           </div>
             {shifts.map((shift, index) => (
@@ -96,9 +93,9 @@ const InlineForm = ({ todayDate, timeZone }) => {
                   <input type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
                   <span className="slider round"></span>
                 </label>
-                <label>FIRST<input type="checkbox" name="FIRST" checked={shift.FIRST} onChange={(e) => handleChange(index, 'FIRST', e.target.checked)} /></label>
-                <label>BAR<input type="checkbox" name="BAR" checked={shift.BAR} onChange={(e) => handleChange(index, 'BAR', e.target.checked)} /></label>
-                <label>PURSER<input type="checkbox" name="PURSER" checked={shift.PURSER} onChange={(e) => handleChange(index, 'PURSER', e.target.checked)} /></label>
+                <label>FIRST<input type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></label>
+                <label>BAR<input type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></label>
+                <label>PURSER<input type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></label>
                 <span> LOOKING FOR : </span>
                 <label>Early<input type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
                 <label>Late<input type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
