@@ -6,9 +6,12 @@ const DayBox = ({ selectedDay }) => {
     
     const date = format(selectedDay, 'yyyy-MM-dd');
     const [formData, setFormData] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
 
     useEffect(() => {
+        setLoading(true);
+
         fetch(`http://localhost:3001/formData/${date}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
@@ -22,13 +25,15 @@ const DayBox = ({ selectedDay }) => {
         .then(data => {
             setFormData(data);
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+        .finally(() => setLoading(false));
     }, [date]);
 
     return (
         <div className="dayBox">
-        
-        {formData && formData.data && formData.data.length > 0 ? (
+        {loading ? (
+            <div className="loading-spinner"></div>
+        ) : formData && formData.data && formData.data.length > 0 ? (
             <table>
                 <thead>
                     <tr>
