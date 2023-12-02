@@ -109,6 +109,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
             <textarea name="Note" maxLength={50} placeholder="Note"></textarea>
           </div>
           <button className="submit" type="submit">Submit</button>
+          <a className="swap-form-link" href="https://app.smartsheet.com/b/form/20d18963576e477bafcbf102df2aec3d" target="_blank" rel="noreferrer">Swap Form</a>
         </form>
       </div>
       <ToastContainer />
