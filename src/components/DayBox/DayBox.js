@@ -23,7 +23,8 @@ const DayBox = ({ selectedDay }) => {
             return response.json();
         })
         .then(data => {
-            setFormData(data);
+            const sortedData = data.data.sort((a, b) => new Date(b.Sent) - new Date(a.Sent));
+            setFormData({ ...data, data: sortedData });
         })
         .catch(error => console.log(error))
         .finally(() => setLoading(false));
