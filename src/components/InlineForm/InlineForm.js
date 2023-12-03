@@ -110,6 +110,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
           </div>
           <button className="submit" type="submit">Submit</button>
           <a className="swap-form-link" href="https://app.smartsheet.com/b/form/20d18963576e477bafcbf102df2aec3d" target="_blank" rel="noreferrer">Swap Form</a>
+          <a className="roster-link" href="https://www.momentumserviceslondon.com/activite" target="_blank" rel="noreferrer">Roster</a>
         </form>
       </div>
       <ToastContainer />
