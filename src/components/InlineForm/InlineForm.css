@@ -36,7 +36,7 @@
       color: rgb(255, 255, 255);
       margin-bottom: 0px;
       padding: 0.5em 0.75em;
-      min-width: 70px;
+      width: 70px;
       height: 30px;
       cursor: pointer;
     }
@@ -57,7 +57,7 @@
       color: rgb(255, 255, 255);
       margin-bottom: 0px;
       padding: 0.5em 0.75em;
-      min-width: 70px;
+      width: 70px;
       height: 30px;
       cursor: pointer;
     }
@@ -78,7 +78,7 @@
       color: rgb(255, 255, 255);
       margin-bottom: 0px;
       padding: 0.5em 0.75em;
-      min-width: 70px;
+      width: 70px;
       height: 30px;
       cursor: pointer;
     }
@@ -220,3 +220,17 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+@media only screen and (max-width: 600px) {
+  .inline-form, input {
+    font-size: 12px;
+  }
+  .submit, .swap-form-link, .roster-link {
+    height: 25px;
+    width: 50px;
+  }
+  .add-line, .delete-line {
+    height: 15px;
+    width: 15px;
+  }
+}
