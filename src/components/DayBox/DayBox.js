@@ -38,11 +38,7 @@ const DayBox = ({ selectedDay }) => {
             <table>
                 <thead>
                     <tr>
-                        <th>
-                            <div className="searchBox">
-                                <input type="number" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
-                            </div>
-                        </th>
+                        <th><input className="searchBox" type="number" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} /></th>
                         <th></th>
                         <th>Position</th>
                         <th>Email</th>

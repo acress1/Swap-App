@@ -88,19 +88,25 @@ const InlineForm = ({ todayDate, timeZone }) => {
                 <input type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} />
                 <input type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} />
                 <input type="number" min="9000" max="9199" name="Inbound" placeholder="Inbound" value={shift.Inbound} onChange={(e) => handleChange(index, 'Inbound', e.target.value)} />
-                <label>OVERNIGHT</label>
-                <label className="switch">
-                  <input type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
-                  <span className="slider round"></span>
-                </label>
-                <label>FIRST<input type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></label>
-                <label>BAR<input type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></label>
-                <label>PURSER<input type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></label>
-                <span> LOOKING FOR : </span>
-                <label>Early<input type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
-                <label>Late<input type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
-                <label>LTA<input type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></label>
-                <label>Day OFF<input type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></label>
+                <span>
+                  <span>
+                    <label>OVERNIGHT</label>
+                    <label className="switch">
+                      <input type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
+                      <span className="slider round"></span>
+                    </label>
+                  </span>
+                  <label>FIRST<input className="checkbox-type" type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></label>
+                  <label>BAR<input className="checkbox-type" type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></label>
+                  <label>PURSER<input className="checkbox-type" type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></label>
+                </span>
+                <div>
+                  <label>LOOKING FOR :</label>
+                  <label>Early<input className="checkbox-type" type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
+                  <label>Late<input className="checkbox-type" type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
+                  <label>LTA<input className="checkbox-type" type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></label>
+                  <label>Day OFF<input className="checkbox-type" type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></label>
+                </div>
                 <button className="add-line" type="button" onClick={addShift}></button>
                 <button className="delete-line" type="button" onClick={() => deleteShift(index)}></button>
               </div>

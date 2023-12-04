@@ -28,6 +28,8 @@
 
 .searchBox {
     position: relative;
+    width: 60px;
+    border-radius: 5px;
 }
   
 table {
