@@ -6,13 +6,13 @@
 .dayBox {
     display: flex;
     position: relative;
-    min-width: fit-content;
     background-color: rgb(197, 197, 255);
     border-radius: 5px;
     border: 1px solid #ccc; 
     border-style: none;
     padding: 2px;
     margin-top: 5px;
+    overflow-y: hidden;
     overflow-x: auto;
 }
 
@@ -62,5 +62,8 @@ th, td {
 @media screen and (max-width: 600px) {
     th, td {
         font-size: 12px;
+    }
+    .LOOKING-FOR {
+        white-space: nowrap;
     }
 }

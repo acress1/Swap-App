@@ -100,15 +100,15 @@ const InlineForm = ({ todayDate, timeZone }) => {
                   <label>BAR<input className="checkbox-type" type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></label>
                   <label>PURSER<input className="checkbox-type" type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></label>
                 </span>
-                <div>
+                <div className="looking-for-div">
                   <label>LOOKING FOR :</label>
                   <label>Early<input className="checkbox-type" type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
                   <label>Late<input className="checkbox-type" type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
                   <label>LTA<input className="checkbox-type" type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></label>
                   <label>Day OFF<input className="checkbox-type" type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></label>
+                  <button className="add-line" type="button" onClick={addShift}></button>
+                  <button className="delete-line" type="button" onClick={() => deleteShift(index)}></button>
                 </div>
-                <button className="add-line" type="button" onClick={addShift}></button>
-                <button className="delete-line" type="button" onClick={() => deleteShift(index)}></button>
               </div>
             ))}
           <div>

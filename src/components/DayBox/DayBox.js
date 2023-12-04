@@ -42,7 +42,7 @@ const DayBox = ({ selectedDay }) => {
                         <th></th>
                         <th>Position</th>
                         <th>Email</th>
-                        <th>LOOKING FOR:</th>
+                        <th className="LOOKING-FOR">LOOKING FOR:</th>
                         <th>Early</th>
                         <th>Late</th>
                         <th>LTA</th>
