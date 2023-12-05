@@ -16,6 +16,11 @@
     overflow-x: auto;
 }
 
+.day-reminder {
+    font-size: 10px;
+    position: relative;
+}
+
 .loading-spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-left: 4px solid #767676;

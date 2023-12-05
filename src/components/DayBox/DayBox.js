@@ -37,6 +37,7 @@ const DayBox = ({ selectedDay }) => {
         ) : formData && formData.data && formData.data.length > 0 ? (
             <table>
                 <thead>
+                    <div className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</div>
                     <tr>
                         <th><input className="searchBox" type="number" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} /></th>
                         <th></th>
