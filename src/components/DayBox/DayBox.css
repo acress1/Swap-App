@@ -19,7 +19,7 @@
 .day-reminder {
     font-size: 10px;
     position: relative;
-    background-color: white;
+    background-color: rgb(223, 223, 255);
     border-radius: 2px;
     width: fit-content;
     height: fit-content;

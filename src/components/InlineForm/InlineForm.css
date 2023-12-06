@@ -14,7 +14,7 @@
 .inline-form {
     display: flex;
     flex-direction: row;
-    background-color: rgba(197, 197, 255, 0.454);
+    background-color: rgb(197, 197, 255);
     padding: 7px;
     border-radius: 5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -27,9 +27,10 @@
     input:hover, textarea:hover, input:focus, textarea:focus {
       background-color: rgb(229, 255, 255);
     }
-    .looking-for-div {
-      background-color: rgb(197, 197, 255);
+    .shift {
+      background-color: rgb(223, 223, 255);
       border-radius: 5px;
+      margin: 2px;
     }
     .submit {
       border-radius: 5px;
