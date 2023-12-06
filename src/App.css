@@ -1,0 +1,8 @@
+html {
+    background-color: white;
+}
+body {
+    background-color:rgba(197, 197, 255, 0.247);
+    border-radius: 5px;
+    padding: 5px;
+}
