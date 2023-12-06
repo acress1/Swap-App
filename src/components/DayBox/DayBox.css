@@ -6,7 +6,7 @@
 .dayBox {
     display: flex;
     position: relative;
-    background-color: rgb(197, 197, 255);
+    background-color: rgb(200, 200, 255);
     border-radius: 5px;
     border: 1px solid #ccc; 
     border-style: none;
@@ -19,12 +19,12 @@
 .day-reminder {
     font-size: 10px;
     position: relative;
-    background-color: rgb(223, 223, 255);
+    background-color: rgb(230, 230, 255);
     border-radius: 2px;
     width: fit-content;
     height: fit-content;
     padding: 1px;
-    border: solid 1px rgb(165, 165, 233);
+    border: solid 1px rgb(150, 150, 255);
 }
 
 .loading-spinner {
@@ -67,7 +67,7 @@ th, td {
 }
 
 .Sent {
-    background-color: rgb(223, 223, 255) ;
+    background-color: rgb(230, 230, 255);
 }
 
 @media screen and (max-width: 600px) {

@@ -85,7 +85,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
           </div>
             {shifts.map((shift, index) => (
               <div className="shift" key={index}>
-                <div className="shift-div">
+                <div>
                   <label>SHIFT :</label>
                   <input type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} />
                   <input type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} />
@@ -103,7 +103,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
                     <label>PURSER<input className="checkbox-type" type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></label>
                   </span>
                 </div>
-                <div className="looking-for-div">
+                <div>
                   <label>LOOKING FOR :</label>
                   <label>Early<input className="checkbox-type" type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
                   <label>Late<input className="checkbox-type" type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
