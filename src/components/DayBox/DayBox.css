@@ -19,6 +19,12 @@
 .day-reminder {
     font-size: 10px;
     position: relative;
+    background-color: white;
+    border-radius: 2px;
+    width: fit-content;
+    height: fit-content;
+    padding: 1px;
+    border: solid 1px rgb(165, 165, 233);
 }
 
 .loading-spinner {
@@ -70,5 +76,8 @@ th, td {
     }
     .LOOKING-FOR {
         white-space: nowrap;
+    }
+    .day-reminder {
+        font-size: 7px;
     }
 }
