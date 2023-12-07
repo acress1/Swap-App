@@ -35,9 +35,10 @@ const DayBox = ({ selectedDay }) => {
         {loading ? (
             <div className="loading-spinner"></div>
         ) : formData && formData.data && formData.data.length > 0 ? (
+            <>
+            <div className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</div>
             <table>
                 <thead>
-                    <div className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</div>
                     <tr>
                         <th><input className="searchBox" type="number" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} /></th>
                         <th></th>
@@ -75,6 +76,7 @@ const DayBox = ({ selectedDay }) => {
                     ))}
                 </tbody>
             </table>
+            </>
         ) : (
             <p>No shift on offer yet. Add yours 🤓</p>
         )}

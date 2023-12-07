@@ -5,6 +5,7 @@
 
 .dayBox {
     display: flex;
+    flex-direction: column;
     position: relative;
     background-color: rgb(200, 200, 255);
     border-radius: 5px;
@@ -24,6 +25,7 @@
     width: fit-content;
     height: fit-content;
     padding: 1px;
+    margin: 1px;
     border: solid 1px rgb(150, 150, 255);
 }
 

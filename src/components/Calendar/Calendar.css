@@ -26,10 +26,13 @@
 .calendar-day:active {
   background-color: rgb(150, 150, 255);
 }
-
 .calendar-day-selected {
   background-color: rgb(200, 200, 255);
   color: white;
+}
+.calendar-day-with-data {
+  background-color: #ffcc00; /* Replace with your preferred color */
+  border-radius: 50%;
 }
 
 @media (max-width: 600px) {
