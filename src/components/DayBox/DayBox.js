@@ -63,7 +63,7 @@ const DayBox = ({ selectedDay }) => {
                         <td className="Outbound">{dataItem.Outbound}</td>
                         <td className="Inbound">{dataItem.Inbound}</td>
                         <td className="Position">{dataItem.Position}</td>
-                        <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
+                        <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer" title="Click here to message this person directly 🤓">{dataItem.Email}</a></td>
                         <td></td>
                         <td><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
                         <td><input className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
