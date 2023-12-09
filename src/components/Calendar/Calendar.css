@@ -30,7 +30,22 @@
   background-color: rgb(200, 200, 255);
   color: white;
 }
-
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.dot {
+  background-color: red;
+  height: 8px;
+  width: 8px;
+  border-radius: 8px;
+  margin-left: 5px;
+  -webkit-animation: flickerAnimation 3s infinite;
+  -moz-animation: flickerAnimation 3s infinite;
+  -o-animation: flickerAnimation 3s infinite;
+  animation: flickerAnimation 3s infinite;
+}
 @media (max-width: 600px) {
   .calendar-day {
     width: 30px;

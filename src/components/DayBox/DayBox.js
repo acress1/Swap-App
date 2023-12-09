@@ -71,7 +71,7 @@ const DayBox = ({ selectedDay }) => {
                         <td><input className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
                         <td><input className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
                         <td>{dataItem.Note}</td>
-                        <td className="Sent">{dataItem.Sent}</td>
+                        <td className="Sent">{format(new Date(dataItem.Sent), 'MM/dd HH:mm:ss')}</td>
                     </tr>
                     ))}
                 </tbody>
