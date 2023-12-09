@@ -8,6 +8,7 @@ function App() {
 
   return (
     <>
+      <div className="greetings">Hi there! Today is {todayDate} - {timeZone} </div>
       <InlineForm todayDate= {todayDate} timeZone= {timeZone} />
       <Calendar />
     </>

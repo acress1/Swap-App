@@ -36,12 +36,18 @@ const DayBox = ({ selectedDay }) => {
             <div className="loading-spinner"></div>
         ) : formData && formData.data && formData.data.length > 0 ? (
             <>
-            <div className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</div>
+            <div>
+                <div>
+                    <span className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</span>
+                    <input className="searchBox" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+                </div>
+            </div>
+            <div className="table">
             <table>
                 <thead>
                     <tr>
-                        <th><input className="searchBox" type="number" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} /></th>
-                        <th></th>
+                        <th>Outbound</th>
+                        <th>Inbound</th>
                         <th>Position</th>
                         <th>Email</th>
                         <th className="FOR">FOR:</th>
@@ -57,14 +63,17 @@ const DayBox = ({ selectedDay }) => {
                     {formData.data
                     .filter(dataItem => (
                         dataItem.Inbound.toString().includes(search) ||
-                        dataItem.Outbound.toString().includes(search)  
+                        dataItem.Outbound.toString().includes(search) ||
+                        dataItem.Position.toString().includes(search) ||
+                        dataItem.Email.toString().includes(search) ||
+                        dataItem.Sent.toString().includes(search)
                     ))
                     .map((dataItem, index) => (
                     <tr key={index}>
                         <td className="Outbound">{dataItem.Outbound}</td>
                         <td className="Inbound">{dataItem.Inbound}</td>
                         <td className="Position">{dataItem.Position}</td>
-                        <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer" title="Click here to message this person directly 🤓">{dataItem.Email}</a></td>
+                        <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                         <td className="FOR td"></td>
                         <td className="FOR td"><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
                         <td className="FOR td"><input className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
@@ -76,6 +85,7 @@ const DayBox = ({ selectedDay }) => {
                     ))}
                 </tbody>
             </table>
+            </div>
             </>
         ) : (
             <p>No shift on offer yet. Add yours 🤓</p>

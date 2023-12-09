@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
-const InlineForm = ({ todayDate, timeZone }) => {
+const InlineForm = () => {
   
   const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
@@ -77,12 +77,10 @@ const InlineForm = ({ todayDate, timeZone }) => {
   
   return (
     <>
-      <div className="greetings">Hi there! Today is {todayDate} - {timeZone} </div>
       <div className="inline-form">
         <form onSubmit={handleSubmit}>
-          <div>
-            <input type="email" name="Email" placeholder="Email" />
-          </div>
+          <input type="email" name="Email" placeholder="Email" />
+          <div className="table">
           <table>
             <thead>
               <tr>
@@ -131,6 +129,7 @@ const InlineForm = ({ todayDate, timeZone }) => {
             </tbody>
             ))}
           </table>
+          </div>
           <div>
             <textarea name="Note" maxLength={50} placeholder="Note"></textarea>
           </div>

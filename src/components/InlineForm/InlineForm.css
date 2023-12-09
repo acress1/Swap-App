@@ -1,16 +1,5 @@
-@keyframes fadeInOpacity {0% {opacity: 0;} 100% {opacity: 1;}}
 
-.greetings {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-style: oblique;
-  margin: 2px;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-  animation-duration: 2s;
-}
-
+/* FORM DIV */
 .inline-form {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     display: flex;
@@ -21,10 +10,7 @@
     border-style: none;
     margin: 2px;
     padding: 7px;
-    overflow-y: hidden;
-    overflow-x: auto;
 }
-
 input, label, span, textarea, a, button {
   margin: 2px;
   border-radius: 5px;
@@ -32,11 +18,27 @@ input, label, span, textarea, a, button {
 input:hover, textarea:hover, input:focus, textarea:focus {
   background-color: rgb(220, 250, 255);
 }
+/* /// */
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 4px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;
+}
+.table {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
 .shift {
   background-color: rgb(230, 230, 255);
   margin: 2px;
 }
-
 .FOR {
   background-color: rgb(235, 235, 255);
   border-top-left-radius: 5px;
@@ -47,7 +49,9 @@ input:hover, textarea:hover, input:focus, textarea:focus {
 .end {
   border-top-right-radius: 5px;
 }
+/* /// */
 
+/* BUTTONS */
 .submit {
   border-radius: 5px;
   font-size: 13px;
@@ -113,7 +117,6 @@ input:hover, textarea:hover, input:focus, textarea:focus {
   background-color: rgb(73, 165, 23);
 }
 
-/* PLUS & MINUS */
 .add-line {
   border-radius: 3px;
   border-style: none;
@@ -184,6 +187,7 @@ input:hover, textarea:hover, input:focus, textarea:focus {
   background-size: 50% 2px,2px 50%;
   background-repeat: no-repeat;
 }
+/* /// */
 
 /* OVERNIGHT SWITCH */
 .switch {
@@ -191,59 +195,60 @@ input:hover, textarea:hover, input:focus, textarea:focus {
     display: inline-block;
     width: 50px;
     height: 18px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 12px;
-    width: 12px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(30px);
-    -ms-transform: translateX(30px);
-    transform: translateX(30px);
-  }
-  
-  .slider.round {
-    border-radius: 10px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+.slider.round {
+  border-radius: 10px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/* /// */
 
 /* SMARTPHONE RESPONSIVENESS */
 @media only screen and (max-width: 600px) {
