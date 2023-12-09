@@ -81,41 +81,58 @@ const InlineForm = ({ todayDate, timeZone }) => {
       <div className="inline-form">
         <form onSubmit={handleSubmit}>
           <div>
-            <input type="email" name="Email" title="You can add either your personal or work email 🤓" placeholder="Email" />
+            <input type="email" name="Email" placeholder="Email" />
           </div>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Date</th>
+                <th>Outbound</th>
+                <th>Inbound</th>
+                <th>Overnight</th>
+                <th>FIRST</th>
+                <th>BAR</th>
+                <th>PURSER</th>
+                <th className="FOR">FOR:</th>
+                <th className="FOR td">Early</th>
+                <th className="FOR td">Late</th>
+                <th className="FOR td">LTA</th>
+                <th className="FOR td end">Day Off</th>
+              </tr>
+            </thead>
             {shifts.map((shift, index) => (
-              <div className="shift" key={index}>
-                <div>
-                  <label title="The one you'd like to swap 🤓">SHIFT :</label>
-                  <input type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} />
-                  <input type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} />
-                  <input type="number" min="9000" max="9199" name="Inbound" placeholder="Inbound" value={shift.Inbound} onChange={(e) => handleChange(index, 'Inbound', e.target.value)} />
+            <tbody className="shift" key={index}>
+              <tr>
+                <td>
                   <span>
-                    <span>
-                      <label title="If it's an overnight shift, click the switch-button here 🤓">OVERNIGHT</label>
-                      <label className="switch">
-                        <input type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
-                        <span className="slider round"></span>
-                      </label>
-                    </span>
-                    <label>FIRST<input className="checkbox-type" type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></label>
-                    <label>BAR<input className="checkbox-type" type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></label>
-                    <label>PURSER<input className="checkbox-type" type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></label>
+                    <button className="add-line" type="button" onClick={addShift}></button>
+                    <button className="delete-line" type="button" onClick={() => deleteShift(index)}></button>
                   </span>
-                </div>
-                <div>
-                  <label title="What you'd like to get in exchange 🤓">LOOKING FOR :</label>
-                  <label>Early<input className="checkbox-type" type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></label>
-                  <label>Late<input className="checkbox-type" type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></label>
-                  <label>LTA<input className="checkbox-type" type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></label>
-                  <label>Day OFF<input className="checkbox-type" type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></label>
-                  <button className="add-line" title="Click here if you'd like to Add another shift 🤓" type="button" onClick={addShift}></button>
-                  <button className="delete-line" title="Click here if you'd like to Delete this shift 🤓 " type="button" onClick={() => deleteShift(index)}></button>
-                </div>
-              </div>
+                </td>
+                <td><input type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} /></td>
+                <td><input type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} /></td>
+                <td><input type="number" min="9000" max="9199" name="Inbound" placeholder="Inbound" value={shift.Inbound} onChange={(e) => handleChange(index, 'Inbound', e.target.value)} /></td>
+                <td>
+                  <label className="switch">
+                    <input type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
+                    <span className="slider round"></span>
+                  </label>
+                </td>
+                <td><input type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></td>
+                <td><input type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></td>
+                <td><input type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></td>
+                <td className="FOR td"></td>
+                <td className="FOR td"><input type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></td>
+                <td className="FOR td"><input type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></td>
+                <td className="FOR td"><input type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></td>
+                <td className="FOR td"><input type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></td>
+              </tr>
+            </tbody>
             ))}
+          </table>
           <div>
-            <textarea name="Note" maxLength={50} title="Add any info you couldn't fit in the form above 🤓" placeholder="Note"></textarea>
+            <textarea name="Note" maxLength={50} placeholder="Note"></textarea>
           </div>
           <button className="submit" type="submit">Submit</button>
           <a className="swap-form-link" href="https://app.smartsheet.com/b/form/20d18963576e477bafcbf102df2aec3d" target="_blank" rel="noreferrer">Swap Form</a>

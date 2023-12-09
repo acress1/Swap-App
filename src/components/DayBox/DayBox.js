@@ -44,11 +44,11 @@ const DayBox = ({ selectedDay }) => {
                         <th></th>
                         <th>Position</th>
                         <th>Email</th>
-                        <th className="LOOKING-FOR">LOOKING FOR:</th>
-                        <th>Early</th>
-                        <th>Late</th>
-                        <th>LTA</th>
-                        <th>D.O.</th>
+                        <th className="FOR">FOR:</th>
+                        <th className="FOR td">Early</th>
+                        <th className="FOR td">Late</th>
+                        <th className="FOR td">LTA</th>
+                        <th className="FOR td end">D.O.</th>
                         <th>Note</th>
                         <th>Sent</th>
                     </tr>
@@ -65,11 +65,11 @@ const DayBox = ({ selectedDay }) => {
                         <td className="Inbound">{dataItem.Inbound}</td>
                         <td className="Position">{dataItem.Position}</td>
                         <td><a href= {`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer" title="Click here to message this person directly 🤓">{dataItem.Email}</a></td>
-                        <td></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
-                        <td><input className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
+                        <td className="FOR td"></td>
+                        <td className="FOR td"><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
+                        <td className="FOR td"><input className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
+                        <td className="FOR td"><input className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
+                        <td className="FOR td"><input className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
                         <td>{dataItem.Note}</td>
                         <td className="Sent">{format(new Date(dataItem.Sent), 'MM/dd HH:mm:ss')}</td>
                     </tr>
