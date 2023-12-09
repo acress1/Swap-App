@@ -84,7 +84,7 @@ const InlineForm = () => {
           <table>
             <thead>
               <tr>
-                <th></th>
+                <th>SHIFT</th>
                 <th>Date</th>
                 <th>Outbound</th>
                 <th>Inbound</th>
