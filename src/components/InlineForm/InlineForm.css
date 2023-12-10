@@ -9,10 +9,10 @@
     border-radius: 5px;
     border-style: none;
     margin: 2px;
-    padding: 7px;
+    padding: 6px;
 }
 input, label, span, textarea, a, button {
-  margin: 2px;
+  margin: 1px;
   border-radius: 5px;
 }
 input:hover, textarea:hover, input:focus, textarea:focus {
@@ -26,7 +26,7 @@ table {
   border-collapse: collapse;
 }
 th, td {
-  padding: 4px;
+  padding: 3px;
   border-bottom: 1px solid #ddd;
   text-align: left;
   white-space: nowrap;
@@ -37,7 +37,6 @@ th, td {
 }
 .shift {
   background-color: rgb(230, 230, 255);
-  margin: 2px;
 }
 .FOR {
   background-color: rgb(235, 235, 255);
@@ -254,6 +253,7 @@ input:checked + .slider:before {
 @media only screen and (max-width: 600px) {
   input, .inline-form {
     font-size: 12px;
+    margin: 1px;
   }
   .add-line, .delete-line {
     height: 14px;
