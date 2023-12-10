@@ -36,11 +36,11 @@ const Calendar = () => {
   }, []);
 
   return (
-    <>
-    <div className="calendar">
+    
+    <div>
       { months.map( month => (
         <div key={month} className="calendar-month">
-          <h3>{ format( month, 'MMMM yyyy') }</h3>
+          <h3 className='calendar'>{ format( month, 'MMMM yyyy') }</h3>
           <div className="calendar">
             {eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }).map(day => (
               <div 
@@ -60,7 +60,7 @@ const Calendar = () => {
         </div>
       ))}
     </div>
-    </>
+    
   );
 }
 

@@ -1,15 +1,15 @@
 import InlineForm from './components/InlineForm/InlineForm';
 import Calendar from './components/Calendar/Calendar';
+import { format } from 'date-fns';
 import './App.css';
 
 function App() {
-  const todayDate = new Date().toDateString();
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const todayDate = format(new Date(), 'MMMM do, y O');
 
   return (
     <>
-      <div className="greetings">Hi there! Today is {todayDate} - {timeZone} </div>
-      <InlineForm todayDate= {todayDate} timeZone= {timeZone} />
+      <div className="greetings">Hi there! Today is {todayDate} </div>
+      <InlineForm />
       <Calendar />
     </>
   );
