@@ -33,7 +33,7 @@ const InlineForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isValid = shifts.every(shift => shift.Date && shift.Outbound && shift.Inbound && shift.Position);
+    const isValid = shifts.every(shift => e.target.elements.Email.value && shift.Date && shift.Outbound && shift.Inbound && shift.Position);
     if (!isValid) {
       toast.error('Oops... Something\'s missing 🤓');
       return;
