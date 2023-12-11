@@ -40,10 +40,12 @@ th, td {
 }
 .FOR {
   background-color: rgb(235, 235, 255);
-  border-top-left-radius: 5px;
 }
-.td {
-  border-top-left-radius: 0;
+.NOTE {
+  background-color: rgb(240, 240, 255);
+}
+.start {
+  border-top-left-radius: 5px;
 }
 .end {
   border-top-right-radius: 5px;

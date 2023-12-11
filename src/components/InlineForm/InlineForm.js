@@ -92,11 +92,11 @@ const InlineForm = () => {
                 <th>FIRST</th>
                 <th>BAR</th>
                 <th>PURSER</th>
-                <th className="FOR">FOR:</th>
-                <th className="FOR td">Early</th>
-                <th className="FOR td">Late</th>
-                <th className="FOR td">LTA</th>
-                <th className="FOR td end">Day Off</th>
+                <th className="FOR start">FOR:</th>
+                <th className="FOR">Early</th>
+                <th className="FOR">Late</th>
+                <th className="FOR">LTA</th>
+                <th className="FOR end">Day Off</th>
               </tr>
             </thead>
             {shifts.map((shift, index) => (
@@ -120,11 +120,11 @@ const InlineForm = () => {
                 <td><input type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></td>
                 <td><input type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></td>
                 <td><input type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></td>
-                <td className="FOR td"></td>
-                <td className="FOR td"><input type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></td>
-                <td className="FOR td"><input type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></td>
-                <td className="FOR td"><input type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></td>
-                <td className="FOR td"><input type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></td>
+                <td className="FOR"></td>
+                <td className="FOR"><input type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></td>
+                <td className="FOR"><input type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></td>
+                <td className="FOR"><input type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></td>
+                <td className="FOR"><input type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></td>
               </tr>
             </tbody>
             ))}
