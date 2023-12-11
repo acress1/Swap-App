@@ -33,9 +33,22 @@ const InlineForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isValid = shifts.every(shift => e.target.elements.Email.value && shift.Date && shift.Outbound && shift.Inbound && shift.Position);
-    if (!isValid) {
+    const required = shifts.every(shift => e.target.elements.Email.value && shift.Date && shift.Outbound && shift.Inbound && shift.Position);
+    if (!required) {
       toast.error('Oops... Something\'s missing 🤓');
+      return;
+    }
+
+    const isOutdated = (day) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return day < today;
+    };
+
+    const isAnyOutdated = shifts.some((shift) => shift.Date && isOutdated(new Date(shift.Date)));
+
+    if (isAnyOutdated) {
+      toast.error('Oops... You can\'t submit an outdated swap 🤓');
       return;
     }
 

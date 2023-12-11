@@ -4,7 +4,6 @@
     flex-wrap: wrap;
     padding-left: 4px;
   }
-
 .calendar-day {
   display: flex;
   align-items: center;
@@ -26,6 +25,10 @@
 .calendar-day-selected {
   background-color: rgb(200, 200, 255);
   color: white;
+}
+.outdated-day, .outdated-day:hover, .outdated-day:active {
+  background-color: grey;
+  cursor: default;
 }
 @keyframes flickerAnimation {
   0%   { opacity:1; }
