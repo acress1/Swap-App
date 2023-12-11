@@ -33,12 +33,6 @@ const InlineForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const required = shifts.every(shift => e.target.elements.Email.value && shift.Date && shift.Outbound && shift.Inbound && shift.Position);
-    if (!required) {
-      toast.error(`Oops... Your Email, a Date, an Outbound, an Inbound or/and a Position are missing 🤓`);
-      return;
-    }
-
     const isOutdated = (day) => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -92,7 +86,7 @@ const InlineForm = () => {
     <>
       <div className="inline-form">
         <form onSubmit={handleSubmit}>
-          <input type="email" name="Email" placeholder="Email" />
+          <input required type="email" name="Email" placeholder="Email" />
           <div className="table">
           <table>
             <thead>
@@ -121,16 +115,16 @@ const InlineForm = () => {
                     <button className="delete-line" type="button" onClick={() => deleteShift(index)}></button>
                   </span>
                 </td>
-                <td><input type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} /></td>
-                <td><input type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} /></td>
-                <td><input type="number" min="9000" max="9199" name="Inbound" placeholder="Inbound" value={shift.Inbound} onChange={(e) => handleChange(index, 'Inbound', e.target.value)} /></td>
+                <td><input required type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} /></td>
+                <td><input required type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} /></td>
+                <td><input required type="number" min="9000" max="9199" name="Inbound" placeholder="Inbound" value={shift.Inbound} onChange={(e) => handleChange(index, 'Inbound', e.target.value)} /></td>
                 <td>
                   <label className="switch">
                     <input type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
                     <span className="slider round"></span>
                   </label>
                 </td>
-                <td><input type="radio" name={`Position-${index}`} value= "FIRST" required onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></td>
+                <td><input required type="radio" name={`Position-${index}`} value= "FIRST" onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></td>
                 <td><input type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></td>
                 <td><input type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></td>
                 <td className="FOR"></td>
