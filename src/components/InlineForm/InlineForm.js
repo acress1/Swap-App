@@ -35,7 +35,7 @@ const InlineForm = () => {
 
     const required = shifts.every(shift => e.target.elements.Email.value && shift.Date && shift.Outbound && shift.Inbound && shift.Position);
     if (!required) {
-      toast.error('Oops... Something\'s missing 🤓');
+      toast.error(`Oops... Your Email, a Date, an Outbound, an Inbound or/and a Position are missing 🤓`);
       return;
     }
 
@@ -45,14 +45,14 @@ const InlineForm = () => {
       return day < today;
     };
 
-    const isAnyOutdated = shifts.some((shift) => shift.Date && isOutdated(new Date(shift.Date)));
+    const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
 
     if (isAnyOutdated) {
       toast.error('Oops... You can\'t submit an outdated swap 🤓');
       return;
     }
 
-    shifts.forEach((shift) => {
+    shifts.forEach(shift => {
       const formData = {
         Email: e.target.elements.Email.value,
         Date: shift.Date,
