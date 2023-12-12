@@ -20,12 +20,9 @@ const QuickViewBox = () => {
             }
             return response.json();
         })
-        .then(data => {
-            console.log('All Form Data:', data);
-            setFormData(data);
-        })
+        .then(data => { setFormData(data)})
         .catch(error => console.log(error))
-        .finally(() => setLoading(false));
+        .finally(() => setLoading(false))
     }, []);
 
     return (
@@ -84,7 +81,7 @@ const QuickViewBox = () => {
                                         ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="11">No shift on offer yet. Add yours 🤓</td>
+                                        <td colSpan="11">No shift yet. Add yours 🤓</td>
                                     </tr>
                                 )}
                             </tbody>
