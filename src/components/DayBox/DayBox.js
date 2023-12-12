@@ -44,7 +44,6 @@ const DayBox = ({ selectedDay }) => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Date</th>
                                     <th>Outbound</th>
                                     <th>Inbound</th>
                                     <th>Position</th>
@@ -79,8 +78,8 @@ const DayBox = ({ selectedDay }) => {
                                                 <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
                                                 <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
                                                 <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
-                                                <td className="NOTE">{dataItem.Note}</td>
-                                                <td className="Sent">{format(new Date(dataItem.Sent), 'MM/dd HH:mm:ss')}</td>
+                                                <td className="NOTE ">{dataItem.Note}</td>
+                                                <td className="Sent ">{format(new Date(dataItem.Sent), 'MM/dd HH:mm:ss')}</td>
                                             </tr>
                                         ))
                                 ) : (
