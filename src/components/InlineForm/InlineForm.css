@@ -32,7 +32,7 @@ th, td {
   white-space: nowrap;
 }
 .table {
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: auto;
 }
 .shift {
