@@ -42,33 +42,36 @@ const Calendar = () => {
   }, []);
 
   return (
-    <div>
-      { months.map( month => (
-        <div key={month} className="calendar-month">
-          <h3 className='calendar'>{ format( month, 'MMMM yyyy') }</h3>
-          <div className="calendar">
-            {eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }).map(day => (
-              <div 
-                key={day}
-                className={`calendar-day
-                  ${selectedDay && format(day, 'MMMM dd yyyy') === format(selectedDay, 'MMMM dd yyyy') ? 'calendar-day-selected' : ''}
-                  ${isOutdated(day) ? 'outdated-day' : ''}
-                  `} 
-                onClick={() => {
-                  isOutdated(day) ? toggleSelectedDay(null) : toggleSelectedDay(day)
-                }}
-              >
-                {format(day, 'd')}
-                <div className={`${daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : ''}`}></div>
-              </div>
-            ))}
+    <>
+      <button>See all submitted Swaps</button>
+      <div>
+        { months.map( month => (
+          <div key={month} className="calendar-month">
+            <h3 className='calendar'>{ format( month, 'MMMM yyyy') }</h3>
+            <div className="calendar">
+              {eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }).map(day => (
+                <div 
+                  key={day}
+                  className={`calendar-day
+                    ${selectedDay && format(day, 'MMMM dd yyyy') === format(selectedDay, 'MMMM dd yyyy') ? 'calendar-day-selected' : ''}
+                    ${isOutdated(day) ? 'outdated-day' : ''}
+                    `} 
+                  onClick={() => {
+                    isOutdated(day) ? toggleSelectedDay(null) : toggleSelectedDay(day)
+                  }}
+                >
+                  {format(day, 'd')}
+                  <div className={`${daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : ''}`}></div>
+                </div>
+              ))}
+            </div>
+            {selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
+              <DayBox selectedDay={selectedDay} />
+            )}
           </div>
-          {selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-            <DayBox selectedDay={selectedDay} />
-          )}
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 
