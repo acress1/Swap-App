@@ -1,15 +1,15 @@
 
 /* FORM DIV */
 .inline-form {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background-color: rgb(200, 200, 255);
-    border-radius: 5px;
-    border-style: none;
-    margin: 2px;
-    padding: 6px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: rgb(200, 200, 255);
+  border: none;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 6px;
 }
 input, label, span, textarea, a, button {
   margin: 1px;

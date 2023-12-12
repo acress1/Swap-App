@@ -63,7 +63,8 @@ const QuickViewBox = () => {
                                             dataItem.Outbound.toString().includes(search) ||
                                             dataItem.Position.toString().includes(search) ||
                                             dataItem.Email.toString().includes(search) ||
-                                            dataItem.Sent.toString().includes(search)
+                                            dataItem.Sent.toString().includes(search) ||
+                                            dataItem.Date.toString().includes(search)
                                         ))
                                         .map((dataItem, index) => (
                                             <tr key={index}>
