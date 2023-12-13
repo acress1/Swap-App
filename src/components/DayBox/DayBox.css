@@ -1,3 +1,4 @@
+@keyframes fadeInOpacity {0% {opacity: 0;} 100% {opacity: 1;}}
 
 .dayBox {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -14,6 +15,10 @@
     height: 150px;
     overflow-y: auto;
     overflow-x: auto;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
 }
 
 .day-reminder {

@@ -1,3 +1,4 @@
+@keyframes fadeInOpacity {0% {opacity: 0;} 100% {opacity: 1;}}
 
 /* FORM DIV */
 .inline-form {
@@ -30,6 +31,12 @@ th, td {
   border-bottom: 1px solid #ddd;
   text-align: center;
   white-space: nowrap;
+}
+td {
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
 }
 .table {
   overflow-y: auto;
