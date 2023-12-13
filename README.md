@@ -2,4 +2,4 @@
 
 Branches:
 - 1.12.2023 > First prototype
-- 8.12.023  > Update 1
+- 8.12.2023 > Update 1
