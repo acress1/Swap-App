@@ -9,18 +9,12 @@ body {
 h3 {
   justify-content: center;
 }
-a:link, a:visited {
-  color: black;
-}
-a:hover {
-  color: orange;
-}
-a:active {
-  color: rgb(255, 132, 0);
-}
 input, label, span, textarea, a, button {
   margin: 1px;
   border-radius: 5px;
+}
+input {
+  border: solid 1px #ccc;
 }
 input:hover, textarea:hover, input:focus, textarea:focus {
   background-color: rgb(220, 250, 255);
@@ -39,19 +33,28 @@ input:hover, textarea:hover, input:focus, textarea:focus {
   animation-timing-function: ease-in;
   animation-duration: 2s;
 }
-.Outbound, .Inbound {
-  color: blue;
-}
-.Sent:hover {
-  color: rgb(16, 170, 16);
-  cursor: crosshair;
-}
 .searchBox {
   position: relative;
   width: 50px;
   height: 10px;
   font-size: 10px;
   border-radius: 5px;
+}
+.Outbound, .Inbound {
+  color: blue;
+}
+.Email:link, .Email:visited {
+  color: black;
+}
+.Email:hover {
+  color: orange;
+}
+.Email:active {
+  color: rgb(255, 132, 0);
+}
+.Sent:hover {
+  color: rgb(16, 170, 16);
+  cursor: crosshair;
 }
 .nohover {
   pointer-events: none;
