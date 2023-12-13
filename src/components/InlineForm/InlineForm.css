@@ -28,7 +28,7 @@ table {
 th, td {
   padding: 3px;
   border-bottom: 1px solid #ddd;
-  text-align: left;
+  text-align: center;
   white-space: nowrap;
 }
 .table {
