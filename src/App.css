@@ -52,7 +52,7 @@ input:hover, textarea:hover, input:focus, textarea:focus {
 .Email:active {
   color: rgb(255, 132, 0);
 }
-.Sent:hover {
+.Sent:hover, .Date:hover {
   color: rgb(16, 170, 16);
   cursor: crosshair;
 }
