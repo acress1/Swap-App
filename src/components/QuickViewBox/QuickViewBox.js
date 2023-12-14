@@ -80,7 +80,7 @@ const QuickViewBox = () => {
                                         ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="11">No shift yet. Add yours 🤓</td>
+                                        <td colSpan="12">No shift yet. Add yours 🤓</td>
                                     </tr>
                                 )}
                             </tbody>
