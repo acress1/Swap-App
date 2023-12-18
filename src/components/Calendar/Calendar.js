@@ -23,7 +23,7 @@ const Calendar = () => {
     setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day))
   };
 
-  //Fetch Days with Data
+  // Fetch Days with Data
   const [daysWithData, setDaysWithData] = useState([]);
 
   useEffect(() => {
