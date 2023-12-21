@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval } from 'date-fns';
-import QuickViewBox from '../QuickViewBox/QuickViewBox';
-import DayBox from '../DayBox/DayBox';
+import QuickViewBox from './QuickViewBox/QuickViewBox';
+import DayBox from './DayBox/DayBox';
 import './Calendar.css';
 
 const Calendar = () => {
