@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import './QuickViewBox.css';
 
-const QuickViewBox = () => {
+const QuickViewBox = ({BASEURL}) => {
+   
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
     const [formData, setFormData] = useState(null);
@@ -9,11 +10,12 @@ const QuickViewBox = () => {
     useEffect(() => {
         setLoading(true);
 
-        fetch('http://localhost:3001/allFormData', {
+        fetch(`${BASEURL}/allFormData`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
+            console.log(response);
             if (!response.ok) {
                 throw new Error('Failed to fetch all form data');
             }
@@ -22,7 +24,7 @@ const QuickViewBox = () => {
         .then(data => { setFormData(data)})
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
-    }, []);
+    }, [BASEURL]);
 
     return (
         <div className="quickViewBox">

@@ -4,7 +4,8 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = () => {
+const Calendar = ({BASEURL}) => {
+  
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
   const currentMonth = startOfMonth(currentDate);
@@ -27,7 +28,7 @@ const Calendar = () => {
   const [daysWithData, setDaysWithData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/daysWithData')
+    fetch(`${BASEURL}/daysWithData`)
       .then(response => response.json())
       .then(data => setDaysWithData(data.daysWithData))
       .catch(error => console.error('Error fetching days with data:', error));
@@ -51,7 +52,7 @@ const Calendar = () => {
   return (
     <>
       <button className='quick-view' onClick={handleQuickViewClick}>Quick view</button>
-      {showQuickView && <QuickViewBox />}
+      {showQuickView && <QuickViewBox BASEURL={BASEURL} />}
       <div>
         { months.map( month => (
           <div key={month} className="calendar">
@@ -74,7 +75,7 @@ const Calendar = () => {
               ))}
             </div>
             {selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-              <DayBox selectedDay={selectedDay} />
+              <DayBox selectedDay={selectedDay} BASEURL={BASEURL} />
             )}
           </div>
         ))}

@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
-const InlineForm = () => {
+const InlineForm = ({BASEURL}) => {
   
   const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
@@ -60,7 +60,7 @@ const InlineForm = () => {
         Note: e.target.elements.Note.value
       };
 
-      fetch('http://localhost:3001/formData', {
+      fetch(`${BASEURL}/formData`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(formData)

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { format } from 'date-fns';
 import './DayBox.css';
 
-const DayBox = ({ selectedDay }) => {
+const DayBox = ({ selectedDay, BASEURL }) => {
     
     const date = format(selectedDay, 'yyyy-MM-dd');
     const [formData, setFormData] = useState(null);
@@ -12,7 +12,7 @@ const DayBox = ({ selectedDay }) => {
     useEffect(() => {
         setLoading(true);
 
-        fetch(`http://localhost:3001/formData/${date}`, {
+        fetch(`${BASEURL}/formData/${date}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
         })
@@ -28,7 +28,7 @@ const DayBox = ({ selectedDay }) => {
         })
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
-    }, [date]);
+    }, [BASEURL, date]);
 
     return (
         <div className="dayBox">

@@ -5,12 +5,13 @@ import './App.css';
 
 function App() {
   const todayDate = format(new Date(), 'MMMM do, y O');
+  const BASEURL = "http://localhost:3001";
 
   return (
     <>
       <div className="greetings">Hi there! Today is {todayDate} </div>
-      <InlineForm />
-      <Calendar />
+      <InlineForm BASEURL= {BASEURL} />
+      <Calendar BASEURL= {BASEURL} />
     </>
   );
 }
