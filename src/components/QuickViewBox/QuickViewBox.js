@@ -15,7 +15,6 @@ const QuickViewBox = ({BASEURL}) => {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
-            console.log(response);
             if (!response.ok) {
                 throw new Error('Failed to fetch all form data');
             }

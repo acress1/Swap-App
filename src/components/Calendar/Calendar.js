@@ -4,7 +4,7 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = ({BASEURL}) => {
+const Calendar = ({BASEURL, isOutdated}) => {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -33,12 +33,6 @@ const Calendar = ({BASEURL}) => {
       .then(data => setDaysWithData(data.daysWithData))
       .catch(error => console.error('Error fetching days with data:', error));
   })
-
-  const isOutdated = (day) => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return day < today;
-  };
   
   // Update Date every minute
   useEffect(() => {

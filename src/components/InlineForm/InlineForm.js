@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
-const InlineForm = ({BASEURL}) => {
+const InlineForm = ({BASEURL, isOutdated}) => {
   
   const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
@@ -32,12 +32,6 @@ const InlineForm = ({BASEURL}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const isOutdated = (day) => {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return day < today;
-    };
 
     const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
 
