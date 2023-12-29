@@ -4,27 +4,30 @@ import './DayBox.css';
 
 const DayBox = ({ selectedDay, BASEURL }) => {
     
-    const date = format(selectedDay, 'yyyy-MM-dd');
+    const date = format(selectedDay, 'dd/MM/yyyy');
     const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
 
     useEffect(() => {
         setLoading(true);
-
-        fetch(`${BASEURL}/formData/${date}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+    
+        fetch(`${BASEURL}/dbData`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
             if (!response.ok) {
-            throw new Error('Failed to fetch form data');
+                throw new Error('Failed to fetch DayBox Data');
             }
             return response.json();
         })
         .then(data => {
-            const sortedData = data.data.sort((a, b) => new Date(b.Sent) - new Date(a.Sent));
-            setFormData({ ...data, data: sortedData });
+            const sortedData = data.data
+            .filter(item => item.Date === date)
+            .sort((a, b) => new Date(b.Sent) - new Date(a.Sent));
+
+            setFormData({ ...data, data: sortedData })
         })
         .catch(error => console.log(error))
         .finally(() => setLoading(false))

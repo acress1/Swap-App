@@ -10,13 +10,13 @@ const QuickViewBox = ({BASEURL}) => {
     useEffect(() => {
         setLoading(true);
 
-        fetch(`${BASEURL}/allFormData`, {
+        fetch(`${BASEURL}/dbData`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Failed to fetch all form data');
+                throw new Error('Failed to fetch QuickViewBox Data');
             }
             return response.json();
         })

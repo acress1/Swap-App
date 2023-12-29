@@ -28,10 +28,22 @@ const Calendar = ({BASEURL, isOutdated}) => {
   const [daysWithData, setDaysWithData] = useState([]);
 
   useEffect(() => {
-    fetch(`${BASEURL}/daysWithData`)
-      .then(response => response.json())
-      .then(data => setDaysWithData(data.daysWithData))
-      .catch(error => console.error('Error fetching days with data:', error));
+    fetch(`${BASEURL}/dbData`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch Calendar Data');
+      }
+      return response.json()
+    })
+    .then(data => {
+      const sortedData= data.data
+      .map(item => item.Date);
+      setDaysWithData(sortedData)
+    })
+    .catch(error => console.error('Error fetching days with data:', error));
   })
   
   // Update Date every minute
