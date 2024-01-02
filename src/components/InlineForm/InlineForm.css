@@ -120,10 +120,10 @@
 
 /* OVERNIGHT SWITCH */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 18px;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 18px;
 }
 .switch input {
   opacity: 0;

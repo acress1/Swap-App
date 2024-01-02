@@ -4,7 +4,9 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = ({BASEURL, isOutdated}) => {
+const Calendar = ({ BASEURL, isOutdated, handleSubmit }) => {
+
+  const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note'];
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -21,13 +23,14 @@ const Calendar = ({BASEURL, isOutdated}) => {
   // Toggle Daybox.js
   const [selectedDay, setSelectedDay] = useState(null);
   const toggleSelectedDay = (day) => { 
-    setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day))
+    setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
   };
 
   // Fetch Days with Data
   const [daysWithData, setDaysWithData] = useState([]);
 
   useEffect(() => {
+
     fetch(`${BASEURL}/dbData`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
@@ -41,10 +44,11 @@ const Calendar = ({BASEURL, isOutdated}) => {
     .then(data => {
       const sortedData= data.data
       .map(item => item.Date);
+
       setDaysWithData(sortedData)
     })
-    .catch(error => console.error('Error fetching days with data:', error));
-  })
+    .catch(error => console.error('Error fetching days with data:', error))
+  }, [BASEURL, handleSubmit])
   
   // Update Date every minute
   useEffect(() => {
@@ -58,7 +62,7 @@ const Calendar = ({BASEURL, isOutdated}) => {
   return (
     <>
       <button className='quick-view' onClick={handleQuickViewClick}>Quick view</button>
-      {showQuickView && <QuickViewBox BASEURL={BASEURL} />}
+      {showQuickView && <QuickViewBox BASEURL={BASEURL} propertyToFilter={propertyToFilter} />}
       <div>
         { months.map( month => (
           <div key={month} className="calendar">
@@ -68,7 +72,7 @@ const Calendar = ({BASEURL, isOutdated}) => {
                 <div 
                   key={day}
                   className={`calendar-day
-                    ${selectedDay && format(day, 'MMMM dd yyyy') === format(selectedDay, 'MMMM dd yyyy') ? 'calendar-day-selected' : ''}
+                    ${selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day-selected' : ''}
                     ${isOutdated(day) ? 'outdated-day' : ''}
                     `} 
                   onClick={() => {
@@ -81,7 +85,7 @@ const Calendar = ({BASEURL, isOutdated}) => {
               ))}
             </div>
             {selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-              <DayBox selectedDay={selectedDay} BASEURL={BASEURL} />
+              <DayBox selectedDay={selectedDay} BASEURL={BASEURL} propertyToFilter={propertyToFilter} />
             )}
           </div>
         ))}

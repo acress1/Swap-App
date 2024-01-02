@@ -1,80 +1,8 @@
 import React from "react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
-const InlineForm = ({BASEURL, isOutdated}) => {
-  
-  const [shifts, setShifts] = React.useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
-
-  const addShift = () => {
-    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}];
-    setShifts(newShifts)
-  };
-
-  const deleteShift = (index) => {
-    const updatedShifts = [...shifts];
-    updatedShifts.splice(index, 1);
-    setShifts(updatedShifts);
-  };
-
-  const ovSwitch = (index) => { 
-    const updatedShifts = [...shifts];
-    updatedShifts[index].isOvernight = !updatedShifts[index].isOvernight;
-    setShifts(updatedShifts)
-  };
-
-  const handleChange = (index, fieldName, value) => {
-    const updatedShifts = [...shifts];
-    updatedShifts[index][fieldName] = value;
-    setShifts(updatedShifts);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
-
-    if (isAnyOutdated) {
-      toast.error('Oops... You can\'t submit an outdated swap 🤓');
-      return;
-    }
-
-    shifts.forEach(shift => {
-      const formData = {
-        Email: e.target.elements.Email.value,
-        Date: shift.Date,
-        Outbound: shift.Outbound,
-        Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
-        Position: shift.Position,
-        Early: shift.Early,
-        Late: shift.Late,
-        LTA: shift.LTA,
-        DO: shift.DO,
-        Note: e.target.elements.Note.value
-      };
-
-      fetch(`${BASEURL}/formData`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(formData)
-        })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Form submission failed');
-        }
-        return response.json()
-      })
-      .then(data => {
-        console.log('Success', data);
-        toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`)
-      })
-      .catch(error => {
-        console.log(error);
-        toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`)
-      });
-    });
-  };
+const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) => {
   
   return (
     <>
@@ -139,7 +67,6 @@ const InlineForm = ({BASEURL, isOutdated}) => {
           <a className="roster-link" href="https://www.momentumserviceslondon.com/activite" target="_blank" rel="noreferrer">Roster</a>
         </form>
       </div>
-      <ToastContainer />
     </>
   )
 };

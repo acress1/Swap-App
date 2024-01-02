@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './QuickViewBox.css';
 
-const QuickViewBox = ({BASEURL}) => {
+const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
    
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
@@ -20,7 +20,12 @@ const QuickViewBox = ({BASEURL}) => {
             }
             return response.json();
         })
-        .then(data => { setFormData(data)})
+        .then(data => { 
+            const sortedData = data.data
+            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "AV", Inbound: "AV"} : item);
+
+            setFormData({ ...data, data: sortedData });
+        })
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
     }, [BASEURL]);
@@ -55,14 +60,7 @@ const QuickViewBox = ({BASEURL}) => {
                             <tbody>
                                 {formData && formData.data && formData.data.length > 0 ? (
                                     formData.data
-                                        .filter(dataItem => (
-                                            dataItem.Inbound.toString().includes(search) ||
-                                            dataItem.Outbound.toString().includes(search) ||
-                                            dataItem.Position.toString().includes(search) ||
-                                            dataItem.Email.toString().includes(search) ||
-                                            dataItem.Sent.toString().includes(search) ||
-                                            dataItem.Date.toString().includes(search)
-                                        ))
+                                        .filter(dataItem => ( propertyToFilter.some(column => dataItem[column].toString().toLowerCase().includes(search))))
                                         .map((dataItem, index) => (
                                             <tr key={index}>
                                                 <td className="Date">{dataItem.Date}</td>
@@ -78,12 +76,12 @@ const QuickViewBox = ({BASEURL}) => {
                                                 <td className="NOTE">{dataItem.Note}</td>
                                                 <td className="Sent">{dataItem.Sent}</td>
                                             </tr>
-                                        ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="12">No shift yet. Add yours 🤓</td>
-                                    </tr>
-                                )}
+                                            ))
+                                        ) : (
+                                            <tr>
+                                                <td colSpan="12">No shift yet. Add yours 🤓</td>
+                                            </tr>
+                                        )}
                             </tbody>
                         </table>
                     </div>

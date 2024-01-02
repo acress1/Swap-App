@@ -31,10 +31,3 @@
     margin: 1px;
     border: solid 1px rgb(150, 150, 255);
 }
-
-/* SMARTPHONES RESPONSIVENESS */
-@media screen and (max-width: 600px) {
-    th, td {
-        font-size: 12px;
-    }
-}

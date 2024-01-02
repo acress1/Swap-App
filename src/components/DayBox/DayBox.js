@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { format } from 'date-fns';
 import './DayBox.css';
 
-const DayBox = ({ selectedDay, BASEURL }) => {
+const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
     
     const date = format(selectedDay, 'dd/MM/yyyy');
     const [formData, setFormData] = useState(null);
@@ -25,9 +25,11 @@ const DayBox = ({ selectedDay, BASEURL }) => {
         .then(data => {
             const sortedData = data.data
             .filter(item => item.Date === date)
-            .sort((a, b) => new Date(b.Sent) - new Date(a.Sent));
+            .sort((a, b) => new Date(b.Sent) - new Date(a.Sent))
+            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "AV", Inbound: "AV"} : item);
+            console.log(sortedData)
 
-            setFormData({ ...data, data: sortedData })
+            setFormData({ ...data, data: sortedData });
         })
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
@@ -63,13 +65,7 @@ const DayBox = ({ selectedDay, BASEURL }) => {
                             <tbody>
                                 {formData && formData.data && formData.data.length > 0 ? (
                                     formData.data
-                                        .filter(dataItem => (
-                                            dataItem.Inbound.toString().includes(search) ||
-                                            dataItem.Outbound.toString().includes(search) ||
-                                            dataItem.Position.toString().includes(search) ||
-                                            dataItem.Email.toString().includes(search) ||
-                                            dataItem.Sent.toString().includes(search)
-                                        ))
+                                        .filter(dataItem => ( propertyToFilter.some(column => dataItem[column].toString().toLowerCase().includes(search))))
                                         .map((dataItem, index) => (
                                             <tr key={index}>
                                                 <td className="Outbound">{dataItem.Outbound}</td>
@@ -84,12 +80,12 @@ const DayBox = ({ selectedDay, BASEURL }) => {
                                                 <td className="NOTE ">{dataItem.Note}</td>
                                                 <td className="Sent ">{dataItem.Sent}</td>
                                             </tr>
-                                        ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="11">No shift yet. Add yours 🤓</td>
-                                    </tr>
-                                )}
+                                            ))
+                                        ) : (
+                                            <tr>
+                                                <td colSpan="11">No shift yet. Add yours 🤓</td>
+                                            </tr>
+                                        )}
                             </tbody>
                         </table>
                     </div>
