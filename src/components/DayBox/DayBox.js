@@ -26,7 +26,8 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
             const sortedData = data.data
             .filter(item => item.Date === date)
             .sort((a, b) => new Date(b.Sent) - new Date(a.Sent))
-            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "AV", Inbound: "AV"} : item);
+             // eslint-disable-next-line
+            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "See Note", Inbound: " "} : item); 
             console.log(sortedData)
 
             setFormData({ ...data, data: sortedData });

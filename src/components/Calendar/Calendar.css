@@ -1,4 +1,10 @@
+@keyframes flickerAnimation {0%   { opacity:1; } 50%  { opacity:0; } 100% { opacity:1; }}
 
+.calendar-month-title {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  justify-content: center;
+
+}
 .calendar-month {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
@@ -8,7 +14,11 @@
   margin-bottom: 10px;
 }
 .calendar-day {
-  display: flex;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -28,6 +38,28 @@
 .calendar-day-selected {
   background-color: rgb(200, 200, 255);
   color: white;
+}
+.day-full {
+  grid-area: 1 / 2 / 2 / 3;
+  font-size: 50%;
+  justify-self: center;
+}
+.day-number {
+  grid-area: 2 / 2 / 3 / 3;
+  font-size: 95%;
+  justify-self: center;
+}
+.dot {
+  grid-area: 3 / 2 / 4 / 3;
+  justify-self: center;
+  background-color: red;
+  height: 65%;
+  width: 65%;
+  border-radius: 50%;
+  -webkit-animation: flickerAnimation 7s infinite;
+  -moz-animation: flickerAnimation 7s infinite;
+  -o-animation: flickerAnimation 7s infinite;
+  animation: flickerAnimation 7s infinite;
 }
 .outdated-day, .outdated-day:hover, .outdated-day:active {
   background-color: grey;
@@ -50,22 +82,7 @@
 .quick-view:active {
   background-color: rgb(189, 0, 0);
 }
-@keyframes flickerAnimation {
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
-}
-.dot {
-  background-color: red;
-  height: 8px;
-  width: 8px;
-  border-radius: 8px;
-  margin-left: 5px;
-  -webkit-animation: flickerAnimation 7s infinite;
-  -moz-animation: flickerAnimation 7s infinite;
-  -o-animation: flickerAnimation 7s infinite;
-  animation: flickerAnimation 7s infinite;
-}
+
 @media (max-width: 600px) {
   .calendar-day {
     width: 30px;

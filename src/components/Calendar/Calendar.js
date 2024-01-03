@@ -79,7 +79,8 @@ const Calendar = ({ BASEURL, isOutdated, handleSubmit }) => {
                     isOutdated(day) ? toggleSelectedDay(null) : toggleSelectedDay(day)
                   }}
                 >
-                  {format(day, 'd')}
+                  <div className='day-full'>{format(day, 'EEEE')}</div>
+                  <div className='day-number'>{format(day, 'd')}</div>
                   <div className={`${daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : ''}`}></div>
                 </div>
               ))}

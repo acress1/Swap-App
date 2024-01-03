@@ -22,7 +22,8 @@ const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
         })
         .then(data => { 
             const sortedData = data.data
-            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "AV", Inbound: "AV"} : item);
+            // eslint-disable-next-line
+            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "See Note", Inbound: " "} : item);
 
             setFormData({ ...data, data: sortedData });
         })
