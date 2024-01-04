@@ -39,6 +39,12 @@ function App() {
     return day < todayDate;
   };
 
+  // Toggle QuickViewBox.js
+  const [showQuickView, setShowQuickView] = useState(false);
+  const handleQuickViewClick = () => {
+    setShowQuickView(!showQuickView);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,7 +82,8 @@ function App() {
       })
       .then(data => {
         console.log('Success', data);
-        toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`)
+        toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`);
+        setShowQuickView(true)
       })
       .catch(error => {
         console.log(error);
@@ -89,7 +96,7 @@ function App() {
     <>
       <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
       <InlineForm BASEURL= {BASEURL} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
-      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit}/>
+      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit} showQuickView={showQuickView} handleQuickViewClick={handleQuickViewClick} />
       <ToastContainer />
     </>
   );

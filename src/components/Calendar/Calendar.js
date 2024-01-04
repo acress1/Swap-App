@@ -4,7 +4,7 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = ({ BASEURL, isOutdated, handleSubmit }) => {
+const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick }) => {
 
   const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note'];
   
@@ -13,12 +13,6 @@ const Calendar = ({ BASEURL, isOutdated, handleSubmit }) => {
   const currentMonth = startOfMonth(currentDate);
   const months = [currentMonth];
   for (let i = 1; i < 2; i++) {months.push(startOfMonth(addMonths(currentMonth, i)))};
-
-  // Toggle QuickViewBox.js
-  const [showQuickView, setShowQuickView] = useState(false);
-  const handleQuickViewClick = () => {
-    setShowQuickView(!showQuickView);
-  };
 
   // Toggle Daybox.js
   const [selectedDay, setSelectedDay] = useState(null);
@@ -48,7 +42,7 @@ const Calendar = ({ BASEURL, isOutdated, handleSubmit }) => {
       setDaysWithData(sortedData)
     })
     .catch(error => console.error('Error fetching days with data:', error))
-  }, [BASEURL, handleSubmit])
+  }, [BASEURL])
   
   // Update Date every minute
   useEffect(() => {

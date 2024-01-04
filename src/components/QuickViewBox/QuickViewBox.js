@@ -38,7 +38,7 @@ const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
             ) : (
                 <>
                     <div>
-                        <input className="searchBox" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+                        <input id="searchBox" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <div className="table">
                         <table>

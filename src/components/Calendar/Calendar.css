@@ -1,10 +1,5 @@
 @keyframes flickerAnimation {0%   { opacity:1; } 50%  { opacity:0; } 100% { opacity:1; }}
 
-.calendar-month-title {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  justify-content: center;
-
-}
 .calendar-month {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
@@ -63,6 +58,7 @@
 }
 .outdated-day, .outdated-day:hover, .outdated-day:active {
   background-color: grey;
+  color:lightgray;
   cursor: default;
 }
 .quick-view {

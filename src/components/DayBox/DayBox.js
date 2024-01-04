@@ -27,8 +27,7 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
             .filter(item => item.Date === date)
             .sort((a, b) => new Date(b.Sent) - new Date(a.Sent))
              // eslint-disable-next-line
-            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "See Note", Inbound: " "} : item); 
-            console.log(sortedData)
+            .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "See Note", Inbound: " "} : item);
 
             setFormData({ ...data, data: sortedData });
         })
@@ -43,13 +42,13 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
             ) : (
                 <>
                     <div>
-                        <span className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</span>
-                        <input className="searchBox" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+                        <input id="searchBox" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <div className="table">
                         <table>
                             <thead>
                                 <tr>
+                                    <th><span className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</span></th>
                                     <th>Outbound</th>
                                     <th>Inbound</th>
                                     <th>Position</th>
@@ -69,15 +68,16 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
                                         .filter(dataItem => ( propertyToFilter.some(column => dataItem[column].toString().toLowerCase().includes(search))))
                                         .map((dataItem, index) => (
                                             <tr key={index}>
+                                                <td></td>
                                                 <td className="Outbound">{dataItem.Outbound}</td>
                                                 <td className="Inbound">{dataItem.Inbound}</td>
                                                 <td className="Position">{dataItem.Position}</td>
                                                 <td><a className="Email" href={`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                                                 <td className="FOR"></td>
-                                                <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
-                                                <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
-                                                <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
-                                                <td className="FOR"><input className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
+                                                <td className="FOR"><input id="EarlyDisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
+                                                <td className="FOR"><input id="LateDisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
+                                                <td className="FOR"><input id="LTADisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
+                                                <td className="FOR"><input id="DODisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
                                                 <td className="NOTE ">{dataItem.Note}</td>
                                                 <td className="Sent ">{dataItem.Sent}</td>
                                             </tr>

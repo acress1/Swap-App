@@ -13,7 +13,7 @@ input, label, span, textarea, a, button {
   margin: 1px;
   border-radius: 5px;
 }
-input {
+input, textarea {
   border: solid 1px #ccc;
 }
 input:hover, textarea:hover, input:focus, textarea:focus {
@@ -33,7 +33,7 @@ input:hover, textarea:hover, input:focus, textarea:focus {
   animation-timing-function: ease-in;
   animation-duration: 2s;
 }
-.searchBox {
+#searchBox {
   position: relative;
   width: 50px;
   height: 10px;
