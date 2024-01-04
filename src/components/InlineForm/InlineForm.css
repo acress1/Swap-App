@@ -197,7 +197,7 @@ input:checked + .slider:before {
     width: 14px;
   }
   .submit, .swap-form-link, .roster-link {
-    width: 30%;
+    width: 25%;
     height: 100%;
     font-size: 9.5px;
   }
