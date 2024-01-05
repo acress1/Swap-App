@@ -31,9 +31,10 @@
 .right-bottom-grid {
   grid-area: 1 / 2 / 2 / 3;
   padding: 4px;
-  text-align: left;
+  text-align: right;
   white-space: nowrap;
   overflow: auto;
+  font-size: 10px;
 }
 .bottom-left-textarea {
   width: 90%;
