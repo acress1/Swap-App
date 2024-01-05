@@ -19,6 +19,13 @@ Branches:
     <img src="https://github.com/MathDevWeb/swap-app/assets/140265706/4e450fe7-1575-4129-8e9f-9a6ea5ddeefc" height= 200 />
     <span><img src="https://github.com/MathDevWeb/swap-app/assets/140265706/1544d601-16ee-4d55-9325-b9800a17d006" height= 200 /></span>
   </div>
+- 5.01.2024 > Update 3
+
+  <div>
+    <img src="https://github.com/MathDevWeb/swap-app/assets/140265706/b829f94e-19da-494c-84cf-d5adee4048d6" height= 200 />
+    <span><img src="https://github.com/MathDevWeb/swap-app/assets/140265706/29df45e9-e021-4c92-a23f-db6356595070" height= 200 /></span>
+  </div>
+
 - 5.01.2024a > Update 3a
 
   <div>
