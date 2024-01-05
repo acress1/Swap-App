@@ -17,14 +17,14 @@ const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmi
             <table>
               <thead>
                 <tr>
-                  <th>SHIFT</th>
+                  <th className="start">SHIFT</th>
                   <th>Date</th>
                   <th>Outbound</th>
                   <th>Inbound</th>
                   <th>Overnight</th>
                   <th>FIRST</th>
                   <th>BAR</th>
-                  <th>PURSER</th>
+                  <th className="end">PURSER</th>
                   <th className="FOR start">FOR:</th>
                   <th className="FOR">Early</th>
                   <th className="FOR">Late</th>
