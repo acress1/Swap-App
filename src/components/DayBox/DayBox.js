@@ -36,7 +36,7 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
     }, [BASEURL, date]);
 
     return (
-        <div className="dayBox">
+        <div className="viewBox">
             {loading ? (
                 <div className="loading-spinner"></div>
             ) : (
@@ -84,7 +84,7 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
                                             ))
                                         ) : (
                                             <tr>
-                                                <td colSpan="11">No shift yet. Add yours 🤓</td>
+                                                <td colSpan="12">No shift yet. Add yours 🤓</td>
                                             </tr>
                                         )}
                             </tbody>

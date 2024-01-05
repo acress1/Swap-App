@@ -69,7 +69,8 @@ const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmi
               </div>
             </div>
             <div className="Tuto">
-              LTA: "Long turn-around" |
+              LTA: "Long turn-around" 
+              <br></br>
               D.O.: "Day off"
             </div>
           </div>

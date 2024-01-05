@@ -55,35 +55,39 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick }) 
 
   return (
     <>
-      <button className='quick-view' onClick={handleQuickViewClick}>Quick view</button>
-      {showQuickView && <QuickViewBox BASEURL={BASEURL} propertyToFilter={propertyToFilter} />}
-      <div>
-        { months.map( month => (
-          <div key={month} className="calendar">
-            <h3 className='calendar-month'>{ format( month, 'MMMM yyyy') }</h3>
-            <div className="calendar-month">
-              {eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) }).map(day => (
-                <div 
-                  key={day}
-                  className={`calendar-day
-                    ${selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day-selected' : ''}
-                    ${isOutdated(day) ? 'outdated-day' : ''}
-                    `} 
-                  onClick={() => {
-                    isOutdated(day) ? toggleSelectedDay(null) : toggleSelectedDay(day)
-                  }}
-                >
-                  <div className='day-full'>{format(day, 'EEEE')}</div>
-                  <div className='day-number'>{format(day, 'd')}</div>
-                  <div className={`${daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : ''}`}></div>
-                </div>
-              ))}
+      <div className='calendar'>
+        <button className='quick-view' onClick={handleQuickViewClick}>Quick view</button>
+          { showQuickView && <QuickViewBox BASEURL={BASEURL} propertyToFilter={propertyToFilter} /> }
+          { months.map( month => (
+            <div key={month}>
+              <div>{ format( month, 'MMMM yyyy') }</div>
+              <div className="calendar-month">
+                { eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) })
+                  .map(day => (
+                    <div 
+                      key={day}
+                      className={`calendar-day
+                        ${selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day-selected' : ''}
+                        ${isOutdated(day) ? 'outdated-day' : ''}
+                        `} 
+                      onClick={() => {
+                        isOutdated(day) ? toggleSelectedDay(null) : toggleSelectedDay(day)
+                      }}
+                    >
+                      <div className='day-full'>{format(day, 'EEEE')}</div>
+                      <div className='day-number'>{format(day, 'd')}</div>
+                      <div className={`${daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : ''}`}></div>
+                    </div>
+                    )
+                  )
+                }
+              </div>
+          { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
+            <DayBox selectedDay={selectedDay} BASEURL={BASEURL} propertyToFilter={propertyToFilter} />
+            )
+          }
             </div>
-            {selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-              <DayBox selectedDay={selectedDay} BASEURL={BASEURL} propertyToFilter={propertyToFilter} />
-            )}
-          </div>
-        ))}
+          ))}
       </div>
     </>
   );

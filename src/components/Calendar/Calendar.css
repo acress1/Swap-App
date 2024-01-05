@@ -1,28 +1,32 @@
 @keyframes flickerAnimation {0%   { opacity:1; } 50%  { opacity:0; } 100% { opacity:1; }}
 
+.calendar {
+  justify-content: center;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
 .calendar-month {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
   flex-wrap: wrap;
-  padding-left: 4px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-weight: lighter;
+  justify-content: center;
+  align-content: left;
+  margin: 2px;
 }
 .calendar-day {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 33% 33% 33%;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   background-color: white;
   border: 1px solid #ccc; 
-  margin: 1px;
-  width: 40px; 
-  height: 40px;
   border-radius: 5px;
+  margin: 1px;
+  width: 5vw; 
+  height: 5vw;
+  cursor: pointer;
 }
 .calendar-day:hover {
   background-color:  rgb(200, 200, 255);
@@ -46,11 +50,11 @@
 }
 .dot {
   grid-area: 3 / 2 / 4 / 3;
-  justify-self: center;
   background-color: red;
-  height: 65%;
-  width: 65%;
+  height: 60%;
+  width: 60%;
   border-radius: 50%;
+  justify-self: center;
   -webkit-animation: flickerAnimation 7s infinite;
   -moz-animation: flickerAnimation 7s infinite;
   -o-animation: flickerAnimation 7s infinite;
@@ -62,13 +66,11 @@
   cursor: default;
 }
 .quick-view {
-  font-family: Arial, Helvetica, sans-serif;
   background-color: red;
   color: white;
   font-size: 13px;
+  margin: 4px;
   padding: 5px;
-  margin-left: 5px;
-  margin-top: 5px;
   border: none;
   cursor: pointer;
 }
@@ -81,8 +83,8 @@
 
 @media (max-width: 600px) {
   .calendar-day {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+    width: 10vw;
+    height: 10vw;
+    font-size: 13px;
   }
 }

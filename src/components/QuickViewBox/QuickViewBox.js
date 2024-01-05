@@ -32,7 +32,7 @@ const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
     }, [BASEURL]);
 
     return (
-        <div className="quickViewBox">
+        <div className="viewBox">
             {loading ? (
                 <div className="loading-spinner"></div>
             ) : (
