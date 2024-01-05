@@ -9,13 +9,11 @@ body {
   background-color:rgba(240, 240, 255);
   border-radius: 5px;
   padding: 5px;
-}
-input, label, span, textarea, a, button {
-  border-radius: 5px;
-  margin: 1px;
+  font-size: 15px;
 }
 input, textarea {
   border: solid 1px #ccc;
+  border-radius: 5px;
 }
 input:hover, textarea:hover, input:focus, textarea:focus {
   background-color: rgb(220, 250, 255);
@@ -32,42 +30,12 @@ input:hover, textarea:hover, input:focus, textarea:focus {
   animation-timing-function: ease-in;
   animation-duration: 2s;
 }
-.Outbound, .Inbound {
-  color: blue;
-}
-.Email:link, .Email:visited {
-  color: black;
-}
-.Email:hover {
-  color: orange;
-}
-.Email:active {
-  color: rgb(255, 132, 0);
-}
-.Sent:hover, .Date:hover {
-  color: rgb(16, 170, 16);
-  cursor: crosshair;
-}
-.nohover {
-  pointer-events: none;
-}
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #767676;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  animation: rotate 1s linear infinite;
-  margin: 20px auto;
-}
 
 /* TABLES */
 table {
   width: 100%;
+  height: auto;
   border-collapse: collapse;
-}
-.table {
-  overflow: auto;
 }
 th, td {
   padding: 3px;
@@ -100,7 +68,7 @@ td {
 
 /* SMARTPHONES RESPONSIVENESS */
 @media screen and (max-width: 600px) {
-  th, td {
+  body, th, td {
     font-size: 12px;
   }
 }

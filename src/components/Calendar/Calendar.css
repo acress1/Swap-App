@@ -68,10 +68,10 @@
 .quick-view {
   background-color: red;
   color: white;
-  font-size: 13px;
   margin: 4px;
   padding: 5px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 .quick-view:hover {
