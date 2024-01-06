@@ -65,7 +65,8 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
                             <tbody>
                                 {formData && formData.data && formData.data.length > 0 ? (
                                     formData.data
-                                        .filter(dataItem => ( propertyToFilter.some(column => dataItem[column].toString().toLowerCase().includes(search))))
+                                        .filter(dataItem => ( propertyToFilter.some(column => 
+                                            dataItem[column].toString().toLowerCase().includes(search.toLowerCase()))))
                                         .map((dataItem, index) => (
                                             <tr key={index}>
                                                 <td></td>

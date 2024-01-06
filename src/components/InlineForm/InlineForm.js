@@ -78,6 +78,8 @@ const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmi
               LTA: "Long turn-around" 
               <br></br>
               D.O.: "Day off"
+              <br></br>
+              9000 + 9000 = "See Note" 🤓
             </div>
           </div>
           
