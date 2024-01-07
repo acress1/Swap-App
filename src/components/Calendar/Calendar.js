@@ -6,7 +6,7 @@ import './Calendar.css';
 
 const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick }) => {
 
-  const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note'];
+  const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note', 'Early', 'Late', 'LTA', 'DO'];
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
