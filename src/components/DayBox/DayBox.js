@@ -5,6 +5,7 @@ import './DayBox.css';
 const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
     
     const date = format(selectedDay, 'dd/MM/yyyy');
+    
     const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');

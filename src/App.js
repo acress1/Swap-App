@@ -12,6 +12,29 @@ function App() {
 
   const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
+  const isOutdated = (day) => {
+    todayDate.setHours(0, 0, 0, 0);
+    return day < todayDate;
+  };
+
+  const ovSwitch = (index) => { 
+    const updatedShifts = [...shifts];
+    updatedShifts[index].isOvernight = !updatedShifts[index].isOvernight;
+    setShifts(updatedShifts)
+  };
+
+  // Toggle QuickViewBox.js
+  const [showQuickView, setShowQuickView] = useState(false);
+  const handleQuickViewClick = () => {
+    setShowQuickView(!showQuickView);
+  };
+
+  // Toggle Daybox.js
+  const [selectedDay, setSelectedDay] = useState(null);
+  const toggleSelectedDay = (day) => { 
+    setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
+  };
+
   const addShift = () => {
     const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}];
     setShifts(newShifts)
@@ -23,27 +46,10 @@ function App() {
     setShifts(updatedShifts);
   };
 
-  const ovSwitch = (index) => { 
-    const updatedShifts = [...shifts];
-    updatedShifts[index].isOvernight = !updatedShifts[index].isOvernight;
-    setShifts(updatedShifts)
-  };
-
   const handleChange = (index, fieldName, value) => {
     const updatedShifts = [...shifts];
     updatedShifts[index][fieldName] = value;
     setShifts(updatedShifts);
-  };
-
-  const isOutdated = (day) => {
-    todayDate.setHours(0, 0, 0, 0);
-    return day < todayDate;
-  };
-
-  // Toggle QuickViewBox.js
-  const [showQuickView, setShowQuickView] = useState(false);
-  const handleQuickViewClick = () => {
-    setShowQuickView(!showQuickView);
   };
 
   const handleSubmit = (e) => {
@@ -97,7 +103,7 @@ function App() {
     <>
       <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
       <InlineForm BASEURL= {BASEURL} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
-      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit} showQuickView={showQuickView} handleQuickViewClick={handleQuickViewClick} />
+      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit} showQuickView={showQuickView} handleQuickViewClick={handleQuickViewClick} selectedDay={selectedDay} toggleSelectedDay={toggleSelectedDay} />
       <ToastContainer />
     </>
   );

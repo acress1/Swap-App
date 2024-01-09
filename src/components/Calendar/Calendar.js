@@ -4,9 +4,7 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick }) => {
-
-  const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note', 'Early', 'Late', 'LTA', 'DO'];
+const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick, selectedDay, toggleSelectedDay }) => {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -14,14 +12,10 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick }) 
   const months = [currentMonth];
   for (let i = 1; i < 2; i++) {months.push(startOfMonth(addMonths(currentMonth, i)))};
 
-  // Toggle Daybox.js
-  const [selectedDay, setSelectedDay] = useState(null);
-  const toggleSelectedDay = (day) => { 
-    setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
-  };
-
   // Fetch Days with Data
   const [daysWithData, setDaysWithData] = useState([]);
+
+  const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note', 'Early', 'Late', 'LTA', 'DO'];
 
   useEffect(() => {
 
