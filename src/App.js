@@ -9,27 +9,18 @@ import './App.css';
 function App() {
   const todayDate = new Date();
   const BASEURL = "http://localhost:3001";
-
-  const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
-
   const isOutdated = (day) => {
     todayDate.setHours(0, 0, 0, 0);
     return day < todayDate;
   };
 
-  const ovSwitch = (index) => { 
-    const updatedShifts = [...shifts];
-    updatedShifts[index].isOvernight = !updatedShifts[index].isOvernight;
-    setShifts(updatedShifts)
-  };
+  const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
-  // Toggle QuickViewBox.js
   const [showQuickView, setShowQuickView] = useState(false);
   const toggleQuickViewBox = () => {
     setShowQuickView(!showQuickView);
   };
 
-  // Toggle Daybox.js
   const [selectedDay, setSelectedDay] = useState(null);
   const toggleDayBox = (day) => { 
     setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
@@ -44,6 +35,12 @@ function App() {
     const updatedShifts = [...shifts];
     updatedShifts.splice(index, 1);
     setShifts(updatedShifts);
+  };
+
+  const ovSwitch = (index) => { 
+    const updatedShifts = [...shifts];
+    updatedShifts[index].isOvernight = !updatedShifts[index].isOvernight;
+    setShifts(updatedShifts)
   };
 
   const handleChange = (index, fieldName, value) => {
