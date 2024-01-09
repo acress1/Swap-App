@@ -1,5 +1,4 @@
 import React from "react";
-import "react-toastify/dist/ReactToastify.css";
 import './InlineForm.css';
 
 const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) => {
