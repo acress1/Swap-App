@@ -25,13 +25,13 @@ function App() {
 
   // Toggle QuickViewBox.js
   const [showQuickView, setShowQuickView] = useState(false);
-  const handleQuickViewClick = () => {
+  const toggleQuickViewBox = () => {
     setShowQuickView(!showQuickView);
   };
 
   // Toggle Daybox.js
   const [selectedDay, setSelectedDay] = useState(null);
-  const toggleSelectedDay = (day) => { 
+  const toggleDayBox = (day) => { 
     setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
   };
 
@@ -103,7 +103,7 @@ function App() {
     <>
       <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
       <InlineForm BASEURL= {BASEURL} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
-      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit} showQuickView={showQuickView} handleQuickViewClick={handleQuickViewClick} selectedDay={selectedDay} toggleSelectedDay={toggleSelectedDay} />
+      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
     </>
   );

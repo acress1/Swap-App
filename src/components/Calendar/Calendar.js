@@ -4,7 +4,7 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick, selectedDay, toggleSelectedDay }) => {
+const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) => {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -50,7 +50,7 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick, se
   return (
     <>
       <div className='calendar'>
-        <button className='quick-view' onClick={handleQuickViewClick}>Quick view</button>
+        <button className='quick-view' onClick={toggleQuickViewBox}>Quick view</button>
           { showQuickView && <QuickViewBox BASEURL={BASEURL} propertyToFilter={propertyToFilter} /> }
           { months.map( month => (
             <div key={month}>
@@ -65,7 +65,7 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, handleQuickViewClick, se
                         ${isOutdated(day) ? 'outdated-day' : ''}
                         `} 
                       onClick={() => {
-                        isOutdated(day) ? toggleSelectedDay(null) : toggleSelectedDay(day)
+                        isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day)
                       }}
                     >
                       <div className='day-full'>{format(day, 'EEEE')}</div>
