@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { format } from 'date-fns';
 import './DayBox.css';
 
-const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
+export default function DayBox ({ BASEURL, tableInputs, selectedDay }) {
     
-    const date = format(selectedDay, 'dd/MM/yyyy');
+    const formatedSelectedDay = format(selectedDay, 'dd/MM/yyyy');
     
     const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -25,7 +25,7 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
         })
         .then(data => {
             const sortedData = data.data
-            .filter(item => item.Date === date)
+            .filter(item => item.Date === formatedSelectedDay)
             .sort((a, b) => new Date(b.Sent) - new Date(a.Sent))
              // eslint-disable-next-line
             .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "See Note", Inbound: " "} : item);
@@ -34,7 +34,7 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
         })
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
-    }, [BASEURL, date]);
+    }, [BASEURL, formatedSelectedDay]);
 
     return (
         <div className="viewBox">
@@ -49,25 +49,25 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th><span className="day-reminder">{format(selectedDay, 'dd/MM/yyyy')}</span></th>
-                                    <th>Outbound</th>
-                                    <th>Inbound</th>
-                                    <th>Position</th>
-                                    <th>Email</th>
+                                    <th><span className="day-reminder">{formatedSelectedDay}</span></th>
+                                    <th>{tableInputs[1]}</th>
+                                    <th>{tableInputs[2]}</th>
+                                    <th>{tableInputs[3]}</th>
+                                    <th>{tableInputs[4]}</th>
                                     <th className="FOR start">FOR:</th>
-                                    <th className="FOR">Early</th>
-                                    <th className="FOR">Late</th>
-                                    <th className="FOR">LTA</th>
-                                    <th className="FOR">D.O.</th>
-                                    <th className="FOR end">Note</th>
-                                    <th>Sent</th>
+                                    <th className="FOR">{tableInputs[5]}</th>
+                                    <th className="FOR">{tableInputs[6]}</th>
+                                    <th className="FOR">{tableInputs[7]}</th>
+                                    <th className="FOR">{tableInputs[8]}</th>
+                                    <th className="FOR end">{tableInputs[9]}</th>
+                                    <th>{tableInputs[10]}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {formData && formData.data && formData.data.length > 0 ? (
                                     formData.data
                                         .filter(dataItem => ( 
-                                            propertyToFilter.some(column => 
+                                            tableInputs.some(column => 
                                                 dataItem[column].toString().toLowerCase().includes(search.toLowerCase())
                                                 )))
                                         .map((dataItem, index) => (
@@ -99,5 +99,3 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
         </div>
     );
 };
-
-export default DayBox;

@@ -1,7 +1,7 @@
 import React from "react";
 import './InlineForm.css';
 
-const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) => {
+export default function InlineForm ({ tableInputs, addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) {
   
   return (
     <>
@@ -17,18 +17,18 @@ const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmi
               <thead>
                 <tr>
                   <th className="start">SHIFT</th>
-                  <th>Date</th>
-                  <th>Outbound</th>
-                  <th>Inbound</th>
+                  <th>{tableInputs[0]}</th>
+                  <th>{tableInputs[1]}</th>
+                  <th>{tableInputs[2]}</th>
                   <th>Overnight</th>
                   <th>FIRST</th>
                   <th>BAR</th>
                   <th className="end">PURSER</th>
                   <th className="FOR start">FOR:</th>
-                  <th className="FOR">Early</th>
-                  <th className="FOR">Late</th>
-                  <th className="FOR">LTA</th>
-                  <th className="FOR end">D.O.</th>
+                  <th className="FOR">{tableInputs[5]}</th>
+                  <th className="FOR">{tableInputs[6]}</th>
+                  <th className="FOR">{tableInputs[7]}</th>
+                  <th className="FOR end">{tableInputs[8]}</th>
                 </tr>
               </thead>
               {shifts.map((shift, index) => (
@@ -87,5 +87,3 @@ const InlineForm = ({ addShift, deleteShift, ovSwitch, handleChange, handleSubmi
     </>
   )
 };
-
-export default InlineForm;

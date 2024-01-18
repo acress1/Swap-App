@@ -4,7 +4,7 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) => {
+export default function Calendar ({ BASEURL, tableInputs, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -14,8 +14,6 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, sele
 
   // Fetch Days with Data
   const [daysWithData, setDaysWithData] = useState([]);
-
-  const propertyToFilter = ['Inbound','Outbound','Position','Email','Sent','Date','Note', 'Early', 'Late', 'LTA', 'DO'];
 
   useEffect(() => {
 
@@ -51,7 +49,7 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, sele
     <>
       <div className='calendar'>
         <button className='quick-view-button' onClick={toggleQuickViewBox}>Quick view</button>
-          { showQuickView && <QuickViewBox BASEURL={BASEURL} propertyToFilter={propertyToFilter} /> }
+          { showQuickView && <QuickViewBox BASEURL={BASEURL} tableInputs={tableInputs} /> }
           { months.map( month => (
             <div key={month}>
               <div>{ format( month, 'MMMM yyyy') }</div>
@@ -60,24 +58,21 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, sele
                   .map(day => (
                     <div 
                       key={day}
-                      className={`calendar-day
-                        ${selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day-selected' : ''}
-                        ${isOutdated(day) ? 'outdated-day' : ''}
-                        `} 
+                      className={`${isOutdated(day) ? 'calendar-day outdated' : (selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day selected' : 'calendar-day')}`} 
                       onClick={() => {
                         isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day)
                       }}
                     >
-                      <div className='day-full'>{format(day, 'EEEE')}</div>
+                      <div className='week-day'>{format(day, 'EEEE')}</div>
                       <div className='day-number'>{format(day, 'd')}</div>
-                      <div className={`${daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : ''}`}></div>
+                      <div className={`${isOutdated(day) ? '' : (daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : '')}`}></div>
                     </div>
                     )
                   )
                 }
               </div>
               { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-                <DayBox selectedDay={selectedDay} BASEURL={BASEURL} propertyToFilter={propertyToFilter} />
+                <DayBox selectedDay={selectedDay} BASEURL={BASEURL} tableInputs={tableInputs} />
                 )
               }
             </div>
@@ -86,5 +81,3 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, sele
     </>
   );
 }
-
-export default Calendar;

@@ -34,11 +34,16 @@
 .calendar-day:active {
   background-color: rgb(150, 150, 255);
 }
-.calendar-day-selected {
+.selected {
   background-color: rgb(200, 200, 255);
   color: white;
 }
-.day-full {
+.outdated, .outdated:hover, .outdated:active {
+  background-color: grey;
+  color:lightgray;
+  cursor: default;
+}
+.week-day {
   grid-area: 1 / 2 / 2 / 3;
   font-size: 50%;
   justify-self: center;
@@ -59,11 +64,6 @@
   -moz-animation: flickerAnimation 7s infinite;
   -o-animation: flickerAnimation 7s infinite;
   animation: flickerAnimation 7s infinite;
-}
-.outdated-day, .outdated-day:hover, .outdated-day:active {
-  background-color: grey;
-  color:lightgray;
-  cursor: default;
 }
 .quick-view-button {
   background-color: red;

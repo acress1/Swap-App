@@ -6,24 +6,27 @@ import Calendar from './components/Calendar/Calendar';
 import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 
-function App() {
+export default function App() {
 
   const todayDate = new Date();
   const BASEURL = "http://localhost:3001";
+  const tableInputs = ['Date','Outbound','Inbound','Position','Email','Early','Late','LTA','DO','Note','Sent'];
+
+  const [showQuickView, setShowQuickView] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(null);
+  
+  const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
+
   const isOutdated = (day) => {
     todayDate.setHours(0, 0, 0, 0);
     return day < todayDate;
   };
 
-  const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
-
-  const [showQuickView, setShowQuickView] = useState(false);
   const toggleQuickViewBox = () => {
     setShowQuickView(!showQuickView);
     setSelectedDay(false)
   };
-
-  const [selectedDay, setSelectedDay] = useState(null);
+  
   const toggleDayBox = (day) => { 
     setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
     setShowQuickView(false)
@@ -102,11 +105,9 @@ function App() {
   return (
     <>
       <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
-      <InlineForm BASEURL= {BASEURL} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
-      <Calendar BASEURL= {BASEURL} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
+      <InlineForm BASEURL= {BASEURL} tableInputs={tableInputs} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
+      <Calendar BASEURL= {BASEURL} tableInputs={tableInputs} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
     </>
   );
 }
-
-export default App;

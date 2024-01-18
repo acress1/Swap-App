@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './QuickViewBox.css';
 
-const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
+export default function QuickViewBox ({ BASEURL, tableInputs }) {
    
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
@@ -44,25 +44,25 @@ const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Outbound</th>
-                                    <th>Inbound</th>
-                                    <th>Position</th>
-                                    <th>Email</th>
+                                    <th>{tableInputs[0]}</th>
+                                    <th>{tableInputs[1]}</th>
+                                    <th>{tableInputs[2]}</th>
+                                    <th>{tableInputs[3]}</th>
+                                    <th>{tableInputs[4]}</th>
                                     <th className="FOR start">FOR:</th>
-                                    <th className="FOR">Early</th>
-                                    <th className="FOR">Late</th>
-                                    <th className="FOR">LTA</th>
-                                    <th className="FOR">D.O.</th>
-                                    <th className="FOR end">Note</th>
-                                    <th>Sent</th>
+                                    <th className="FOR">{tableInputs[5]}</th>
+                                    <th className="FOR">{tableInputs[6]}</th>
+                                    <th className="FOR">{tableInputs[7]}</th>
+                                    <th className="FOR">{tableInputs[8]}</th>
+                                    <th className="FOR end">{tableInputs[9]}</th>
+                                    <th>{tableInputs[10]}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {formData && formData.data && formData.data.length > 0 ? (
                                     formData.data
                                         .filter(dataItem => ( 
-                                            propertyToFilter.some(column => 
+                                            tableInputs.some(column => 
                                                 dataItem[column].toString().toLowerCase().includes(search.toLowerCase())
                                                 )))
                                         .map((dataItem, index) => (
@@ -94,5 +94,3 @@ const QuickViewBox = ({ BASEURL, propertyToFilter }) => {
         </div>
     );
 };
-
-export default QuickViewBox;
