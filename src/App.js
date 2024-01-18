@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 
 function App() {
+
   const todayDate = new Date();
   const BASEURL = "http://localhost:3001";
   const isOutdated = (day) => {
@@ -19,11 +20,13 @@ function App() {
   const [showQuickView, setShowQuickView] = useState(false);
   const toggleQuickViewBox = () => {
     setShowQuickView(!showQuickView);
+    setSelectedDay(false)
   };
 
   const [selectedDay, setSelectedDay] = useState(null);
   const toggleDayBox = (day) => { 
     setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
+    setShowQuickView(false)
   };
 
   const addShift = () => {
@@ -100,7 +103,7 @@ function App() {
     <>
       <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
       <InlineForm BASEURL= {BASEURL} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
-      <Calendar BASEURL= {BASEURL} todayDate={todayDate}isOutdated={isOutdated} handleSubmit={handleSubmit} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
+      <Calendar BASEURL= {BASEURL} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
     </>
   );

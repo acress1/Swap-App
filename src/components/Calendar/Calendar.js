@@ -50,7 +50,7 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, sele
   return (
     <>
       <div className='calendar'>
-        <button className='quick-view' onClick={toggleQuickViewBox}>Quick view</button>
+        <button className='quick-view-button' onClick={toggleQuickViewBox}>Quick view</button>
           { showQuickView && <QuickViewBox BASEURL={BASEURL} propertyToFilter={propertyToFilter} /> }
           { months.map( month => (
             <div key={month}>
@@ -76,10 +76,10 @@ const Calendar = ({ BASEURL, isOutdated, showQuickView, toggleQuickViewBox, sele
                   )
                 }
               </div>
-          { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-            <DayBox selectedDay={selectedDay} BASEURL={BASEURL} propertyToFilter={propertyToFilter} />
-            )
-          }
+              { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
+                <DayBox selectedDay={selectedDay} BASEURL={BASEURL} propertyToFilter={propertyToFilter} />
+                )
+              }
             </div>
           ))}
       </div>

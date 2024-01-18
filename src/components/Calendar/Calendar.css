@@ -65,7 +65,7 @@
   color:lightgray;
   cursor: default;
 }
-.quick-view {
+.quick-view-button {
   background-color: red;
   color: white;
   border-radius: 5px;
@@ -75,10 +75,10 @@
   border: none;
   cursor: pointer;
 }
-.quick-view:hover {
+.quick-view-button:hover {
   background-color: rgb(255, 116, 116);
 }
-.quick-view:active {
+.quick-view-button:active {
   background-color: rgb(189, 0, 0);
 }
 

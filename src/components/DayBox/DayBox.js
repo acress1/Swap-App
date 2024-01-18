@@ -58,8 +58,8 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
                                     <th className="FOR">Early</th>
                                     <th className="FOR">Late</th>
                                     <th className="FOR">LTA</th>
-                                    <th className="FOR end">D.O.</th>
-                                    <th className="NOTE start end">Note</th>
+                                    <th className="FOR">D.O.</th>
+                                    <th className="FOR end">Note</th>
                                     <th>Sent</th>
                                 </tr>
                             </thead>
@@ -82,7 +82,7 @@ const DayBox = ({ BASEURL, selectedDay, propertyToFilter }) => {
                                                 <td className="FOR"><input id="LateDisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
                                                 <td className="FOR"><input id="LTADisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
                                                 <td className="FOR"><input id="DODisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
-                                                <td className="NOTE ">{dataItem.Note}</td>
+                                                <td className="FOR ">{dataItem.Note}</td>
                                                 <td className="Sent ">{dataItem.Sent}</td>
                                             </tr>
                                             ))
