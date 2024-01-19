@@ -59,9 +59,7 @@ export default function Calendar ({ BASEURL, tableInputs, isOutdated, showQuickV
                     <div 
                       key={day}
                       className={`${isOutdated(day) ? 'calendar-day outdated' : (selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day selected' : 'calendar-day')}`} 
-                      onClick={() => {
-                        isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day)
-                      }}
+                      onClick={() => { isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day) }}
                     >
                       <div className='week-day'>{format(day, 'EEEE')}</div>
                       <div className='day-number'>{format(day, 'd')}</div>
