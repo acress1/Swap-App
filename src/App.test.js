@@ -8,12 +8,12 @@ import DayBox from './components/DayBox/DayBox';
 
 test('First test', () => {
   render(<App />);
+
   const firstTest = screen.getByText(/Hi there! Today is/);
   expect(firstTest).toBeInTheDocument();
 });
 
 test('Should render current & next month', () => {
-
   const todayDate = new Date();
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const currentMonth = months[todayDate.getMonth()];
