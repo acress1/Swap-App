@@ -10,6 +10,66 @@ export default function App() {
 
   const todayDate = new Date();
   const BASEURL = "http://localhost:3001";
+
+  const categories = [
+    {
+      id: 0,
+      name: 'SHIFT'
+    },
+    {
+      id: 1,
+      name: 'Date'
+    },
+    {
+      id: 2,
+      name: 'Outbound'
+    },
+    {
+      id: 3,
+      name: 'Inbound'
+    },
+    {
+      id: 4,
+      name: 'Overnight'
+    },
+    {
+      id: 5,
+      name: 'FIRST'
+    },
+    {
+      id: 6,
+      name: 'BAR'
+    },
+    {
+      id: 7,
+      name: 'PURSER'
+    },
+    {
+      id: 8,
+      name: 'FOR:'
+    },
+    {
+      id: 9,
+      name: 'Early'
+    },
+    {
+      id: 10,
+      name: 'Late'
+    },
+    {
+      id: 11,
+      name: 'LTA'
+    },
+    {
+      id: 12,
+      name: 'DO'
+    },
+    {
+      id: 13,
+      name: 'Note'
+    }
+  ]
+
   const tableInputs = ['Date','Outbound','Inbound','Position','Email','Early','Late','LTA','DO','Note','Sent'];
 
   const [showQuickView, setShowQuickView] = useState(false);
@@ -105,7 +165,7 @@ export default function App() {
   return (
     <>
       <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
-      <InlineForm BASEURL= {BASEURL} tableInputs={tableInputs} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
+      <InlineForm BASEURL= {BASEURL} categories= {categories} tableInputs={tableInputs} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
       <Calendar BASEURL= {BASEURL} tableInputs={tableInputs} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
     </>
