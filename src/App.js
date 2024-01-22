@@ -14,58 +14,50 @@ export default function App() {
   const categories = [
     {
       id: 0,
-      name: 'SHIFT'
-    },
-    {
-      id: 1,
       name: 'Date'
     },
     {
-      id: 2,
+      id: 1,
       name: 'Outbound'
     },
     {
-      id: 3,
+      id: 2,
       name: 'Inbound'
     },
     {
-      id: 4,
+      id: 3,
       name: 'Overnight'
     },
     {
-      id: 5,
+      id: 4,
       name: 'FIRST'
     },
     {
-      id: 6,
+      id: 5,
       name: 'BAR'
     },
     {
-      id: 7,
+      id: 6,
       name: 'PURSER'
     },
     {
-      id: 8,
-      name: 'FOR:'
-    },
-    {
-      id: 9,
+      id: 7,
       name: 'Early'
     },
     {
-      id: 10,
+      id: 8,
       name: 'Late'
     },
     {
-      id: 11,
+      id: 9,
       name: 'LTA'
     },
     {
-      id: 12,
+      id: 10,
       name: 'DO'
     },
     {
-      id: 13,
+      id: 11,
       name: 'Note'
     }
   ]

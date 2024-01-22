@@ -3,28 +3,22 @@ import './InlineForm.css';
 
 export default function InlineForm ({ categories, addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) {
   
+  const selectedCategories1 = categories.filter(category => [0, 1, 2, 3, 4, 5, 6].includes(category.id));
+  const selectedCategories2 = categories.filter(category => [7, 8, 9, 10, 11].includes(category.id));
+
   return (
     <>
         <form onSubmit={handleSubmit}>
             
             <input id="Email" required autoComplete="on" type="email" name="Email" placeholder="Email" />
-            <div className="overflow">
+            
               <table>
                 <thead>
                   <tr>
-                  {categories.map(({id, name}) => (
-                    <th key={id} className= {
-                        id === 0 ? 'start'
-                      : id === 7 ? 'end'
-                      : id === 8 ? 'FOR start' 
-                      : id === 13 ? 'FOR end' 
-                      : id >= 8 ? 'FOR'
-                      : ''
-                    }
-                    >
-                      {name}
-                    </th>
-                  ))}
+                    <th className='start'>SHIFT</th>
+                    {selectedCategories1.map(({id, name}) => (<th key={id} className= { id === 6 ? 'end' : '' }> {name} </th>))}
+                    <th className='FOR start'>FOR:</th>
+                    {selectedCategories2.map(({id, name}) => (<th key={id} className= { id === 11 ? 'FOR end' : 'FOR' }> {name} </th>))}
                   </tr>
                 </thead>
                 {shifts.map((shift, index) => (
@@ -58,7 +52,7 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
                   </tbody>
                 ))}
               </table>
-            </div>
+            
             
           
           <div> LTA: "Long turn-around" | D.O.: "Day off" | 9000 + 9000 = "See Note" 🤓 </div>
@@ -67,7 +61,7 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
             <button className="submit" type="submit">Submit</button>
             <a className="swap-form-link" href="https://app.smartsheet.com/b/form/20d18963576e477bafcbf102df2aec3d" target="_blank" rel="noreferrer">Swap Form</a>
             <a className="roster-link" href="https://www.momentumserviceslondon.com/activite" target="_blank" rel="noreferrer">Roster</a>
-            <a className="Tuto" href="" target="_blank" rel="noreffere">Tutorial</a>
+            <a className="Tuto" href="https://www.google.com" target="_blank" rel="noreferrer">Tutorial</a>
           </div>
           
           
