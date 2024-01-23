@@ -128,7 +128,7 @@ export default function App() {
         Late: shift.Late,
         LTA: shift.LTA,
         DO: shift.DO,
-        Note: e.target.elements.Note.value
+        Note: shift.Note
       };
 
       fetch(`${BASEURL}/formData`, {

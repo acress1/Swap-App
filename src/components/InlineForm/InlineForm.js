@@ -8,64 +8,103 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
 
   return (
     <>
-        <form onSubmit={handleSubmit}>
-            
-            <input id="Email" required autoComplete="on" type="email" name="Email" placeholder="Email" />
-            
-              <table>
-                <thead>
-                  <tr>
-                    <th className='start'>SHIFT</th>
-                    {selectedCategories1.map(({id, name}) => (<th key={id} className= { id === 6 ? 'end' : '' }> {name} </th>))}
-                    <th className='FOR start'>FOR:</th>
-                    {selectedCategories2.map(({id, name}) => (<th key={id} className= { id === 11 ? 'FOR end' : 'FOR' }> {name} </th>))}
-                  </tr>
-                </thead>
-                {shifts.map((shift, index) => (
-                  <tbody className="shift" key={index}>
-                    <tr>
-                      <td>
-                        <span>
-                          <button className="add-line" type="button" onClick={addShift}></button>
-                          <button className="delete-line" type="button" onClick={() => deleteShift(index)}></button>
-                        </span>
-                      </td>
-                      <td><input id="Date" required type="date" name="Date" value={shift.Date} onChange={(e) => handleChange(index, 'Date', e.target.value)} /></td>
-                      <td><input id="Outbound" required type="number" min="9000" max="9199" name="Outbound" placeholder="Outbound" value={shift.Outbound} onChange={(e) => handleChange(index, 'Outbound', e.target.value)} /></td>
-                      <td><input id="Inbound" required type="number" min="9000" max="9199" name="Inbound" placeholder="Inbound" value={shift.Inbound} onChange={(e) => handleChange(index, 'Inbound', e.target.value)} /></td>
-                      <td>
-                        <label className="switch">
-                          <input id="Overnight-switch" type="checkbox" onChange={() => ovSwitch(index)} checked={shift.isOvernight} />
-                          <span className="slider round"></span>
-                        </label>
-                      </td>
-                      <td><input id="FIRST" required type="radio" name={`Position-${index}`} value= "FIRST" onChange={(e) => handleChange(index, 'Position', 'FIRST')} /></td>
-                      <td><input id="BAR" type="radio" name={`Position-${index}`} value="BAR" onChange={(e) => handleChange(index, 'Position', 'BAR')} /></td>
-                      <td><input id="PURSER" type="radio" name={`Position-${index}`} value="PURSER" onChange={(e) => handleChange(index, 'Position', 'PURSER')} /></td>
-                      <td className="FOR"></td>
-                      <td className="FOR"><input id="Early" type="checkbox" name="Early" checked={shift.Early} onChange={(e) => handleChange(index, 'Early', e.target.checked)} /></td>
-                      <td className="FOR"><input id="Late" type="checkbox" name="Late" checked={shift.Late} onChange={(e) => handleChange(index, 'Late', e.target.checked)} /></td>
-                      <td className="FOR"><input id="LTA" type="checkbox" name="LTA" checked={shift.LTA} onChange={(e) => handleChange(index, 'LTA', e.target.checked)} /></td>
-                      <td className="FOR"><input id="DO" type="checkbox" name="DO" checked={shift.DO} onChange={(e) => handleChange(index, 'DO', e.target.checked)} /></td>
-                      <td className="FOR"><input id="Note" type="text" name="Note" maxLength={50} placeholder="Note"></input></td>
-                    </tr>
-                  </tbody>
+      <form onSubmit={handleSubmit}>
+          
+        <input id="Email" required autoComplete="on" type="email" name="Email" placeholder="Email" />
+
+        <table>
+          <thead>
+            <tr>
+              <th className='start'>SHIFT</th>
+              {selectedCategories1.map(({id, name}) => (<th key={id} className= { id === 6 ? 'end' : '' }> {name} </th>))}
+              <th className='FOR start'>FOR:</th>
+              {selectedCategories2.map(({id, name}) => (<th key={id} className= { id === 11 ? 'FOR end' : 'FOR' }> {name} </th>))}
+            </tr>
+          </thead>
+          {shifts.map((shift, index) => (
+            <tbody className="shift" key={index}>
+              <tr>
+                <td>
+                  <button className="add-line" type="button" onClick= {addShift} />
+                  <button className="delete-line" type="button" onClick= {() => deleteShift(index)} />
+                </td>
+                {selectedCategories1.map(({id, name}) => (
+                  <td>
+                    <input 
+                      id = {id}
+                      required = { id === 3 ? false : true}
+                      min = { id === 1 || id === 2 ? '9000' : null}
+                      max = { id === 1 || id === 2 ? '9199' : null}
+                      checked = { id === 3 ? shift.isOvernight : null }
+                      name = { id >= 4 ? `Position-${index}` : name }
+                      type = {
+                        id === 0 ? 'date' :
+                        id === 1 ? 'number' :
+                        id === 2 ? 'number' :
+                        id === 3 ? 'checkbox' :
+                        id >=  4 ? 'radio' : null
+                      }
+                      value = {
+                        id === 0 ? shift.Date :
+                        id === 1 ? shift.Outbound :
+                        id === 2 ? shift.Inbound :
+                        id === 3 ? null :
+                        id === 4 ? 'FIRST' :
+                        id === 5 ? 'BAR' :
+                        id === 6 ? 'PURSER' : null
+                      }
+                      onChange = {
+                        id === 0 ? (e) => handleChange(index, 'Date', e.target.value) :
+                        id === 1 ? (e) => handleChange(index, 'Outbound', e.target.value) :
+                        id === 2 ? (e) => handleChange(index, 'Inbound', e.target.value)  :
+                        id === 3 ? ( ) => ovSwitch(index) :
+                        id === 4 ? (e) => handleChange(index, 'Position', 'FIRST') :
+                        id === 5 ? (e) => handleChange(index, 'Position', 'BAR') :
+                        id === 6 ? (e) => handleChange(index, 'Position', 'PURSER') : null
+                      }
+                    />
+                  </td>
                 ))}
-              </table>
-            
-            
+                <td className="FOR"></td>
+                {selectedCategories2.map(({id, name}) => (
+                  <td className="FOR">
+                    <input
+                      id = {id}
+                      name = {name}
+                      placeholder = { id === 11 ? 'Note' : null }
+                      maxLength= { id === 11 ? 50 : null }
+                      type = { id < 11 ? 'checkbox' : 'text' }
+                      checked = {
+                        id === 7 ? shift.Early :
+                        id === 8 ? shift.Late :
+                        id === 9 ? shift.LTA :
+                        id === 10 ? shift.DO : null
+                      }
+                      onChange= {
+                        id === 7 ? (e) => handleChange(index, 'Early', e.target.checked) :
+                        id === 8 ? (e) => handleChange(index, 'Late',  e.target.checked) :
+                        id === 9 ? (e) => handleChange(index, 'LTA',   e.target.checked) :
+                        id === 10 ? (e) => handleChange(index, 'DO',   e.target.checked) :
+                        id === 11 ? (e) => handleChange(index, 'Note', e.target.value) : null
+                      }
+                    />
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          ))}
+        </table>
           
-          <div> LTA: "Long turn-around" | D.O.: "Day off" | 9000 + 9000 = "See Note" 🤓 </div>
-            
-          <div className="buttons">
-            <button className="submit" type="submit">Submit</button>
-            <a className="swap-form-link" href="https://app.smartsheet.com/b/form/20d18963576e477bafcbf102df2aec3d" target="_blank" rel="noreferrer">Swap Form</a>
-            <a className="roster-link" href="https://www.momentumserviceslondon.com/activite" target="_blank" rel="noreferrer">Roster</a>
-            <a className="Tuto" href="https://www.google.com" target="_blank" rel="noreferrer">Tutorial</a>
-          </div>
+        <div> LTA: "Long turn-around" | D.O.: "Day off" | 9000 + 9000 = "See Note" 🤓 </div>
+
+        <button className="submit" type="submit">Submit</button>  
+      </form>
           
-          
-        </form>
+      <div className="buttons">
+        <a className="swap-form-link" href="https://app.smartsheet.com/b/form/20d18963576e477bafcbf102df2aec3d" target="_blank" rel="noreferrer">Swap Form</a>
+        <a className="roster-link" href="https://www.momentumserviceslondon.com/activite" target="_blank" rel="noreferrer">Roster</a>
+        <a className="Tuto" href="https://www.google.com" target="_blank" rel="noreferrer">Tutorial</a>
+      </div>
       
     </>
   )
