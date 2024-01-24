@@ -16,8 +16,6 @@
     animation-duration: 0.5s;
 }
 
-#searchBox { margin-bottom: 1px; }
-
 .Outbound, .Inbound { color: blue; }
 .Email:link, .Email:visited { color: black; }
 .Email:hover { color: orange; }

@@ -28,12 +28,8 @@
   height: 5vw;
   cursor: pointer;
 }
-.calendar-day:hover {
-  background-color:  rgb(200, 200, 255);
-}
-.calendar-day:active {
-  background-color: rgb(150, 150, 255);
-}
+.calendar-day:hover { background-color:  rgb(200, 200, 255) }
+.calendar-day:active { background-color: rgb(150, 150, 255) }
 .selected {
   background-color: rgb(200, 200, 255);
   color: white;
@@ -68,28 +64,21 @@
 .quick-view-button {
   background-color: red;
   color: white;
-  border-radius: 5px;
-  width: fit-content;
+  border-radius: 3px;
+  width: 85px;
   margin: 4px;
   padding: 5px;
+  white-space: nowrap;
   border: none;
   cursor: pointer;
 }
-.quick-view-button:hover {
-  background-color: rgb(255, 116, 116);
-}
-.quick-view-button:active {
-  background-color: rgb(189, 0, 0);
-}
+.quick-view-button:hover { background-color: rgb(255, 116, 116) }
+.quick-view-button:active { background-color: rgb(189, 0, 0) }
 
 @media (max-width: 600px) {
   .calendar-day {
     width: 10vw;
     height: 10vw;
     font-size: 13px;
-  }
-  .quick-view {
-    width: 80px;
-    white-space: nowrap;
   }
 }

@@ -11,10 +11,7 @@ body {
   font-size: 15px;
 }
 
-input {
-  border: solid 1px #ccc;
-  border-radius: 5px;
-}
+input { border: solid 1px #ccc; border-radius: 5px; }
 input:hover, input:focus { background-color: rgb(220, 250, 255); }
 
 .greetings {
@@ -27,6 +24,17 @@ input:hover, input:focus { background-color: rgb(220, 250, 255); }
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 2s;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(200, 200, 255);
+  border-radius: 5px;
+  padding: 4px;
+  height: fit-content;
+  border: none;
+  align-items: center;
 }
 
 table {
@@ -52,7 +60,7 @@ th {
   top: 0;
   z-index: 1;
 }
-.overflow { overflow: auto; }
+.overflow {width: 100%; overflow: auto;}
 .shift { background-color: rgb(230, 230, 255); }
 .FOR { background-color: rgb(235, 235, 255); }
 .start { border-top-left-radius: 5px; }

@@ -4,7 +4,7 @@ import QuickViewBox from '../QuickViewBox/QuickViewBox';
 import DayBox from '../DayBox/DayBox';
 import './Calendar.css';
 
-export default function Calendar ({ BASEURL, tableInputs, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {
+export default function Calendar ({ BASEURL, categories, searchField, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -49,7 +49,7 @@ export default function Calendar ({ BASEURL, tableInputs, isOutdated, showQuickV
     <>
       <div className='calendar'>
         <button className='quick-view-button' onClick={toggleQuickViewBox}>Quick view</button>
-          { showQuickView && <QuickViewBox BASEURL={BASEURL} tableInputs={tableInputs} /> }
+          { showQuickView && <QuickViewBox BASEURL={BASEURL} categories={categories} searchField={searchField} /> }
           { months.map( month => (
             <div key={month}>
               <div>{ format( month, 'MMMM yyyy') }</div>
@@ -70,7 +70,7 @@ export default function Calendar ({ BASEURL, tableInputs, isOutdated, showQuickV
                 }
               </div>
               { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-                <DayBox selectedDay={selectedDay} BASEURL={BASEURL} tableInputs={tableInputs} />
+                <DayBox BASEURL={BASEURL} categories={categories} selectedDay={selectedDay} searchField={searchField} />
                 )
               }
             </div>

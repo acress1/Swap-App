@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { format } from 'date-fns';
 import './DayBox.css';
 
-export default function DayBox ({ BASEURL, tableInputs, selectedDay }) {
+export default function DayBox ({ BASEURL, categories, searchField, selectedDay }) {
     
     const formatedSelectedDay = format(selectedDay, 'dd/MM/yyyy');
     
-    const [formData, setFormData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
+    const [formData, setFormData] = useState(null);
+    const selectedCategories1 = categories.filter(category => [0, 1, 2].includes(category.id));
+    const selectedCategories2 = categories.filter(category => [7, 8, 9, 10].includes(category.id));
 
     useEffect(() => {
         setLoading(true);
@@ -42,48 +44,60 @@ export default function DayBox ({ BASEURL, tableInputs, selectedDay }) {
                 <div className="loading-spinner"></div>
             ) : (
                 <>
-                    <div>
+                    <div style={{marginBottom: '2px'}}>
                         <input id="searchBox" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <div className="overflow">
                         <table>
                             <thead>
                                 <tr>
-                                    <th><span className="day-reminder">{formatedSelectedDay}</span></th>
-                                    <th>{tableInputs[1]}</th>
-                                    <th>{tableInputs[2]}</th>
-                                    <th>{tableInputs[3]}</th>
-                                    <th>{tableInputs[4]}</th>
+                                    {selectedCategories1.map(({id, name}) => (<th key={id}> {name} </th>))}
+                                    <th>Position</th>
+                                    <th>Email</th>
                                     <th className="FOR start">FOR:</th>
-                                    <th className="FOR">{tableInputs[5]}</th>
-                                    <th className="FOR">{tableInputs[6]}</th>
-                                    <th className="FOR">{tableInputs[7]}</th>
-                                    <th className="FOR">{tableInputs[8]}</th>
-                                    <th className="FOR end">{tableInputs[9]}</th>
-                                    <th>{tableInputs[10]}</th>
+                                    {selectedCategories2.map(({id, name}) => (<th key={id} className= { id === 11 ? 'FOR end' : 'FOR' }> {name} </th>))}
+                                    <th className="FOR end">Note</th>
+                                    <th>Sent</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {formData && formData.data && formData.data.length > 0 ? (
                                     formData.data
                                         .filter(dataItem => ( 
-                                            tableInputs.some(column => 
+                                            searchField.some(column => 
                                                 dataItem[column].toString().toLowerCase().includes(search.toLowerCase())
                                                 )))
                                         .map((dataItem, index) => (
                                             <tr key={index}>
-                                                <td></td>
-                                                <td className="Outbound">{dataItem.Outbound}</td>
-                                                <td className="Inbound">{dataItem.Inbound}</td>
-                                                <td className="Position">{dataItem.Position}</td>
+                                                {selectedCategories1.map(({id}) => (
+                                                    <td className= {
+                                                            id === 0 ? 'Date' :
+                                                            id === 1 ? 'Outbound' :
+                                                            id === 2 ? 'Inbound' : null
+                                                    }>
+                                                        { 
+                                                            id === 0 ? dataItem.Date :
+                                                            id === 1 ? dataItem.Outbound :
+                                                            id === 2 ? dataItem.Inbound : null
+                                                        }
+                                                    </td>
+                                                ))}
+                                                <td>{dataItem.Position}</td>
                                                 <td><a className="Email" href={`mailto:${dataItem.Email}`} target="_blank" rel="noreferrer">{dataItem.Email}</a></td>
                                                 <td className="FOR"></td>
-                                                <td className="FOR"><input id="EarlyDisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.Early} /></td>
-                                                <td className="FOR"><input id="LateDisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.Late} /></td>
-                                                <td className="FOR"><input id="LTADisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.LTA} /></td>
-                                                <td className="FOR"><input id="DODisplayed" className="nohover" type="checkbox" defaultChecked={dataItem.DO} /></td>
-                                                <td className="FOR ">{dataItem.Note}</td>
-                                                <td className="Sent ">{dataItem.Sent}</td>
+                                                {selectedCategories2.map(({id}) => (
+                                                    <td className="FOR">
+                                                        <input className="nohover" type="checkbox" defaultChecked= {
+                                                            id === 7 ? dataItem.Early :
+                                                            id === 8 ? dataItem.Late :
+                                                            id === 9 ? dataItem.LTA :
+                                                            id === 10 ? dataItem.DO : null
+                                                        }>
+                                                        </input>
+                                                    </td>
+                                                ))}
+                                                <td className="FOR">{dataItem.Note}</td>
+                                                <td className="Sent">{dataItem.Sent}</td>
                                             </tr>
                                             ))
                                         ) : (
