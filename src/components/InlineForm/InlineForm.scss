@@ -103,6 +103,39 @@
 }
 .delete-line:hover { background-color: rgb(239, 87, 87) }
 
+.switch {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #707070;
+  transition: background-color ease 0.3s;
+}
+.switch:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  color: #fff;
+  transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+}
+.switch:checked { background-color: rgb(0, 115, 236) }
+.switch:checked:before { left: 24px }
+
 @media only screen and (max-width: 600px) {
   input { font-size: 12px; }
   .add-line, .delete-line { height: 12px; width: 12px; }

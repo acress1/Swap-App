@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import InlineForm from './components/InlineForm/InlineForm';
 import Calendar from './components/Calendar/Calendar';
 import "react-toastify/dist/ReactToastify.css";
-import './App.css';
+import './App.scss';
 
 export default function App() {
 

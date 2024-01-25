@@ -1,5 +1,5 @@
 import React from "react";
-import './InlineForm.css';
+import './InlineForm.scss';
 
 export default function InlineForm ({ categories, addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) {
   
@@ -38,6 +38,11 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
                         max = { id === 1 || id === 2 ? '9199' : null}
                         checked = { id === 3 ? shift.isOvernight : null }
                         name = { id >= 4 ? `Position-${index}` : name }
+                        className= { id === 3 ? 'switch' : null }
+                        placeholder= {
+                          id === 1 ? '9xxx' :
+                          id === 2 ? '9xxx' : null
+                        }
                         type = {
                           id === 0 ? 'date' :
                           id === 1 ? 'number' :

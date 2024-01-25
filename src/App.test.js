@@ -1,10 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import InlineForm from './components/InlineForm/InlineForm';
-import Calendar from './components/Calendar/Calendar';
-import QuickViewBox from './components/QuickViewBox/QuickViewBox';
-import DayBox from './components/DayBox/DayBox';
-
 
 test('First test', () => {
   render(<App />);

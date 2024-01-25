@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { format } from 'date-fns';
-import './DayBox.css';
+import './DayBox.scss';
 
 export default function DayBox ({ BASEURL, categories, searchField, selectedDay }) {
     
