@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './QuickViewBox.scss';
+import './ViewBoxes.scss';
 
 export default function QuickViewBox ({ BASEURL, categories, searchField }) {
    

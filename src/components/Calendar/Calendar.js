@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval } from 'date-fns';
-import QuickViewBox from '../QuickViewBox/QuickViewBox';
-import DayBox from '../DayBox/DayBox';
+import QuickViewBox from '../ViewBoxes/QuickViewBox';
+import DayBox from '../ViewBoxes/DayBox';
 import './Calendar.scss';
 
 export default function Calendar ({ BASEURL, categories, searchField, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {

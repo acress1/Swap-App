@@ -16,12 +16,6 @@
     animation-duration: 0.5s;
 }
 
-.Outbound, .Inbound { color: blue; }
-.Email:link, .Email:visited { color: black; }
-.Email:hover, .Sent:hover, .Date:hover { color: orange; }
-.Email:active { color: rgb(255, 132, 0); }
-.nohover { pointer-events: none; }
-
 .loading-spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-left: 4px solid #767676;
@@ -31,3 +25,15 @@
     animation: rotate 1s linear infinite;
     margin: 20px auto;
 }
+
+.day-reminder {
+    background-color: rgb(230, 230, 255);
+    border-radius: 2px;
+    padding: 2px;
+}
+
+.Outbound, .Inbound { color: blue; }
+.Email:link, .Email:visited { color: black; }
+.Email:hover, .Sent:hover, .Date:hover { color: orange; }
+.Email:active { color: rgb(255, 132, 0); }
+.nohover { pointer-events: none; }

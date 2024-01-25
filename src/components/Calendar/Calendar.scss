@@ -74,11 +74,3 @@
 }
 .quick-view-button:hover { background-color: rgb(255, 116, 116) }
 .quick-view-button:active { background-color: rgb(189, 0, 0) }
-
-@media (max-width: 600px) {
-  .calendar-day {
-    width: 10vw;
-    height: 10vw;
-    font-size: 13px;
-  }
-}
