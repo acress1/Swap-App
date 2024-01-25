@@ -18,9 +18,8 @@
 
 .Outbound, .Inbound { color: blue; }
 .Email:link, .Email:visited { color: black; }
-.Email:hover { color: orange; }
+.Email:hover, .Sent:hover, .Date:hover { color: orange; }
 .Email:active { color: rgb(255, 132, 0); }
-.Sent:hover, .Date:hover { color: rgb(16, 170, 16); cursor: crosshair; }
 .nohover { pointer-events: none; }
 
 .loading-spinner {

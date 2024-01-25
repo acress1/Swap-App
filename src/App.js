@@ -62,7 +62,7 @@ export default function App() {
     }
   ];
 
-  const searchField = ['Date','Outbound','Inbound','Position','Email','Early','Late','LTA','DO','Note','Sent'];
+  const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
 
   const [showQuickView, setShowQuickView] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
