@@ -21,7 +21,8 @@
   grid-template-rows: 1fr;
 }
 .submit { @include buttonStyle; width: 100px; }
-.swap-form-link, .roster-link { @include buttonStyle($theme: rgb(79, 208, 9)); }
+.swap-form-link, 
+.roster-link { @include buttonStyle($theme: rgb(79, 208, 9)); }
 .Tuto { @include buttonStyle($theme: purple); }
 
 .add-line {
