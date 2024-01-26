@@ -71,6 +71,6 @@
   white-space: nowrap;
   border: none;
   cursor: pointer;
+  &:hover { background-color: rgb(255, 116, 116) };
+  &:active { background-color: rgb(189, 0, 0) };
 }
-.quick-view-button:hover { background-color: rgb(255, 116, 116) }
-.quick-view-button:active { background-color: rgb(189, 0, 0) }
