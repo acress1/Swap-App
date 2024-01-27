@@ -1,10 +1,10 @@
-@keyframes fadeInOpacity {0% {opacity: 0;} 100% {opacity: 1;}}
+@use "src/containers/App.scss";
 
 .viewBox {
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: rgb(250, 250, 250);
+    background-color: App.$Table-background-color;
     height: fit-content;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -34,10 +34,4 @@
     height: 24px;
     animation: rotate 1s linear infinite;
     margin: 20px auto;
-}
-
-.day-reminder {
-    background-color: rgb(230, 230, 255);
-    border-radius: 2px;
-    padding: 2px;
 }

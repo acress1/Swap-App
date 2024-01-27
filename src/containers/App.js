@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { format } from 'date-fns';
 import { ToastContainer, toast } from "react-toastify";
-import InlineForm from './components/InlineForm/InlineForm';
-import Calendar from './components/Calendar/Calendar';
+import InlineForm from '../components/InlineForm/InlineForm';
+import Calendar from '../components/Calendar/Calendar';
 import "react-toastify/dist/ReactToastify.css";
 import './App.scss';
 

@@ -51,7 +51,7 @@ export default function DayBox ({ BASEURL, categories, searchField, selectedDay 
                         <table>
                             <thead>
                                 <tr>
-                                    {selectedCategories1.map(({id, name}) => (<th key={id}> {name} </th>))}
+                                    {selectedCategories1.map(({id, name}) => ( <th key={id}> { id === 1 ? name : id === 2 ? name : null } </th> ))}
                                     <th>Position</th>
                                     <th>Email</th>
                                     <th className="FOR start">FOR:</th>
@@ -76,7 +76,6 @@ export default function DayBox ({ BASEURL, categories, searchField, selectedDay 
                                                             id === 2 ? 'Inbound' : null
                                                     }>
                                                         { 
-                                                            id === 0 ? dataItem.Date :
                                                             id === 1 ? dataItem.Outbound :
                                                             id === 2 ? dataItem.Inbound : null
                                                         }

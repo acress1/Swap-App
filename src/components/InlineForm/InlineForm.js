@@ -10,7 +10,7 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
     <>
       <form onSubmit={handleSubmit}>
           
-        <input id="Email" required autoComplete="on" type="email" name="Email" placeholder="Email" />
+        <input style= {{width: '30%', margin: '3px'}}id="Email" required autoComplete="on" type="email" name="Email" placeholder="Email" />
 
         <div className="overflow">
           <table>

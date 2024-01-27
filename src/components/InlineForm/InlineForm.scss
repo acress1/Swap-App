@@ -1,32 +1,17 @@
+@use "src/containers/App.scss";
 
-#Email { width: 30%; margin-bottom: 3px; }
-
-@mixin buttonStyle ($theme: rgb(0, 115, 236)) {
-  background-color: $theme;
-  margin: 2px;
-  border-radius: 3px;
-  padding: 5px;
-  border-style: none;
-  text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
-  color: white;
-  cursor: pointer;
-  &:hover { background-color: lighten($theme, 10%) };
-  &:active { background-color: darken($theme, 5%) }
-}
 .buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
 }
-.submit { @include buttonStyle; width: 100px; }
+.submit { @include App.buttonStyle; width: 100px; }
 .swap-form-link, 
-.roster-link { @include buttonStyle($theme: rgb(79, 208, 9)); }
-.Tuto { @include buttonStyle($theme: purple); }
+.roster-link { @include App.buttonStyle($theme: rgb(79, 208, 9)); }
+.Tuto { @include App.buttonStyle($theme: purple); }
 
 .add-line {
-  @include buttonStyle($theme: rgb(0, 115, 236));
+  @include App.buttonStyle($theme: rgb(0, 115, 236));
   height: 16px;
   width: 16px;
   background:
@@ -39,7 +24,7 @@
 }
 
 .delete-line {
-  @include buttonStyle($theme: rgb(236, 0, 0));
+  @include App.buttonStyle($theme: rgb(236, 0, 0));
   height: 16px;
   width: 16px;
   background:

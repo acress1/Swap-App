@@ -52,7 +52,7 @@ export default function Calendar ({ BASEURL, categories, searchField, isOutdated
           { showQuickView && <QuickViewBox BASEURL={BASEURL} categories={categories} searchField={searchField} /> }
           { months.map( month => (
             <div key={month}>
-              <div>{ format( month, 'MMMM yyyy') }</div>
+              <div style={{margin: '5px'}}>{ format( month, 'MMMM yyyy') }</div>
               <div className="calendar-month">
                 { eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) })
                   .map(day => (
