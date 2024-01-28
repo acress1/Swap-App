@@ -2,8 +2,7 @@
 @keyframes rotate { 0% { transform: rotate(0deg) } 100% { transform: rotate(360deg) }}
 @keyframes flickerAnimation {0%   { opacity:1; } 50%  { opacity:0; } 100% { opacity:1; }};
 
-$Primary-color: rgb(200, 200, 255);
-$Table-background-color: rgb(250, 250, 250);
+$Primary-color: rgb(180, 180, 255);
 
 @mixin buttonStyle ($theme: rgb(0, 115, 236)) {
   background-color: $theme;
@@ -73,14 +72,14 @@ td {
   animation-duration: 0.5s;
 }
 th {
-  background-color: $Table-background-color;
+  background-color: lighten($Primary-color, 12%);
   position: sticky;
   top: 0;
   z-index: 1;
 }
-tr:hover { background-color: lighten($Primary-color, 6%) ;}
+tr:hover { background-color: lighten($Primary-color, 10%) ;}
 .overflow {width: 100%; overflow: auto;}
-.shift { background-color: $Table-background-color; }
+.shift { background-color: lighten($Primary-color, 12%) }
 .FOR { background-color: lighten($Primary-color, 6%) ; }
 .start { border-top-left-radius: 5px; }
 .end { border-top-right-radius: 5px; }

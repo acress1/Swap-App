@@ -52,7 +52,7 @@
 }
 .dot {
   grid-area: 3 / 2 / 4 / 3;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   height: 60%;
   width: 60%;
   border-radius: 50%;
@@ -63,6 +63,6 @@
   animation: flickerAnimation 7s infinite;
 }
 .quick-view-button {
-  @include App.buttonStyle($theme: red); 
+  @include App.buttonStyle($theme: rgb(255, 0, 0)); 
   width: 85px;
 }

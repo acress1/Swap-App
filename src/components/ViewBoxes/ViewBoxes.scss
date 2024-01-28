@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: App.$Table-background-color;
+    background-color: lighten(App.$Primary-color, 12%);
     height: fit-content;
     border: 1px solid #ccc;
     border-radius: 5px;
