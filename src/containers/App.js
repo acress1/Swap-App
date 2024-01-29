@@ -80,7 +80,7 @@ export default function App() {
   };
   
   const toggleDayBox = (day) => { 
-    setSelectedDay(prevSelectedDay => (prevSelectedDay && prevSelectedDay.getTime() === day.getTime() ? null : day));
+    setSelectedDay(data => (data && data.getTime() === day.getTime() ? null : day));
     setShowQuickView(false)
   };
 
