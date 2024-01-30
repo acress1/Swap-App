@@ -1,6 +1,15 @@
 @keyframes fadeInOpacity {0% {opacity: 0} 100% {opacity: 1}};
 @keyframes rotate { 0% { transform: rotate(0deg) } 100% { transform: rotate(360deg) }};
 @keyframes flickerAnimation {0%   { opacity: 1 } 50%  { opacity: 0 } 100% { opacity: 1 }};
+@media screen and (max-width: 600px) {
+  html, body, table, input, .calendar { 
+    font-size: 13px; 
+  };
+  .calendar-day {
+    width: 10vw;
+    height: 10vw;
+  };
+}
 
 $Primary-color: rgb(200, 200, 255);
 
@@ -79,13 +88,3 @@ table {
 }
 .overflow {width: 100%; overflow: auto;}
 .FOR { background-color: lighten($Primary-color, 6%) }
-
-@media screen and (max-width: 600px) {
-  html, body, table, input, .calendar { 
-    font-size: 13px; 
-  };
-  .calendar-day {
-    width: 10vw;
-    height: 10vw;
-  };
-}
