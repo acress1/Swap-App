@@ -16,14 +16,14 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
           <table>
             <thead>
               <tr>
-                <th className='start'>SHIFT</th>
-                {selectedCategories1.map(({id, name}) => (<th key={id} className= { id === 6 ? 'end' : '' }> {name} </th>))}
-                <th className='FOR start'>FOR:</th>
-                {selectedCategories2.map(({id, name}) => (<th key={id} className= { id === 11 ? 'FOR end' : 'FOR' }> {name} </th>))}
+                <th>SHIFT</th>
+                {selectedCategories1.map(({id, name}) => (<th key={id}> {name} </th>))}
+                <th className='FOR'>FOR:</th>
+                {selectedCategories2.map(({id, name}) => (<th key={id} className= 'FOR'> {name} </th>))}
               </tr>
             </thead>
             {shifts.map((shift, index) => (
-              <tbody className="shift" key={index}>
+              <tbody key={index}>
                 <tr>
                   <td>
                     <button className="add-line" type="button" onClick= {addShift} />

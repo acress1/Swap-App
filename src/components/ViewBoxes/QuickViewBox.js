@@ -49,9 +49,9 @@ export default function QuickViewBox ({ BASEURL, categories, searchField }) {
                                     {selectedCategories1.map(({id, name}) => (<th key={id}> {name} </th>))}
                                     <th>Position</th>
                                     <th>Email</th>
-                                    <th className="FOR start">FOR:</th>
-                                    {selectedCategories2.map(({id, name}) => (<th key={id} className= { id === 11 ? 'FOR end' : 'FOR' }> {name} </th>))}
-                                    <th className="FOR end">Note</th>
+                                    <th className= 'FOR'>FOR:</th>
+                                    {selectedCategories2.map(({id, name}) => (<th key={id} className= 'FOR'> {name} </th>))}
+                                    <th className= 'FOR'>Note</th>
                                     <th>Sent</th>
                                 </tr>
                             </thead>

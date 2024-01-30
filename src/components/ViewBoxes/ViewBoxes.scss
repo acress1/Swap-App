@@ -5,9 +5,10 @@
     flex-direction: column;
     position: relative;
     background-color: lighten(App.$Primary-color, 12%);
-    height: fit-content;
+    height: 400px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 3px;
     overflow: auto;
     font-weight: lighter;
     animation-name: fadeInOpacity;
