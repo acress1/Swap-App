@@ -2,7 +2,7 @@
 @keyframes rotate { 0% { transform: rotate(0deg) } 100% { transform: rotate(360deg) }};
 @keyframes flickerAnimation {0%   { opacity: 1 } 50%  { opacity: 0 } 100% { opacity: 1 }};
 
-$Primary-color: rgb(190, 190, 255);
+$Primary-color: rgb(200, 200, 255);
 
 @mixin buttonStyle ($theme: rgb(0, 115, 236)) {
   background-color: $theme;
@@ -58,7 +58,7 @@ table {
   background-color: lighten($Primary-color, 12%);
   
   tr {
-    &:hover { background-color: lighten($Primary-color, 10%) };
+    &:hover { background-color: lighten($Primary-color, 9%) };
     th {
       background-color: lighten($Primary-color, 12%);
       position: sticky;
