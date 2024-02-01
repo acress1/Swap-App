@@ -5,7 +5,10 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
 }
-.submit { @include App.buttonStyle; width: 100px; }
+.submit { 
+  @include App.buttonStyle;
+  width: 115px;
+}
 .swap-form-link, 
 .roster-link { @include App.buttonStyle($theme: rgb(79, 208, 9)); }
 .Tuto { @include App.buttonStyle($theme: purple); }

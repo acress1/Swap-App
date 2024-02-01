@@ -64,5 +64,5 @@
 }
 .quick-view-button {
   @include App.buttonStyle($theme: rgb(255, 0, 0)); 
-  width: 85px;
+  width: 115px;
 }
