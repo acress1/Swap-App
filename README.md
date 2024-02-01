@@ -2,6 +2,13 @@
 
 Branches:
 
+- 2.02.2024 > Update 4
+
+  <div>
+    <img src="https://github.com/MathDevWeb/swap-app/assets/140265706/cc08d0be-3667-4fc2-adcf-fbc75527f38a" height= 200 />
+    <span><img src="https://github.com/MathDevWeb/swap-app/assets/140265706/22cca0d0-ceeb-429e-a278-bb68d2591efd" height= 200 /></span>
+  </div>
+
 - 5.01.2024 > Update 3b
 
   <div>
