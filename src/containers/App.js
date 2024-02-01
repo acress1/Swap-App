@@ -156,7 +156,7 @@ export default function App() {
 
   return (
     <>
-      <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} </div>
+      <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} <img src="/favicon/favicon-16x16.png" alt="🤓" /></div>
       <InlineForm BASEURL= {BASEURL} categories={categories} searchField={searchField} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
       <Calendar BASEURL= {BASEURL} categories={categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />

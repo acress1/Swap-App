@@ -11,7 +11,7 @@
 }
 .swap-form-link, 
 .roster-link { @include App.buttonStyle($theme: rgb(79, 208, 9)); }
-.Tuto { @include App.buttonStyle($theme: purple); }
+.Tutorial { @include App.buttonStyle($theme: purple); }
 
 .add-line {
   @include App.buttonStyle($theme: rgb(0, 115, 236));
@@ -22,7 +22,7 @@
     linear-gradient(#fff 0 0),
     rgb(0, 115, 236);
   background-position: center;
-  background-size: 70% 2px,2px 70%;
+  background-size: 70% 3px,3px 70%;
   background-repeat: no-repeat;
 }
 
@@ -34,7 +34,7 @@
     linear-gradient(#fff 0 0),
     rgb(255, 0, 0);
   background-position: center;
-  background-size: 60% 2px,2px 60%;
+  background-size: 60% 3px,3px 60%;
   background-repeat: no-repeat;
 }
 
