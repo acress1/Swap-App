@@ -43,5 +43,5 @@ Branches:
   <div>
     <img src="https://github.com/MathDevWeb/swap-app/assets/140265706/a00d4b80-da4a-41ba-ba0b-cf1e2ccfcaec" height= 200 />
     <span><img src="https://github.com/MathDevWeb/swap-app/assets/140265706/791c2f49-b5f9-4609-adda-e7c5670fe4d0" height= 200 /></span>
-    <span><img src="https://github.com/MathDevWeb/swap-app/assets/140265706/c89ca53c-e84e-41eb-9380-c36f84039e6b" height= 200 width= 300 /></span>
+    <span><img src="https://github.com/MathDevWeb/swap-app/assets/140265706/c89ca53c-e84e-41eb-9380-c36f84039e6b" height= 200 /></span>
   </div>
