@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { format } from 'date-fns';
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import InlineForm from '../components/InlineForm/InlineForm';
 import Calendar from '../components/Calendar/Calendar';
-import "react-toastify/dist/ReactToastify.css";
+import NewsBox from "../components/ViewBoxes/NewsBox";
 import './App.scss';
 
 export default function App() {
@@ -64,6 +65,7 @@ export default function App() {
 
   const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
 
+  const [showNewsBox, setShowNewsBox] = useState (false);
   const [showQuickView, setShowQuickView] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
   
@@ -73,6 +75,10 @@ export default function App() {
     todayDate.setHours(0, 0, 0, 0);
     return day < todayDate;
   };
+
+  const toggleNewsBox = () => {
+    setShowNewsBox(!showNewsBox);
+  }
 
   const toggleQuickViewBox = () => {
     setShowQuickView(!showQuickView);
@@ -156,10 +162,18 @@ export default function App() {
 
   return (
     <>
-      <div className="greetings">Hi there! Today is {format(todayDate, 'MMMM do, y O')} <img src="/favicon/favicon-16x16.png" alt="🤓" /></div>
-      <InlineForm BASEURL= {BASEURL} categories={categories} searchField={searchField} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
-      <Calendar BASEURL= {BASEURL} categories={categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
+      <div className="greetings">
+        Hi there! Today is {format(todayDate, 'MMMM do, y O')} 
+        <img src="/favicon/favicon-16x16.png" alt="🤓" />
+        <br />
+        <button className="newsButton" onClick={toggleNewsBox}> Last update </button>
+      </div>
+      {showNewsBox && <NewsBox toggleNewsBox={toggleNewsBox} />}
+      <InlineForm BASEURL={BASEURL} categories={categories} searchField={searchField} todayDate={todayDate} isOutdated={isOutdated} addShift={addShift} deleteShift={deleteShift} ovSwitch={ovSwitch} handleChange={handleChange} shifts={shifts} handleSubmit={handleSubmit} />
+      <Calendar BASEURL={BASEURL} categories={categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
+      <div> © 2023 - {format(todayDate, 'yyyy')} </div>
+      <div style={{fontSize: '8px'}}> V2.02.2024 </div>
     </>
   );
 }

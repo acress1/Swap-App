@@ -88,3 +88,10 @@ table {
 }
 .overflow {width: 100%; overflow: auto;}
 .FOR { background-color: lighten($Primary-color, 6%) }
+.newsButton { 
+  @include buttonStyle($theme: rgb(255, 208, 0));
+  font-size: 8px;
+  padding: 2px;
+  height: 15px;
+  width: 115px;
+}

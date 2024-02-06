@@ -57,10 +57,10 @@
   width: 60%;
   border-radius: 50%;
   justify-self: center;
-  -webkit-animation: flickerAnimation 7s infinite;
-  -moz-animation: flickerAnimation 7s infinite;
-  -o-animation: flickerAnimation 7s infinite;
-  animation: flickerAnimation 7s infinite;
+  -webkit-animation: flickerAnimation 4s infinite;
+  -moz-animation: flickerAnimation 4s infinite;
+  -o-animation: flickerAnimation 4s infinite;
+  animation: flickerAnimation 4s infinite;
 }
 .quick-view-button {
   @include App.buttonStyle($theme: rgb(255, 0, 0)); 
