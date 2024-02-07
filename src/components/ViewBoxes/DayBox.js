@@ -28,7 +28,6 @@ export default function DayBox ({ BASEURL, categories, searchField, selectedDay 
         .then(data => {
             const sortedData = data.data
             .filter(item => item.Date === formatedSelectedDay)
-            .sort((a, b) => new Date(b.Sent) - new Date(a.Sent))
              // eslint-disable-next-line
             .map(item => item.Outbound == item.Inbound ? {...item, Outbound: "See Note", Inbound: " "} : item);
 
