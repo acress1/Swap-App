@@ -3,7 +3,7 @@ import './ViewBoxes.scss';
 
 export default function NewsBox() {
     return(
-        <div className="viewBox"> 
+        <div className="viewBox newsBox"> 
             
         </div>
     )

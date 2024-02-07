@@ -16,6 +16,12 @@
     animation-timing-function: ease-in;
     animation-duration: 0.5s;
 }
+.dayBox {
+    height: fit-content;
+}
+.newsBox {
+    background-color: lighten(rgb(255, 208, 0), 45%);
+}
 .Outbound, .Inbound { color: blue; }
 .nohover { pointer-events: none; }
 .Date, .Sent, .Email { 

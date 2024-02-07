@@ -39,7 +39,7 @@ export default function DayBox ({ BASEURL, categories, searchField, selectedDay 
     }, [BASEURL, formatedSelectedDay]);
 
     return (
-        <div className="viewBox">
+        <div className="viewBox dayBox">
             {loading ? (
                 <div className="loading-spinner"></div>
             ) : (
