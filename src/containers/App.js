@@ -173,7 +173,7 @@ export default function App() {
       <Calendar BASEURL={BASEURL} categories={categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
       <div> © 2023 - {format(todayDate, 'yyyy')} </div>
-      <div style={{fontSize: '8px'}}> V2.02.2024 </div>
+      <div style={{fontSize: '8px'}}> V1.03.2024 </div>
     </>
   );
 }
