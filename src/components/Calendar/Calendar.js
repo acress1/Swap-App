@@ -48,7 +48,7 @@ export default function Calendar ({ BASEURL, categories, searchField, isOutdated
   return (
     <>
       <div className='calendar'>
-        <button className='quick-view-button' onClick={toggleQuickViewBox}>Global Overview</button>
+        <button className='overview-button' onClick={toggleQuickViewBox}>Overview</button>
           { showQuickView && <QuickViewBox BASEURL={BASEURL} categories={categories} searchField={searchField} /> }
           { months.map( month => (
             <div key={month}>

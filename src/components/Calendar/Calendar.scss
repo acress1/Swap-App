@@ -62,7 +62,7 @@
   -o-animation: flickerAnimation 4s infinite;
   animation: flickerAnimation 4s infinite;
 }
-.quick-view-button {
+.overview-button {
   @include App.buttonStyle($theme: rgb(255, 0, 0)); 
   width: 115px;
 }
