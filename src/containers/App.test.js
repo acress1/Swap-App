@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { React, ReactDOM } from 'react';
+import { React } from 'react';
 import App from './App';
 
-test('First test', () => {
+test('Should greet the user', () => {
   render(<App />);
 
   const firstTest = screen.getByText(/Hi there! Today is/);
