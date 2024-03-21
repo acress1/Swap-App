@@ -10,7 +10,7 @@ export default function NewsBox() {
                 <li>Video Tutorial link available below.</li>
                 <li>Minor Interface changes.</li>
             </ul>
-            <div>Any feedback is welcome!</div>
+            <div>Any feedback are welcome: <a href="SwapAppMB@hotmail.com" target="_blank" rel="noreferrer"></a>SwapAppMB@hotmail.com</div>
             <div>Happy Swapping! 🎉</div> 
         </div>
     )
