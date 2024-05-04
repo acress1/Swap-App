@@ -2,7 +2,7 @@ import { useState } from "react";
 import { format } from 'date-fns';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BASEURL, categories, searchField } from "./constants";
+import { categories } from "./categories";
 import InlineForm from '../components/InlineForm/InlineForm';
 import Calendar from '../components/Calendar/Calendar';
 import NewsBox from "../components/ViewBoxes/NewsBox";
@@ -11,6 +11,10 @@ import './App.scss';
 export default function App() {
 
   const todayDate = new Date();
+
+  const BASEURL = "http://localhost:3001";
+  
+  const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
 
   const [showNewsBox, setShowNewsBox] = useState (false);
   const [showQuickView, setShowQuickView] = useState(false);

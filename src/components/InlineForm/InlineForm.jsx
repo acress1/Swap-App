@@ -3,23 +3,23 @@ import './InlineForm.scss';
 
 export default function InlineForm ({ categories, addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) {
   
-  const selectedCategories1 = categories.filter(category => [0, 1, 2, 3, 4, 5, 6].includes(category.id));
-  const selectedCategories2 = categories.filter(category => [7, 8, 9, 10, 11].includes(category.id));
-
+  const selectedCategories1 = categories.filter(category => ['Date', 'Outbound', 'Inbound', 'Overnight', 'FIRST', 'BAR', 'PURSER'].includes(category.name));
+  const selectedCategories2 = categories.filter(category => ['Early', 'Late', 'LTA', 'DO', 'Note'].includes(category.name));
+console.log(selectedCategories1)
   return (
     <>
       <form onSubmit={handleSubmit}>
           
-        <input id="Email" style={{marginBottom: '4px'}} required autoComplete="on" type="email" name="Email" placeholder="Email" />
+        <input name="Email" style={{marginBottom: '4px'}} required type="email" placeholder="Email" />
 
         <div className="overflow">
           <table>
             <thead>
               <tr>
                 <th>SHIFT</th>
-                {selectedCategories1.map(({id, name}) => (<th key={id}> {name} </th>))}
+                {selectedCategories1.map(({name}) => (<th key={name}> {name} </th>))}
                 <th className='FOR'>FOR:</th>
-                {selectedCategories2.map(({id, name}) => (<th key={id} className= 'FOR'> {name} </th>))}
+                {selectedCategories2.map(({name}) => (<th key={name} className= 'FOR'> {name} </th>))}
               </tr>
             </thead>
             {shifts.map((shift, index) => (
@@ -44,10 +44,10 @@ export default function InlineForm ({ categories, addShift, deleteShift, ovSwitc
                           id === 2 ? '9xxx' : null
                         }
                         type = {
-                          id === 0 ? 'date' :
-                          id === 1 ? 'number' :
-                          id === 2 ? 'number' :
-                          id === 3 ? 'checkbox' :
+                          name === 'Date' ? 'date' :
+                          name === 'Outbound' ? 'number' :
+                          name === 'Inbound' ? 'number' :
+                          name === 'Overnight' ? 'checkbox' :
                           id >=  4 ? 'radio' : null
                         }
                         value = {

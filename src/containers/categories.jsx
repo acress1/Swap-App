@@ -1,6 +1,3 @@
-export const BASEURL = "http://localhost:3001";
-
-export const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
 
 export const categories = [
     {
@@ -50,5 +47,13 @@ export const categories = [
     {
       id: 11,
       name: 'Note'
+    },
+    {
+      id: 12,
+      name: 'AV'
+    },
+    {
+      id: 13,
+      name: 'Platform'
     }
 ];
