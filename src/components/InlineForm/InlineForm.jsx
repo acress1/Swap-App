@@ -1,11 +1,84 @@
-import React from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import './InlineForm.scss';
 
-export default function InlineForm ({ categories, addShift, deleteShift, ovSwitch, handleChange, handleSubmit, shifts }) {
+export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQuickView }) {
   
-  const selectedCategories1 = categories.filter(category => ['Date', 'Outbound', 'Inbound', 'Overnight', 'FIRST', 'BAR', 'PURSER'].includes(category.name));
-  const selectedCategories2 = categories.filter(category => ['Early', 'Late', 'LTA', 'DO', 'Note'].includes(category.name));
-console.log(selectedCategories1)
+  const selectedCategories1 = Categories.filter(category => ['Date', 'Outbound', 'Inbound', 'Overnight', 'FIRST', 'BAR', 'PURSER'].includes(category.name));
+  const selectedCategories2 = Categories.filter(category => ['Early', 'Late', 'LTA', 'DO', 'Note'].includes(category.name));
+
+  const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
+
+  const handleChange = (index, fieldName, value) => {
+    const updatedShifts = [...shifts];
+    updatedShifts[index][fieldName] = value;
+    setShifts(updatedShifts);
+  };
+
+  const addShift = () => {
+    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}];
+    setShifts(newShifts)
+  };
+
+  const deleteShift = (index) => {
+    const updatedShifts = [...shifts];
+    updatedShifts.splice(index, 1);
+    setShifts(updatedShifts);
+  };
+
+  const ovSwitch = (index) => { 
+    const updatedShifts = [...shifts];
+    updatedShifts[index].isOvernight = !updatedShifts[index].isOvernight;
+    setShifts(updatedShifts)
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
+
+    if (isAnyOutdated) {
+      toast.error('Oops... You can\'t submit an outdated swap 🤓');
+      return;
+    }
+
+    shifts.forEach(shift => {
+      const formData = {
+        Email: e.target.elements.Email.value,
+        Date: shift.Date,
+        Outbound: shift.Outbound,
+        Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
+        Position: shift.Position,
+        Early: shift.Early,
+        Late: shift.Late,
+        LTA: shift.LTA,
+        DO: shift.DO,
+        Note: shift.Note
+      };
+
+      fetch(`${BASEURL}/formData`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(formData)
+        })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Form submission failed');
+        }
+        return response.json()
+      })
+      .then(data => {
+        console.log('Success', data);
+        toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`);
+        setShowQuickView(true)
+      })
+      .catch(error => {
+        console.log(error);
+        toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`)
+      });
+    });
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>

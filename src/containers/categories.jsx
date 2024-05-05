@@ -1,5 +1,5 @@
 
-export const categories = [
+export const Categories = [
     {
       id: 0,
       name: 'Date'

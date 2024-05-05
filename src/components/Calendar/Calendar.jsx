@@ -4,7 +4,7 @@ import QuickViewBox from '../ViewBoxes/QuickViewBox';
 import DayBox from '../ViewBoxes/DayBox';
 import './Calendar.scss';
 
-export default function Calendar ({ BASEURL, categories, searchField, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {
+export default function Calendar ({ BASEURL, Categories, searchField, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -49,7 +49,7 @@ export default function Calendar ({ BASEURL, categories, searchField, isOutdated
     <>
       <div className='calendar'>
         <button className='overview-button' onClick={toggleQuickViewBox}>Overview</button>
-          { showQuickView && <QuickViewBox BASEURL={BASEURL} categories={categories} searchField={searchField} /> }
+          { showQuickView && <QuickViewBox BASEURL={BASEURL} Categories={Categories} searchField={searchField} /> }
           { months.map( month => (
             <div key={month}>
               <div style={{margin: '5px'}}>{ format( month, 'MMMM yyyy') }</div>
@@ -70,7 +70,7 @@ export default function Calendar ({ BASEURL, categories, searchField, isOutdated
                 }
               </div>
               { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-                <DayBox BASEURL={BASEURL} categories={categories} selectedDay={selectedDay} searchField={searchField} />
+                <DayBox BASEURL={BASEURL} Categories={Categories} selectedDay={selectedDay} searchField={searchField} />
                 )
               }
             </div>

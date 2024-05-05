@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import './ViewBoxes.scss';
-import { categories } from "../../containers/categories";
+import { Categories } from "../../containers/Categories";
 
 export default function Table ({ searchField, formData }) {
 
     const [search, setSearch] = useState('');
-    const selectedCategories1 = categories.filter(category => ['Date', 'Outbound', 'Inbound'].includes(category.name));
-    const selectedCategories2 = categories.filter(category => ['Early', 'Late', 'LTA', 'DO'].includes(category.name));
+    const selectedCategories1 = Categories.filter(category => ['Date', 'Outbound', 'Inbound'].includes(category.name));
+    const selectedCategories2 = Categories.filter(category => ['Early', 'Late', 'LTA', 'DO'].includes(category.name));
 
     return (
             <>
