@@ -106,40 +106,36 @@ export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQu
                     <td>
                       <input 
                         id = {id}
-                        required = { id === 3 ? false : true}
-                        min = { id === 1 || id === 2 ? '9000' : null}
-                        max = { id === 1 || id === 2 ? '9199' : null}
-                        checked = { id === 3 ? shift.isOvernight : null }
+                        required = { name === 'Overnight' ? false : true }
+                        min = { name === 'Outbound' || 'Inbound' ? '9000' : null }
+                        max = { name === 'Outbound' || 'Inbound' ? '9199' : null }
+                        checked = { name === 'Overnight' ? shift.isOvernight : null }
                         name = { id >= 4 ? `Position-${index}` : name }
-                        className= { id === 3 ? 'switch' : null }
-                        placeholder= {
-                          id === 1 ? '9xxx' :
-                          id === 2 ? '9xxx' : null
-                        }
+                        className= { name === 'Overnight' ? 'switch' : null }
+                        placeholder= { name === 'Outbound' || 'Inbound' ? '9xxx' : null }
                         type = {
                           name === 'Date' ? 'date' :
-                          name === 'Outbound' ? 'number' :
-                          name === 'Inbound' ? 'number' :
+                          name === 'Outbound' || 'Inbound' ? 'number' :
                           name === 'Overnight' ? 'checkbox' :
-                          id >=  4 ? 'radio' : null
+                          name === 'FIRST' || 'BAR' || 'PURSER' ? 'radio' : null
                         }
                         value = {
-                          id === 0 ? shift.Date :
-                          id === 1 ? shift.Outbound :
-                          id === 2 ? shift.Inbound :
-                          id === 3 ? null :
-                          id === 4 ? 'FIRST' :
-                          id === 5 ? 'BAR' :
-                          id === 6 ? 'PURSER' : null
+                          name === 'Date' ? shift.Date :
+                          name === 'Outbound' ? shift.Outbound :
+                          name === 'Inbound' ? shift.Inbound :
+                          name === 'Overnight' ? null :
+                          name === 'FIRST' ? 'FIRST' :
+                          name === 'BAR' ? 'BAR' :
+                          name === 'PURSER' ? 'PURSER' : null
                         }
                         onChange = {
-                          id === 0 ? (e) => handleChange(index, 'Date', e.target.value) :
-                          id === 1 ? (e) => handleChange(index, 'Outbound', e.target.value) :
-                          id === 2 ? (e) => handleChange(index, 'Inbound', e.target.value)  :
-                          id === 3 ? ( ) => ovSwitch(index) :
-                          id === 4 ? (e) => handleChange(index, 'Position', 'FIRST') :
-                          id === 5 ? (e) => handleChange(index, 'Position', 'BAR') :
-                          id === 6 ? (e) => handleChange(index, 'Position', 'PURSER') : null
+                          name === 'Date' ? (e) => handleChange(index, 'Date', e.target.value) :
+                          name === 'Outbound' ? (e) => handleChange(index, 'Outbound', e.target.value) :
+                          name === 'Inbound' ? (e) => handleChange(index, 'Inbound', e.target.value)  :
+                          name === 'Overnight' ? ( ) => ovSwitch(index) :
+                          name === 'FIRST' ? (e) => handleChange(index, 'Position', 'FIRST') :
+                          name === 'BAR' ? (e) => handleChange(index, 'Position', 'BAR') :
+                          name === 'PURSER' ? (e) => handleChange(index, 'Position', 'PURSER') : null
                         }
                       />
                     </td>
@@ -150,21 +146,21 @@ export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQu
                       <input
                         id = {id}
                         name = {name}
-                        placeholder = { id === 11 ? 'Note' : null }
-                        maxLength= { id === 11 ? 50 : null }
+                        placeholder = { name === 'Note' ? 'Note' : null }
+                        maxLength= { name === 'Note' ? 50 : null }
                         type = { id < 11 ? 'checkbox' : 'text' }
                         checked = {
-                          id === 7 ? shift.Early :
-                          id === 8 ? shift.Late :
-                          id === 9 ? shift.LTA :
-                          id === 10 ? shift.DO : null
+                          name === 'Early' ? shift.Early :
+                          name === 'Late' ? shift.Late :
+                          name === 'LTA' ? shift.LTA :
+                          name === 'DO' ? shift.DO : null
                         }
                         onChange= {
-                          id === 7 ? (e) => handleChange(index, 'Early', e.target.checked) :
-                          id === 8 ? (e) => handleChange(index, 'Late',  e.target.checked) :
-                          id === 9 ? (e) => handleChange(index, 'LTA',   e.target.checked) :
-                          id === 10 ? (e) => handleChange(index, 'DO',   e.target.checked) :
-                          id === 11 ? (e) => handleChange(index, 'Note', e.target.value) : null
+                          name === 'Early' ? (e) => handleChange(index, 'Early', e.target.checked) :
+                          name === 'Late' ? (e) => handleChange(index, 'Late',  e.target.checked) :
+                          name === 'LTA' ? (e) => handleChange(index, 'LTA',   e.target.checked) :
+                          name === 'DO' ? (e) => handleChange(index, 'DO',   e.target.checked) :
+                          name === 'Note' ? (e) => handleChange(index, 'Note', e.target.value) : null
                         }
                       />
                     </td>
