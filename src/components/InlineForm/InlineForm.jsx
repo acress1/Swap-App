@@ -115,8 +115,9 @@ export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQu
                         placeholder= { name === 'Outbound' || 'Inbound' ? '9xxx' : null }
                         type = {
                           name === 'Date' ? 'date' :
-                          name === 'Outbound' || 'Inbound' ? 'number' :
-                          name === 'Overnight' ? 'checkbox' :
+                          name === 'Outbound' ? 'number' :
+                          name === 'Inbound' ? 'number' :
+                          name === 'Overnight' ? 'checkbox' : 
                           name === 'FIRST' || 'BAR' || 'PURSER' ? 'radio' : null
                         }
                         value = {

@@ -3,7 +3,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InlineForm from '../components/InlineForm/InlineForm';
 import Calendar from '../components/Calendar/Calendar';
-import NewsBox from "../components/ViewBoxes/NewsBox";
 import { Categories } from "./Categories";
 import Greetings from "./Greetings";
 import Version from "./Version";
@@ -17,7 +16,6 @@ export default function App() {
   
   const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
 
-  const [showNewsBox, setShowNewsBox] = useState (false);
   const [showQuickView, setShowQuickView] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
 
@@ -25,10 +23,6 @@ export default function App() {
     todayDate.setHours(0, 0, 0, 0);
     return day < todayDate;
   };
-
-  const toggleNewsBox = () => {
-    setShowNewsBox(!showNewsBox);
-  }
 
   const toggleQuickViewBox = () => {
     setShowQuickView(!showQuickView);
@@ -42,8 +36,7 @@ export default function App() {
 
   return (
     <>
-      <Greetings todayDate={todayDate} toggleNewsBox={toggleNewsBox} />
-      {showNewsBox && <NewsBox toggleNewsBox={toggleNewsBox} />}
+      <Greetings todayDate={todayDate} />
       <InlineForm BASEURL={BASEURL} Categories={Categories} isOutdated={isOutdated} setShowQuickView={setShowQuickView} />
       <Calendar BASEURL={BASEURL} Categories={Categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
