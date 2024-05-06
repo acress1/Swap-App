@@ -4,7 +4,7 @@ import QuickViewBox from '../ViewBoxes/QuickViewBox';
 import DayBox from '../ViewBoxes/DayBox';
 import './Calendar.scss';
 
-export default function Calendar ({ BASEURL, Categories, searchField, isOutdated, showQuickView, toggleQuickViewBox, selectedDay, toggleDayBox }) {
+export default function Calendar ({ BASEURL, Categories, searchField, isOutdated, showQuickView, showDayBox, toggleQuickViewBox, selectedDay, toggleDayBox }) {
   
   // Display Months & Days 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -49,30 +49,30 @@ export default function Calendar ({ BASEURL, Categories, searchField, isOutdated
     <>
       <div className='calendar'>
         <button className='overview-button' onClick={toggleQuickViewBox}>Overview</button>
-          { showQuickView && <QuickViewBox BASEURL={BASEURL} Categories={Categories} searchField={searchField} /> }
+          { showQuickView && <QuickViewBox BASEURL={BASEURL} Categories={Categories} searchField={searchField} selectedDay={selectedDay} /> }
           { months.map( month => (
             <div key={month}>
               <div style={{margin: '5px'}}>{ format( month, 'MMMM yyyy') }</div>
               <div className="calendar-month">
                 { eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month) })
-                  .map(day => (
-                    <div 
-                      key={day}
-                      className={`${isOutdated(day) ? 'calendar-day outdated' : (selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day selected' : 'calendar-day')}`} 
-                      onClick={() => { isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day) }}
-                    >
-                      <div className='week-day'>{format(day, 'EEEE')}</div>
-                      <div className='day-number'>{format(day, 'd')}</div>
-                      <div className={`${isOutdated(day) ? '' : (daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : '')}`}></div>
-                    </div>
+                  .map(day => {
+                    
+                    return (
+                      <div 
+                        key={day}
+                        className={`${isOutdated(day) ? 'calendar-day outdated' : (selectedDay && format(day, 'dd/MM/yyyy') === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day selected' : 'calendar-day')}`} 
+                        onClick={() => { isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day) }}
+                      >
+                        <div className='week-day'>{format(day, 'EEEE')}</div>
+                        <div className='day-number'>{format(day, 'd')}</div>
+                        <div className={`${isOutdated(day) ? '' : (daysWithData.includes(format(day, 'dd/MM/yyyy')) === true ? 'dot' : '')}`}></div>
+                      </div>
                     )
+                  }
                   )
                 }
               </div>
-              { selectedDay && format(month, 'MMMM yyyy') === format(selectedDay, 'MMMM yyyy') && (
-                <DayBox BASEURL={BASEURL} Categories={Categories} selectedDay={selectedDay} searchField={searchField} />
-                )
-              }
+              { showDayBox && <DayBox BASEURL={BASEURL} Categories={Categories} selectedDay={selectedDay} searchField={searchField} /> }
             </div>
           ))}
       </div>

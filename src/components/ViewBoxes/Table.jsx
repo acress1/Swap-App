@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './ViewBoxes.scss';
-import { Categories } from "../../containers/Categories";
+import { Categories } from "../Categories";
 
 export default function Table ({ searchField, formData }) {
 

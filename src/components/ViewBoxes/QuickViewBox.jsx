@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Table from "./Table";
 import './ViewBoxes.scss';
 
-export default function QuickViewBox ({ BASEURL, searchField }) {
+export default function QuickViewBox ({ BASEURL, searchField, selectedDay }) {
    
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState(null);
@@ -30,6 +30,8 @@ export default function QuickViewBox ({ BASEURL, searchField }) {
         .catch(error => console.log(error))
         .finally(() => setLoading(false))
     }, [BASEURL]);
+
+    console.log(selectedDay);
 
     return (
         <div className="viewBox">

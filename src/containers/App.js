@@ -3,9 +3,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InlineForm from '../components/InlineForm/InlineForm';
 import Calendar from '../components/Calendar/Calendar';
-import { Categories } from "./Categories";
-import Greetings from "./Greetings";
-import Version from "./Version";
+import { Categories } from "../components/Categories";
+import Greetings from "../components/Greetings";
+import Version from "../components/Version.jsx";
 import './App.scss';
 
 export default function App() {
@@ -17,6 +17,7 @@ export default function App() {
   const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
 
   const [showQuickView, setShowQuickView] = useState(false);
+  const [showDayBox, setShowDayBox] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
 
   const isOutdated = (day) => {
@@ -25,20 +26,22 @@ export default function App() {
   };
 
   const toggleQuickViewBox = () => {
+    setSelectedDay(null);
     setShowQuickView(!showQuickView);
-    setSelectedDay(false)
+    setShowDayBox(false);
   };
   
   const toggleDayBox = (day) => { 
-    setSelectedDay(data => (data && data.getTime() === day.getTime() ? null : day));
-    setShowQuickView(false)
+    setSelectedDay(day);
+    setShowDayBox(!showDayBox);
+    setShowQuickView(false);
   };
 
   return (
     <>
       <Greetings todayDate={todayDate} />
       <InlineForm BASEURL={BASEURL} Categories={Categories} isOutdated={isOutdated} setShowQuickView={setShowQuickView} />
-      <Calendar BASEURL={BASEURL} Categories={Categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
+      <Calendar BASEURL={BASEURL} Categories={Categories} searchField={searchField} isOutdated={isOutdated} showQuickView={showQuickView} showDayBox={showDayBox} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
       <Version todayDate={todayDate}/>
     </>

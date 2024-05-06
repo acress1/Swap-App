@@ -18,7 +18,7 @@ export default function Greetings ({ todayDate }) {
                 <br />
                 <button className="newsButton" onClick={toggleNewsBox}> Last update </button>
             </div>
-            {showNewsBox && <NewsBox toggleNewsBox={toggleNewsBox} />}
+            { showNewsBox && <NewsBox toggleNewsBox={toggleNewsBox} /> }
         </>
     )
 }
