@@ -72,7 +72,7 @@ export default function App() {
     <>
       <Greetings todayDate={todayDate} />
       <InlineForm BASEURL={BASEURL} isOutdated={isOutdated} setShowQuickView={setShowQuickView} />
-      { !daysWithData ? <Loader /> : <Calendar todayDate={todayDate} swapData={swapData} daysWithData={daysWithData} daySwapData={daySwapData} isOutdated={isOutdated} showQuickView={showQuickView} showDayBox={showDayBox} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} /> }
+      <Calendar todayDate={todayDate} swapData={swapData} daysWithData={daysWithData} daySwapData={daySwapData} isOutdated={isOutdated} showQuickView={showQuickView} showDayBox={showDayBox} toggleQuickViewBox={toggleQuickViewBox} selectedDay={selectedDay} toggleDayBox={toggleDayBox} />
       <ToastContainer />
       <Version todayDate={todayDate}/>
     </>
