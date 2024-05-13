@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { format } from 'date-fns';
 import "react-toastify/dist/ReactToastify.css";
-import InlineForm from '../components/InlineForm/InlineForm';
-import Calendar from '../components/Calendar/Calendar';
-import Greetings from "../components/Greetings";
-import Version from "../components/Version.jsx";
-import Loader from "../components/Loader.jsx";
+import InlineForm from './components/InlineForm/InlineForm.jsx';
+import Calendar from './components/Calendar/Calendar.jsx';
+import Greetings from "./components/Greetings.jsx";
+import Version from "./components/Version.jsx";
 import './App.scss';
 
 export default function App() {

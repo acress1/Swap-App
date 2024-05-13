@@ -2,6 +2,7 @@ import React from "react";
 import './ViewBoxes.scss';
 
 export default function NewsBox() {
+    
     return(
         <div className="viewBox newsBox"> 
             <div className="newsDate">1.03.2024:</div>

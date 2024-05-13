@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import './ViewBoxes.scss';
 import { Categories } from "../Categories";
+import './ViewBoxes.scss';
 
 export default function Table ({ swapData }) {
 

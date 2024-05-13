@@ -71,7 +71,8 @@ export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
       .then(data => {
         console.log('Success', data);
         toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`);
-        setShowQuickView(true)
+        setShowQuickView(true);
+        setTimeout( function(){ window.location.reload() }, 5000);
       })
       .catch(error => {
         console.log(error);
