@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { Categories } from "../Categories";
 import './InlineForm.scss';
 
-export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQuickView }) {
+export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
   
   const selectedCategories1 = Categories.filter(category => ['Date', 'Outbound', 'Inbound', 'Overnight', 'FIRST', 'BAR', 'PURSER'].includes(category.name));
   const selectedCategories2 = Categories.filter(category => ['Early', 'Late', 'LTA', 'DO', 'Note'].includes(category.name));
@@ -83,16 +84,16 @@ export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQu
     <>
       <form onSubmit={handleSubmit}>
           
-        <input name="Email" style={{marginBottom: '4px'}} required type="email" placeholder="Email" />
+        <input required name="Email" style={{marginBottom: '4px'}} type="email" placeholder="Email" />
 
         <div className="overflow">
           <table>
             <thead>
               <tr>
                 <th>SHIFT</th>
-                {selectedCategories1.map(({name}) => (<th key={name}> {name} </th>))}
+                {selectedCategories1.map(({name}) => (<th> {name} </th>))}
                 <th className='FOR'>FOR:</th>
-                {selectedCategories2.map(({name}) => (<th key={name} className= 'FOR'> {name} </th>))}
+                {selectedCategories2.map(({name}) => (<th className= 'FOR'> {name} </th>))}
               </tr>
             </thead>
             {shifts.map((shift, index) => (
@@ -104,7 +105,7 @@ export default function InlineForm ({ BASEURL, Categories, isOutdated, setShowQu
                   </td>
                   {selectedCategories1.map(({id, name}) => (
                     <td>
-                      <input 
+                      <input
                         id = {id}
                         required = { name === 'Overnight' ? false : true }
                         min = { name === 'Outbound' || 'Inbound' ? '9000' : null }

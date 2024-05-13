@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import './ViewBoxes.scss';
 import { Categories } from "../Categories";
 
-export default function Table ({ searchField, formData }) {
+export default function Table ({ swapData }) {
 
-    const [search, setSearch] = useState('');
     const selectedCategories1 = Categories.filter(category => ['Date', 'Outbound', 'Inbound'].includes(category.name));
     const selectedCategories2 = Categories.filter(category => ['Early', 'Late', 'LTA', 'DO'].includes(category.name));
+
+    const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
+    const [search, setSearch] = useState('');
 
     return (
             <>
@@ -27,8 +29,8 @@ export default function Table ({ searchField, formData }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {formData && formData.data && formData.data.length > 0 ? (
-                                formData.data
+                            { swapData && swapData.length > 0 ? (
+                                swapData
                                     .filter(dataItem => ( 
                                         searchField.some(column => 
                                             dataItem[column].toString().toLowerCase().includes(search.toLowerCase())
