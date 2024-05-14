@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { format } from 'date-fns';
-import NewsBox from './ViewBoxes/NewsBox';
+import NewsBox from './NewsBox';
 
 export default function Greetings ({ todayDate }) {
 

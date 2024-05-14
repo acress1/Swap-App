@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { Categories } from "../Categories";
-import './InlineForm.scss';
+import { Categories } from "./Categories";
+import '../styles/InlineForm.scss';
 
 export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
   
