@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Categories } from "../constant";
-import postSwapData from "../hooks/postSwapData";
+import postSwapData from "../utils/postSwapData";
 import '../styles/InlineForm.scss';
 
 export default function InlineForm ({ BASEURL, isOutdated }) {
@@ -41,7 +41,9 @@ export default function InlineForm ({ BASEURL, isOutdated }) {
     e.preventDefault();
     const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
 
-    isAnyOutdated ? toast.error('Oops... You can\'t submit an outdated swap 🤓') : postSwapData(BASEURL, shifts, e);
+    isAnyOutdated ? 
+      toast.error('Oops... You can\'t submit an outdated swap 🤓') 
+      : postSwapData(BASEURL, shifts, e);
   };
 
   return (
