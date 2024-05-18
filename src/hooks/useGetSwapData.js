@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { format } from 'date-fns';
 
-const useSwapData = (BASEURL) => {
+const useGetSwapData = (BASEURL) => {
 
   const [swapData, setSwapData] = useState([]);
   const [daysWithData, setDaysWithData] = useState([]);
@@ -37,4 +37,4 @@ const useSwapData = (BASEURL) => {
   return { swapData, daysWithData, daySwapData, getDaySwapData };
 };
 
-export default useSwapData;
+export default useGetSwapData;

@@ -1,4 +1,4 @@
-import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval } from 'date-fns';
+import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth } from 'date-fns';
 import ViewBox from './ViewBox';
 import '../styles/Calendar.scss';
 
@@ -51,7 +51,7 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
                   })
                 }
               </div>
-              { showDayBox && <ViewBox swapData={swapData} selectedDay={selectedDay} daySwapData={daySwapData}  /> }
+              { showDayBox && isSameMonth(selectedDay, month) && <ViewBox swapData={swapData} selectedDay={selectedDay} daySwapData={daySwapData} /> }
             </div>
           )})}
       </div>

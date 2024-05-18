@@ -5,7 +5,7 @@ import InlineForm from './components/InlineForm.jsx';
 import Calendar from './components/Calendar.jsx';
 import Greetings from "./components/Greetings.jsx";
 import Version from "./components/Version.jsx";
-import useSwapData from "./hooks/useSwapData.js";
+import useGetSwapData from "./hooks/useGetSwapData.js";
 import './/styles/App.scss';
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
 
   const BASEURL = "http://localhost:3001";
 
-  const { swapData, daysWithData, daySwapData, getDaySwapData } = useSwapData(BASEURL);
+  const { swapData, daysWithData, daySwapData, getDaySwapData } = useGetSwapData(BASEURL);
 
   const [showQuickView, setShowQuickView] = useState(false);
   const [showDayBox, setShowDayBox] = useState(false);
@@ -40,11 +40,12 @@ export default function App() {
 
   return (
     <>
-      <Greetings todayDate={todayDate} />
+      <Greetings 
+        todayDate={todayDate} 
+      />
       <InlineForm 
-        BASEURL={BASEURL} 
-        isOutdated={isOutdated} 
-        setShowQuickView={setShowQuickView}
+        BASEURL={BASEURL}
+        isOutdated={isOutdated}
       />
       <Calendar 
         todayDate={todayDate} 
@@ -58,7 +59,9 @@ export default function App() {
         selectedDay={selectedDay} 
         toggleDayBox={toggleDayBox} 
       />
-      <Version todayDate={todayDate}/>
+      <Version 
+        todayDate={todayDate}
+      />
       <ToastContainer />
     </>
   );

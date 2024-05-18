@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { Categories } from "./Categories";
+import { Categories } from "../constant";
+import postSwapData from "../hooks/postSwapData";
 import '../styles/InlineForm.scss';
 
-export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
+export default function InlineForm ({ BASEURL, isOutdated }) {
   
-  const selectedCategories1 = Categories.filter(category => ['Date', 'Outbound', 'Inbound', 'Overnight', 'FIRST', 'BAR', 'PURSER'].includes(category.name));
-  const selectedCategories2 = Categories.filter(category => ['Early', 'Late', 'LTA', 'DO', 'Note'].includes(category.name));
+  const selectedCategories1 = Categories.slice(12);
+  const selectedCategories2 = Categories.slice(0, 7);
+  const selectedCategories3 = Categories.slice(7, 12);
 
   const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
-  const handleChange = (index, fieldName, value) => {
+  const handleChange = (index, fieldName, fieldValue) => {
     const updatedShifts = [...shifts];
-    updatedShifts[index][fieldName] = value;
+    updatedShifts[index][fieldName] = fieldValue;
+    // const isNotNeeded = updatedShifts[index][fieldName] === 'AV' || updatedShifts[index][fieldName] === 'Platform';
+    // console.log(updatedShifts[index].Outbound);
     setShifts(updatedShifts);
   };
 
@@ -35,50 +39,9 @@ export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
 
-    if (isAnyOutdated) {
-      toast.error('Oops... You can\'t submit an outdated swap 🤓');
-      return;
-    }
-
-    shifts.forEach(shift => {
-      const formData = {
-        Email: e.target.elements.Email.value,
-        Date: shift.Date,
-        Outbound: shift.Outbound,
-        Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
-        Position: shift.Position,
-        Early: shift.Early,
-        Late: shift.Late,
-        LTA: shift.LTA,
-        DO: shift.DO,
-        Note: shift.Note
-      };
-
-      fetch(`${BASEURL}/formData`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(formData)
-        })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Form submission failed');
-        }
-        return response.json()
-      })
-      .then(data => {
-        console.log('Success', data);
-        toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`);
-        setShowQuickView(true);
-        setTimeout( function(){ window.location.reload() }, 5000);
-      })
-      .catch(error => {
-        console.log(error);
-        toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`)
-      });
-    });
+    isAnyOutdated ? toast.error('Oops... You can\'t submit an outdated swap 🤓') : postSwapData(BASEURL, shifts, e);
   };
 
   return (
@@ -93,8 +56,9 @@ export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
               <tr>
                 <th>SHIFT</th>
                 {selectedCategories1.map(({name}) => (<th> {name} </th>))}
+                {selectedCategories2.map(({name}) => (<th> {name} </th>))}
                 <th className='FOR'>FOR:</th>
-                {selectedCategories2.map(({name}) => (<th className= 'FOR'> {name} </th>))}
+                {selectedCategories3.map(({name}) => (<th className= 'FOR'> {name} </th>))}
               </tr>
             </thead>
             {shifts.map((shift, index) => (
@@ -104,17 +68,47 @@ export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
                     <button className="add-line" type="button" onClick= {addShift} />
                     <button className="delete-line" type="button" onClick= {() => deleteShift(index)} />
                   </td>
-                  {selectedCategories1.map(({id, name}) => (
+                  {selectedCategories1.map(({name}) => (
+                    <td>
+                      <input
+                        name = {`Position-${index}`}
+                        type = {'AV' || 'Platform' ? 'radio' : null}
+                        value = {
+                          name === 'AV' ? 'AV' :
+                          name === 'Platform' ? 'Platform' : null
+                        }
+                        onChange = {
+                          name === 'AV' ? (e) => handleChange(index, 'Position', 'AV') :
+                          name === 'Platform' ? (e) => handleChange(index, 'Position', 'Platform') : null
+                        }
+                      />
+                    </td>
+                  ))}
+                  {selectedCategories2.map(({id, name}) => (
                     <td>
                       <input
                         id = {id}
-                        required = { name === 'Overnight' ? false : true }
-                        min = { name === 'Outbound' || 'Inbound' ? '9000' : null }
-                        max = { name === 'Outbound' || 'Inbound' ? '9199' : null }
-                        checked = { name === 'Overnight' ? shift.isOvernight : null }
-                        name = { id >= 4 ? `Position-${index}` : name }
-                        className= { name === 'Overnight' ? 'switch' : null }
-                        placeholder= { name === 'Outbound' || 'Inbound' ? '9xxx' : null }
+                        required = { 
+                          name === 'Date' ? true : false 
+                        }
+                        min = { 
+                          name === 'Outbound' || 'Inbound' ? '9000' : null 
+                        }
+                        max = { 
+                          name === 'Outbound' || 'Inbound' ? '9199' : null 
+                        }
+                        checked = { 
+                          name === 'Overnight' ? shift.isOvernight : null 
+                        }
+                        name = { 
+                          id >= 4 ? `Position-${index}` : name 
+                        }
+                        className= { 
+                          name === 'Overnight' ? 'switch': null
+                        }
+                        placeholder= { 
+                          name === 'Outbound' || 'Inbound' ? '9xxx' : null 
+                        }
                         type = {
                           name === 'Date' ? 'date' :
                           name === 'Outbound' ? 'number' :
@@ -144,14 +138,20 @@ export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
                     </td>
                   ))}
                   <td className="FOR"></td>
-                  {selectedCategories2.map(({id, name}) => (
+                  {selectedCategories3.map(({id, name}) => (
                     <td className="FOR">
                       <input
                         id = {id}
                         name = {name}
-                        placeholder = { name === 'Note' ? 'Note' : null }
-                        maxLength= { name === 'Note' ? 50 : null }
-                        type = { id < 11 ? 'checkbox' : 'text' }
+                        placeholder = { 
+                          name === 'Note' ? 'Note' : null 
+                        }
+                        maxLength= { 
+                          name === 'Note' ? 50 : null 
+                        }
+                        type = { 
+                          id < 11 ? 'checkbox' : 'text' 
+                        }
                         checked = {
                           name === 'Early' ? shift.Early :
                           name === 'Late' ? shift.Late :
@@ -160,9 +160,9 @@ export default function InlineForm ({ BASEURL, isOutdated, setShowQuickView }) {
                         }
                         onChange= {
                           name === 'Early' ? (e) => handleChange(index, 'Early', e.target.checked) :
-                          name === 'Late' ? (e) => handleChange(index, 'Late',  e.target.checked) :
-                          name === 'LTA' ? (e) => handleChange(index, 'LTA',   e.target.checked) :
-                          name === 'DO' ? (e) => handleChange(index, 'DO',   e.target.checked) :
+                          name === 'Late' ? (e) => handleChange(index, 'Late', e.target.checked) :
+                          name === 'LTA' ? (e) => handleChange(index, 'LTA', e.target.checked) :
+                          name === 'DO' ? (e) => handleChange(index, 'DO', e.target.checked) :
                           name === 'Note' ? (e) => handleChange(index, 'Note', e.target.value) : null
                         }
                       />

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Categories } from "./Categories";
+import { Categories } from "../constant";
 import '../styles/ViewBoxes.scss';
 
 export default function Table ({ swapData }) {
 
-    const selectedCategories1 = Categories.filter(category => ['Date', 'Outbound', 'Inbound'].includes(category.name));
-    const selectedCategories2 = Categories.filter(category => ['Early', 'Late', 'LTA', 'DO'].includes(category.name));
+    const selectedCategories1 = Categories.slice(0, 3);
+    const selectedCategories2 = Categories.slice(7, 12);
 
     const searchField = ['Date','Outbound','Inbound','Position','Email','Note','Sent'];
     const [search, setSearch] = useState('');
-
+    
     return (
             <>
                 <div style={{marginBottom: '2px'}}>
