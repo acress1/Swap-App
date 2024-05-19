@@ -6,15 +6,21 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
   
   const currentMonth = startOfMonth(todayDate);
   const nextMonth = startOfMonth(addMonths(currentMonth, 1));
+  const monthsInCalendar = [currentMonth, nextMonth];
 
   return (
     <>
       <div className='calendar'>
         <button className='overview-button' onClick={toggleQuickViewBox}>Overview</button>
-        { showQuickView && <ViewBox swapData={swapData} selectedDay={selectedDay} daySwapData={daySwapData} /> }
-        { [currentMonth, nextMonth].map(month => {
-
-          let formatedMonth = format( month, 'MMMM yyyy');
+        { showQuickView && 
+          <ViewBox 
+            swapData={swapData} 
+            selectedDay={selectedDay} 
+            daySwapData={daySwapData} 
+          /> }
+        { monthsInCalendar.map(month => {
+          
+          const formatedMonth = format( month, 'MMMM yyyy');
           
           return(
             <div key={month}>
@@ -23,18 +29,20 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
                 { eachDayOfInterval({ start: startOfMonth(month), end: endOfMonth(month)})
                   .map(day => {
 
-                    let formatedDay = format(day, 'dd/MM/yyyy');
-                    let weekDay = format(day, 'EEEE');
-                    let dayNumber = format(day, 'd');
-                    let hasDate = daysWithData.includes(formatedDay);
+                    const formatedDay = format(day, 'dd/MM/yyyy');
+                    const formatedSelectedDay = selectedDay ? format(selectedDay, 'dd/MM/yyyy') : null;
+                    const weekDay = format(day, 'EEEE');
+                    const dayNumber = format(day, 'd');
+                    const hasDate = daysWithData.includes(formatedDay);
 
                     return (
                       <div 
                         key={day}
                         className={
                           isOutdated(day) ? 'calendar-day outdated' : 
-                          selectedDay && formatedDay === format(selectedDay, 'dd/MM/yyyy') ? 'calendar-day selected' :
-                          'calendar-day'
+                            selectedDay && formatedDay === formatedSelectedDay ? 
+                              'calendar-day selected' :
+                              'calendar-day'
                         } 
                         onClick={() => { isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day) }}
                       >
@@ -42,16 +50,20 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
                         <div className='day-number'>{dayNumber}</div>
                         <div className={
                           isOutdated(day) ? '' :
-                          hasDate ? 'dot' : 
-                          null
-                        }
+                            hasDate ? 'dot' : 
+                              null
+                          }
                         ></div>
                       </div>
-                    )
-                  })
-                }
+                    )}
+                  )}
               </div>
-              { showDayBox && isSameMonth(selectedDay, month) && <ViewBox swapData={swapData} selectedDay={selectedDay} daySwapData={daySwapData} /> }
+              { showDayBox && isSameMonth(selectedDay, month) && 
+                <ViewBox 
+                  swapData={swapData} 
+                  selectedDay={selectedDay} 
+                  daySwapData={daySwapData} 
+                /> }
             </div>
           )})}
       </div>
