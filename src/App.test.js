@@ -10,6 +10,7 @@ it('Should greet the user', () => {
 });
 
 describe('Calendar.js', () => {
+
   const todayDate = new Date();
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const currentMonth = months[todayDate.getMonth()];

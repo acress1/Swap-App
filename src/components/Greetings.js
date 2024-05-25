@@ -14,10 +14,16 @@ export default function Greetings ({ todayDate }) {
     return(
         <div className="greetings">
             <span>Hi there! Today is {formatedTodayDate}</span> 
-            <img src="/favicon/favicon-16x16.png" alt="🤓" />
+            <img 
+                src="/favicon/favicon-16x16.png" 
+                alt="🤓" 
+            />
             <br />
-            <button className="newsButton" onClick={toggleNewsBox}> Last update </button>
+            <button 
+                className="newsButton" 
+                onClick={toggleNewsBox}
+                > Last update </button>
             { showNewsBox && <NewsBox /> }
         </div>
-    )
-}
+    );
+};

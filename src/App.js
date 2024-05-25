@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import InlineForm from './components/InlineForm.jsx';
-import Calendar from './components/Calendar.jsx';
-import Greetings from "./components/Greetings.jsx";
-import Version from "./components/Version.jsx";
+import InlineForm from './components/InlineForm/InlineForm.js';
+import Calendar from './components/Calendar.js';
+import Greetings from "./components/Greetings.js";
+import Version from "./components/Version.js";
 import useGetSwapData from "./hooks/useGetSwapData.js";
-import './/styles/App.scss';
+import './styles/App.scss';
 
 export default function App() {
 

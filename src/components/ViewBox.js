@@ -1,6 +1,6 @@
-import Table from "./Table";
+import Table from "./Table/Table";
 import Loader from "./Loader";
-import '../styles/ViewBoxes.scss';
+import '..//styles/ViewBoxes.scss';
 
 export default function ViewBox ({ swapData, selectedDay, daySwapData }) {
 
