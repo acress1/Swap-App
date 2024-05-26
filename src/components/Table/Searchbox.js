@@ -1,8 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
-export default function SearchBox() {
-
-    const [search, setSearch] = useState();
+export default function SearchBox({ search, setSearch }) {
 
     return(
         <div style={{marginBottom: '2px'}}>

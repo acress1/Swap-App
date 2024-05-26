@@ -1,13 +1,29 @@
 import React from "react";
 
-export default function TableBody ({ swapData }) {
+export default function TableBody ({ swapData, search }) {
+
+    const matchesSearch = (dataItem) => {
+
+        const searchField = ["Date", "Outbound", "Inbound", "Position", "Email", "Sent"];
+    
+        if(!search){ 
+            return true
+        };
+    
+        return searchField.some(field => 
+            dataItem[field] && dataItem[field].toString().toLowerCase().includes(search.toLowerCase())
+        );
+    };
+
+    const filteredSwapData = swapData.filter(dataItem => matchesSearch(dataItem));
 
     return(
         <>
             <tbody>
-                { swapData && swapData.length > 0 ? (
-                    swapData
+                { filteredSwapData && filteredSwapData.length > 0 ? (
+                    filteredSwapData
                     .map(dataItem => (
+
                         <tr key={dataItem.Swap_id}>
                             <td className="Date">{dataItem.Date}</td>
                             <td className="Outbound">{dataItem.Outbound}</td>
