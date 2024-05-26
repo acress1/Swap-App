@@ -13,8 +13,6 @@ export default function InlineForm ({ BASEURL, isOutdated }) {
   const handleChange = (index, fieldName, fieldValue) => {
     const updatedShifts = [...shifts];
     updatedShifts[index][fieldName] = fieldValue;
-    // const isNotNeeded = updatedShifts[index][fieldName] === 'AV' || updatedShifts[index][fieldName] === 'Platform';
-    // console.log(updatedShifts[index].Outbound);
     setShifts(updatedShifts);
   };
 

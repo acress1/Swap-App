@@ -12,6 +12,9 @@
 .swap-form-link, 
 .roster-link { @include App.buttonStyle($theme: rgb(79, 208, 9)); }
 .Tutorial { @include App.buttonStyle($theme: purple); }
+.hidden {
+  display: none;
+}
 
 .add-line {
   @include App.buttonStyle($theme: rgb(0, 115, 236));

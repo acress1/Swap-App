@@ -29,13 +29,21 @@ const postSwapData = (BASEURL, shifts, e) => {
         })
         .then(data => {
           console.log('Success', data);
-          toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`);
+
+          if(shift.Position === "AV" || shift.Position === "Platform")
+            {toast.success(`${shift.Position} on ${shift.Date} submitted successfully!`)}
+          else
+            {toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`)}
           
           setTimeout( function(){ window.location.reload() }, 5000);
         })
         .catch(error => {
           console.log(error);
-          toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`)
+
+          if(shift.Position === "AV" || shift.Position === "Platform")
+            {toast.error(`${shift.Position} on ${shift.Date} submission failed`)}
+          else
+            {toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`)}
         });
     });
 
