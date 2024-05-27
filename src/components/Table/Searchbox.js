@@ -7,7 +7,7 @@ export default function SearchBox({ search, setSearch }) {
             <input 
                 name="searchBox" 
                 placeholder="Search" 
-                value={search} 
+                value={search || undefined} 
                 onChange={ e => setSearch(e.target.value)} 
             />
         </div>
