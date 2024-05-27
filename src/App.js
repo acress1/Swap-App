@@ -6,24 +6,16 @@ import Calendar from './components/Calendar.js';
 import Greetings from "./components/Greetings.js";
 import Version from "./components/Version.js";
 import useGetSwapData from "./hooks/useGetSwapData.js";
+import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
 import './styles/App.scss';
 
 export default function App() {
-
-  const todayDate = new Date();
-
-  const BASEURL = "http://localhost:3001";
 
   const { swapData, daysWithData, daySwapData, getDaySwapData } = useGetSwapData(BASEURL);
 
   const [showQuickView, setShowQuickView] = useState(false);
   const [showDayBox, setShowDayBox] = useState(false);
   const [selectedDay, setSelectedDay] = useState(null);
-
-  const isOutdated = (day) => {
-    todayDate.setHours(0, 0, 0, 0);
-    return day < todayDate;
-  };
 
   const toggleQuickViewBox = () => {
     setSelectedDay(null);
