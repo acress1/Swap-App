@@ -11,7 +11,10 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
   return (
     <>
       <div className='calendar'>
-        <button className='overview-button' onClick={toggleQuickViewBox}>Overview</button>
+        <button 
+          className='overview-button' 
+          onClick={toggleQuickViewBox}
+          >Overview</button>
         { showQuickView && 
           <ViewBox 
             swapData={swapData} 
@@ -69,4 +72,4 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
       </div>
     </>
   );
-}
+};
