@@ -88,6 +88,12 @@ table {
 }
 .overflow {width: 100%; overflow: auto;}
 .FOR { background-color: lighten($Primary-color, 6%) }
+.fade-in {
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
 .newsButton { 
   @include buttonStyle($theme: rgb(255, 208, 0));
   font-size: 10px;

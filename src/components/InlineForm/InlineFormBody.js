@@ -53,7 +53,7 @@ export default function InlineFormBody({changeHandlers}) {
                             </td>
                             <td>
                                 <input
-                                    className={hideInputs ? "hidden": null}
+                                    className={hideInputs ? "hidden": "appear"}
                                     type="number"
                                     placeholder="9###"
                                     min="9000"
@@ -65,7 +65,7 @@ export default function InlineFormBody({changeHandlers}) {
                             </td>
                             <td>
                                 <input
-                                    className={hideInputs ? "hidden": null}
+                                    className={hideInputs ? "hidden": "fade-in"}
                                     type="number"
                                     placeholder="9###"
                                     min="9000"
