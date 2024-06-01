@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import InlineFormHead from "./InlineFormHead";
 import InlineFormBody from "./InlineFormBody";
 import LinkedButtons from "./LinkedButtons";
-import postSwapData from "../../utils/postSwapData";
+import { postSwapData } from "../../utils/functions";
 import '../../styles/InlineForm.scss';
 
 export default function InlineForm ({ BASEURL, isOutdated }) {
@@ -39,7 +39,7 @@ export default function InlineForm ({ BASEURL, isOutdated }) {
 
     isAnyOutdated ? 
       toast.error('Oops... You can\'t submit an outdated swap 🤓') 
-      : postSwapData(BASEURL, shifts, e);
+      : postSwapData({BASEURL, shifts, e});
   };
 
   return (

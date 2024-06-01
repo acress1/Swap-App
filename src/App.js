@@ -8,6 +8,7 @@ import Version from "./components/Version.js";
 import useGetSwapData from "./hooks/useGetSwapData.js";
 import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
 import './styles/App.scss';
+import Loader from "components/Loader.js";
 
 export default function App() {
 
@@ -39,7 +40,9 @@ export default function App() {
         BASEURL={BASEURL}
         isOutdated={isOutdated}
       />
-      <Calendar 
+      { !swapData ?
+        <Loader /> :
+        <Calendar 
         todayDate={todayDate} 
         swapData={swapData} 
         daysWithData={daysWithData} 
@@ -50,7 +53,8 @@ export default function App() {
         toggleQuickViewBox={toggleQuickViewBox} 
         selectedDay={selectedDay} 
         toggleDayBox={toggleDayBox} 
-      />
+        />
+      }
       <Version 
         todayDate={todayDate}
       />
