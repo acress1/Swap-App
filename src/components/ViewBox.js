@@ -1,5 +1,4 @@
 import Table from "./Table/Table";
-import Loader from "./Loader";
 import '..//styles/ViewBoxes.scss';
 
 export default function ViewBox ({ swapData, selectedDay, daySwapData }) {
@@ -8,11 +7,11 @@ export default function ViewBox ({ swapData, selectedDay, daySwapData }) {
         <>
         { selectedDay !== null ?
             <div className="viewbox daybox">
-                { !daySwapData ? <Loader /> : <Table swapData={daySwapData} /> }
+                <Table swapData={daySwapData} />
             </div> 
             :
             <div className="viewBox">
-                { !swapData ? <Loader /> : <Table swapData={swapData} /> }
+                <Table swapData={swapData} />
             </div>
         }
         </>

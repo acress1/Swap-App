@@ -6,13 +6,14 @@ import Calendar from './components/Calendar.js';
 import Greetings from "./components/Greetings.js";
 import Version from "./components/Version.js";
 import useGetSwapData from "./hooks/useGetSwapData.js";
+import Loader from "components/Loader.js";
 import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
 import './styles/App.scss';
-import Loader from "components/Loader.js";
+
 
 export default function App() {
 
-  const { swapData, daysWithData, daySwapData, getDaySwapData } = useGetSwapData(BASEURL);
+  const { loading, swapData, daysWithData, daySwapData, getDaySwapData } = useGetSwapData(BASEURL);
 
   const [showQuickView, setShowQuickView] = useState(false);
   const [showDayBox, setShowDayBox] = useState(false);
@@ -40,7 +41,7 @@ export default function App() {
         BASEURL={BASEURL}
         isOutdated={isOutdated}
       />
-      { !swapData ?
+      { loading ?
         <Loader /> :
         <Calendar 
         todayDate={todayDate} 

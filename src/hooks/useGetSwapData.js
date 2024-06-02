@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 
 const useGetSwapData = (BASEURL) => {
 
+  const [loading, setLoading] = useState(true);
   const [swapData, setSwapData] = useState([]);
   const [daysWithData, setDaysWithData] = useState([]);
   const [daySwapData, setDaySwapData] = useState([]);
@@ -22,6 +23,7 @@ const useGetSwapData = (BASEURL) => {
       const daysWithData = data.data.map(item => item.Date);
       setDaysWithData(daysWithData);
       setSwapData(data.data);
+      setLoading(false);
     })
     .catch(error => {
       console.error('Error fetching calendar data:', error);
@@ -34,7 +36,7 @@ const useGetSwapData = (BASEURL) => {
     setDaySwapData(daySwapData);
   };
 
-  return { swapData, daysWithData, daySwapData, getDaySwapData };
+  return { loading, swapData, daysWithData, daySwapData, getDaySwapData };
 };
 
 export default useGetSwapData;
