@@ -26,7 +26,8 @@ export const matchesSearch = ({dataItem, search}) => {
     };
 
     return searchField.some(field => 
-        dataItem[field] && dataItem[field].toString().toLowerCase().includes(search.toLowerCase())
+        dataItem[field] && 
+        dataItem[field].toString().toLowerCase().includes(search.toLowerCase())
     );
 };
 
