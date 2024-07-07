@@ -14,12 +14,4 @@ describe('Greetings.js', () => {
     it('Should display today\'s date', () => {
       expect(todayDate).toBeDefined();
     });
-
-    it('Should display the App logo', () => {
-    
-    });
-
-    it('Should contain Last Update button', () => {
-
-    });
 });
