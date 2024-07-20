@@ -4,7 +4,7 @@ import InlineFormHead from "./InlineFormHead";
 import InlineFormBody from "./InlineFormBody";
 import LinkedButtons from "./LinkedButtons";
 import { postSwapData } from "../../utils/functions";
-import '../../styles/InlineForm.scss';
+import 'styles/main.scss';
 
 export default function InlineForm ({ BASEURL, isOutdated }) {
 
