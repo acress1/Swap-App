@@ -5,16 +5,25 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
 }
-.submit { 
-  @include App.buttonStyle;
+
+.submit {
   width: 115px;
+  @include App.buttonStyle;
 }
-.swap-form-link, 
-.roster-link { @include App.buttonStyle($theme: rgb(79, 208, 9)); }
-.Tutorial { @include App.buttonStyle($theme: purple); }
+
+.swap-form-link,
+.roster-link {
+  @include App.buttonStyle($theme: rgb(79, 208, 9));
+}
+
+.Tutorial {
+  @include App.buttonStyle($theme: purple);
+}
+
 .hidden {
   display: none;
 }
+
 .fade-in {
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
@@ -23,7 +32,6 @@
 }
 
 .add-line {
-  @include App.buttonStyle($theme: rgb(0, 115, 236));
   height: 16px;
   width: 16px;
   background:
@@ -31,20 +39,21 @@
     linear-gradient(#fff 0 0),
     rgb(0, 115, 236);
   background-position: center;
-  background-size: 70% 3px,3px 70%;
+  background-size: 70% 3px, 3px 70%;
   background-repeat: no-repeat;
+  @include App.buttonStyle($theme: rgb(0, 115, 236));
 }
 
 .delete-line {
-  @include App.buttonStyle($theme: rgb(255, 0, 0));
   height: 16px;
   width: 16px;
   background:
     linear-gradient(#fff 0 0),
     rgb(255, 0, 0);
   background-position: center;
-  background-size: 60% 3px,3px 60%;
+  background-size: 60% 3px, 3px 60%;
   background-repeat: no-repeat;
+  @include App.buttonStyle($theme: rgb(255, 0, 0));
 }
 
 .switch {
@@ -62,6 +71,7 @@
   cursor: pointer;
   background-color: #707070;
   transition: background-color ease 0.3s;
+
   &:before {
     content: "";
     display: block;
@@ -75,7 +85,17 @@
     border-radius: 50%;
     color: #fff;
     transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
-  };
-  &:checked { background-color: rgb(0, 115, 236) };
-  &:checked:before { left: 24px }
+  }
+
+  ;
+
+  &:checked {
+    background-color: rgb(0, 115, 236)
+  }
+
+  ;
+
+  &:checked:before {
+    left: 24px
+  }
 }

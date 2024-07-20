@@ -1,14 +1,51 @@
-@keyframes fadeInOpacity {0% {opacity: 0} 100% {opacity: 1}};
-@keyframes rotate { 0% { transform: rotate(0deg) } 100% { transform: rotate(360deg) }};
-@keyframes flickerAnimation {0%   { opacity: 1 } 50%  { opacity: 0 } 100% { opacity: 1 }};
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
 @media screen and (max-width: 600px) {
-  html, body, table, input, .calendar { 
-    font-size: 13px; 
-  };
+
+  html,
+  body,
+  table,
+  input,
+  .calendar {
+    font-size: 13px;
+  }
+
   .calendar-day {
     width: 10vw;
     height: 10vw;
-  };
+  }
 }
 
 $Primary-color: rgb(200, 200, 255);
@@ -24,11 +61,17 @@ $Primary-color: rgb(200, 200, 255);
   white-space: nowrap;
   color: white;
   cursor: pointer;
-  &:hover { background-color: lighten($theme, 10%) };
-  &:active { background-color: darken($theme, 5%) }
+
+  &:hover {
+    background-color: lighten($theme, 10%)
+  }
+
+  &:active {
+    background-color: darken($theme, 5%)
+  }
 }
 
-html { 
+html {
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -38,11 +81,13 @@ html {
   animation-timing-function: ease-in;
   animation-duration: 1s;
 }
+
 body {
   background-color: lighten($Primary-color, 8%);
   border-radius: 5px;
   padding: 4px;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -54,27 +99,40 @@ form {
   border: none;
   align-items: center;
 }
-input { 
-  border: solid 1px #ccc; 
+
+input {
+  border: solid 1px #ccc;
   border-radius: 5px;
-  &:hover { background-color: rgb(220, 250, 255) };
-  &:focus { background-color: rgb(220, 250, 255) }; 
+
+  &:hover {
+    background-color: rgb(220, 250, 255)
+  }
+
+  &:focus {
+    background-color: rgb(220, 250, 255)
+  }
 }
+
 table {
   width: 100%;
   height: fit-content;
   border-collapse: collapse;
   background-color: lighten($Primary-color, 12%);
-  
+
   tr {
-    &:hover { background-color: lighten($Primary-color, 9%) };
+    &:hover {
+      background-color: lighten($Primary-color, 9%)
+    }
+
     th {
       background-color: lighten($Primary-color, 12%);
       position: sticky;
       top: 0;
       z-index: 1;
     }
-    th, td {
+
+    th,
+    td {
       padding: 3px;
       border-bottom: 1px solid #ddd;
       text-align: center;
@@ -86,18 +144,27 @@ table {
     }
   }
 }
-.overflow {width: 100%; overflow: auto;}
-.FOR { background-color: lighten($Primary-color, 6%) }
+
+.overflow {
+  width: 100%;
+  overflow: auto;
+}
+
+.FOR {
+  background-color: lighten($Primary-color, 6%)
+}
+
 .fade-in {
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 0.3s;
 }
-.newsButton { 
-  @include buttonStyle($theme: rgb(255, 208, 0));
+
+.newsButton {
   font-size: 10px;
   padding: 2px;
   height: 20px;
   width: 115px;
+  @include buttonStyle($theme: rgb(255, 208, 0));
 }

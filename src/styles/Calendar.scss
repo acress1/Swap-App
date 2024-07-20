@@ -6,6 +6,7 @@
   font-size: 17px;
   text-align: center;
 }
+
 .calendar-month {
   display: flex;
   flex-wrap: wrap;
@@ -14,6 +15,7 @@
   align-content: left;
   margin: 2px;
 }
+
 .calendar-day {
   display: grid;
   grid-template-columns: 33% 33% 33%;
@@ -21,34 +23,47 @@
   align-items: center;
   justify-content: center;
   background-color: white;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   border-radius: 5px;
   margin: 1px;
-  width: 5vw; 
+  width: 5vw;
   height: 5vw;
   cursor: pointer;
 }
-.calendar-day:hover { background-color: App.$Primary-color }
-.calendar-day:active { background-color: darken(App.$Primary-color, 5%)}
+
+.calendar-day:hover {
+  background-color: App.$Primary-color
+}
+
+.calendar-day:active {
+  background-color: darken(App.$Primary-color, 5%)
+}
+
 .selected {
   background-color: App.$Primary-color;
   color: white;
 }
-.outdated, .outdated:hover, .outdated:active {
+
+.outdated,
+.outdated:hover,
+.outdated:active {
   background-color: grey;
-  color:lightgray;
+  color: lightgray;
   cursor: default;
 }
+
 .week-day {
   grid-area: 1 / 2 / 2 / 3;
   font-size: 50%;
   justify-self: center;
 }
+
 .day-number {
   grid-area: 2 / 2 / 3 / 3;
   font-size: 95%;
   justify-self: center;
 }
+
 .dot {
   grid-area: 3 / 2 / 4 / 3;
   background-color: rgb(255, 0, 0);
@@ -61,7 +76,8 @@
   -o-animation: flickerAnimation 4s infinite;
   animation: flickerAnimation 4s infinite;
 }
+
 .overview-button {
-  @include App.buttonStyle($theme: rgb(255, 0, 0)); 
   width: 115px;
+  @include App.buttonStyle($theme: rgb(255, 0, 0));
 }
