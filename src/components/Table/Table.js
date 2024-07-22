@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import SearchBox from "./Searchbox";
-import 'styles/main.scss';
+import 'styles/ViewBoxes.scss';
 
 export default function Table ({ swapData }) {
 

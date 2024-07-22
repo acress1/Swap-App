@@ -1,5 +1,5 @@
 import React from "react";
-import 'styles/main.scss';
+import 'styles/ViewBoxes.scss';
 
 export default function NewsBox() {
     

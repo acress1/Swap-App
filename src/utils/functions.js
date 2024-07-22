@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const BASEURL = "https://localhost:3000";
+export const BASEURL = "https://swap-app-server.onrender.com";
 
 export const todayDate = new Date();
 

@@ -1,0 +1,88 @@
+@use "src/styles/App.scss";
+@use "src/styles/InlineForm.scss";
+
+.calendar {
+  justify-content: center;
+  font-size: 17px;
+  text-align: center;
+}
+
+.calendar-month {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: lighter;
+  justify-content: center;
+  align-content: left;
+  margin: 2px;
+}
+
+.calendar-day {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1px;
+  width: 5vw;
+  height: 5vw;
+  cursor: pointer;
+
+  &:hover {
+    background-color: App.$Primary-color
+  }
+
+  &:active {
+    background-color: darken(App.$Primary-color, 5%)
+  }
+}
+
+.week-day {
+  grid-area: 1 / 2 / 2 / 3;
+  font-size: 50%;
+  justify-self: center;
+}
+
+.day-number {
+  grid-area: 2 / 2 / 3 / 3;
+  font-size: 95%;
+  justify-self: center;
+}
+
+.selected {
+  background-color: App.$Primary-color;
+  color: white;
+}
+
+.outdated {
+  background-color: grey;
+  color: lightgray;
+  cursor: default;
+
+  &:hover,
+  &:active {
+    background-color: grey;
+    color: lightgray;
+    cursor: default;
+  }
+}
+
+.dot {
+  grid-area: 3 / 2 / 4 / 3;
+  background-color: rgb(255, 0, 0);
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+  justify-self: center;
+  -webkit-animation: flickerAnimation 4s infinite;
+  -moz-animation: flickerAnimation 4s infinite;
+  -o-animation: flickerAnimation 4s infinite;
+  animation: flickerAnimation 4s infinite;
+}
+
+.overview-button {
+  width: 115px;
+  @include App.buttonStyle($theme: rgb(255, 0, 0), $width: 115px);
+}

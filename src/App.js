@@ -8,7 +8,7 @@ import Version from "components/Version.js";
 import useGetSwapData from "hooks/useGetSwapData.js";
 import Loader from "components/Loader.js";
 import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
-import 'styles/main.scss';
+import 'styles/App.scss';
 
 
 export default function App() {

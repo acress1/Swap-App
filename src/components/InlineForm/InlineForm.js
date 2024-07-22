@@ -4,7 +4,7 @@ import InlineFormHead from "./InlineFormHead";
 import InlineFormBody from "./InlineFormBody";
 import LinkedButtons from "./LinkedButtons";
 import { postSwapData } from "../../utils/functions";
-import 'styles/main.scss';
+import 'styles/InlineForm.scss';
 
 export default function InlineForm ({ BASEURL, isOutdated }) {
 
@@ -60,7 +60,7 @@ export default function InlineForm ({ BASEURL, isOutdated }) {
           </table>
         </div>
         <button 
-          className="submit" 
+          className="submit-button" 
           type="submit"
           >Submit</button>  
       </form>

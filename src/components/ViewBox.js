@@ -1,5 +1,5 @@
 import Table from "./Table/Table";
-import 'styles/main.scss';
+import 'styles/ViewBoxes.scss';
 
 export default function ViewBox ({ swapData, selectedDay, daySwapData }) {
 

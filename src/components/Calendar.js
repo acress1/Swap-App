@@ -1,6 +1,6 @@
 import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth } from 'date-fns';
 import ViewBox from './ViewBox';
-import 'styles/main.scss';
+import 'styles/Calendar.scss';
 
 export default function Calendar ({ todayDate, swapData, daysWithData, daySwapData, isOutdated, showQuickView, showDayBox, toggleQuickViewBox, selectedDay, toggleDayBox }) {
   
