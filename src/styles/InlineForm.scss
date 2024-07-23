@@ -7,7 +7,7 @@
 }
 
 .submit-button {
-  @include App.buttonStyle($theme: darken(App.$Primary-color, 25%), $width: 100px)
+  @include App.buttonStyle($theme: darken(App.$Primary-color, 25%), $width: 115px)
 }
 
 .swap-form-button,
@@ -24,8 +24,7 @@
   height: 16px;
   background:
     linear-gradient(#fff 0 0),
-    linear-gradient(#fff 0 0),
-    rgb(0, 115, 236);
+    linear-gradient(#fff 0 0);
   background-position: center;
   background-size: 70% 3px, 3px 70%;
   background-repeat: no-repeat;
@@ -34,9 +33,7 @@
 
 .delete-line {
   height: 16px;
-  background:
-    linear-gradient(#fff 0 0),
-    rgb(255, 0, 0);
+  background: linear-gradient(#fff 0 0);
   background-position: center;
   background-size: 60% 3px, 3px 60%;
   background-repeat: no-repeat;

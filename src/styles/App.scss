@@ -10,7 +10,7 @@ $Primary-color: rgb(200, 200, 255);
 @mixin buttonStyle ($theme, $width) {
   background-color: $theme;
   width: $width;
-  margin: 2px;
+  margin: 3px;
   border-radius: 3px;
   padding: 5px;
   border-style: none;
@@ -23,8 +23,6 @@ $Primary-color: rgb(200, 200, 255);
   &:hover {
     background-color: lighten($theme, 5%)
   }
-
-  ;
 
   &:active {
     background-color: darken($theme, 5%)
