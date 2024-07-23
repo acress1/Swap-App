@@ -1,7 +1,7 @@
 import React from "react";
 import 'styles/ViewBoxes.scss';
 
-export default function NewsBox() {
+const NewsBox = () => {
     
     return(
         <div className="viewBox newsBox"> 
@@ -12,3 +12,5 @@ export default function NewsBox() {
         </div>
     );
 };
+
+export default NewsBox;

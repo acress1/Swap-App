@@ -1,5 +1,5 @@
 
-export default function LinkedButtons() {
+const LinkedButtons = () => {
     
     return(
         <div className="linked-button-grid">
@@ -24,3 +24,5 @@ export default function LinkedButtons() {
         </div>
     );
 };
+
+export default LinkedButtons;

@@ -1,5 +1,5 @@
 
-export default function TableHead() {
+const TableHead = () => {
 
     return(
         <thead>
@@ -20,3 +20,5 @@ export default function TableHead() {
         </thead>
     );
 };
+
+export default TableHead;

@@ -1,5 +1,5 @@
 
-export default function InlineFormHead() {
+const InlineFormHead = () => {
 
     return(
         <thead>
@@ -24,3 +24,5 @@ export default function InlineFormHead() {
         </thead>
     );
 };
+
+export default InlineFormHead;

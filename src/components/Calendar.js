@@ -2,7 +2,18 @@ import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameM
 import ViewBox from './ViewBox';
 import 'styles/Calendar.scss';
 
-export default function Calendar ({ todayDate, swapData, daysWithData, daySwapData, isOutdated, showQuickView, showDayBox, toggleQuickViewBox, selectedDay, toggleDayBox }) {
+const Calendar = ({ 
+  todayDate, 
+  swapData, 
+  daysWithData, 
+  daySwapData, 
+  isOutdated, 
+  showQuickView, 
+  showDayBox, 
+  toggleQuickViewBox, 
+  selectedDay, 
+  toggleDayBox 
+}) => {
   
   const currentMonth = startOfMonth(todayDate);
   const nextMonth = startOfMonth(addMonths(currentMonth, 1));
@@ -73,3 +84,5 @@ export default function Calendar ({ todayDate, swapData, daysWithData, daySwapDa
     </>
   );
 };
+
+export default Calendar;

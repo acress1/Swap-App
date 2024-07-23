@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { format } from 'date-fns';
 import NewsBox from './NewsBox';
 
-export default function Greetings ({ todayDate }) {
+const Greetings = ({ todayDate }) => {
 
     const [showNewsBox, setShowNewsBox] = useState (false);
     const formatedTodayDate = format(todayDate, 'MMMM do, y O');
@@ -27,3 +27,5 @@ export default function Greetings ({ todayDate }) {
         </div>
     );
 };
+
+export default Greetings;

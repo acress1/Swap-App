@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InlineFormBody({changeHandlers}) {
+const InlineFormBody = ({changeHandlers}) => {
 
     const {shifts, handleChange, addShift, deleteShift, ovSwitch} = changeHandlers;
 
@@ -158,3 +158,5 @@ export default function InlineFormBody({changeHandlers}) {
         </>
     );
 };
+
+export default InlineFormBody;

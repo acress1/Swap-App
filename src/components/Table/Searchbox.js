@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SearchBox({ search, setSearch }) {
+const SearchBox = ({ search, setSearch }) => {
 
     return(
         <div style={{marginBottom: '2px'}}>
@@ -13,3 +13,5 @@ export default function SearchBox({ search, setSearch }) {
         </div>
     );
 };
+
+export default SearchBox;

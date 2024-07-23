@@ -1,7 +1,7 @@
 import React from "react";
 import { format } from 'date-fns';
 
-export default function Version({ todayDate }){
+const Version = ({ todayDate }) => {
 
     const currentYear = format(todayDate, 'yyyy');
 
@@ -10,5 +10,7 @@ export default function Version({ todayDate }){
             <div> © 2023 - {currentYear} </div>
             <div style={{fontSize: '8px'}}> V1.03.2024 </div>
         </>
-    )
-}
+    );
+};
+
+export default Version;

@@ -1,28 +1,30 @@
 import React, {useState} from "react";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
-import SearchBox from "./Searchbox";
+import SearchBox from "./SearchBox";
 import 'styles/ViewBoxes.scss';
 
-export default function Table ({ swapData }) {
+const Table = ({ swapData }) => {
 
     const [search, setSearch] = useState();
     
     return (
-            <>
-                <SearchBox
+        <>
+            <SearchBox
+                search={search}
+                setSearch={setSearch}
+            />
+            <div className="overflow">
+            <table>
+                <TableHead />
+                <TableBody 
+                    swapData={swapData}
                     search={search}
-                    setSearch={setSearch}
                 />
-                <div className="overflow">
-                <table>
-                    <TableHead />
-                    <TableBody 
-                        swapData={swapData}
-                        search={search}
-                    />
-                </table>
-                </div>
-            </>
+            </table>
+            </div>
+        </>
     );
 };
+
+export default Table;

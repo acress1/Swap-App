@@ -1,7 +1,7 @@
 import React from "react";
 import { matchesSearch } from "utils/functions";
 
-export default function TableBody ({ swapData, search }) {
+const TableBody = ({ swapData, search }) => {
 
     const filteredSwapData = swapData.filter(dataItem => matchesSearch({dataItem, search}));
 
@@ -74,3 +74,5 @@ export default function TableBody ({ swapData, search }) {
         </>
     );
 };
+
+export default TableBody;

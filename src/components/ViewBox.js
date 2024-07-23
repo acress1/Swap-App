@@ -1,7 +1,7 @@
 import Table from "./Table/Table";
 import 'styles/ViewBoxes.scss';
 
-export default function ViewBox ({ swapData, selectedDay, daySwapData }) {
+const ViewBox = ({ swapData, selectedDay, daySwapData }) => {
 
     return (
         <>
@@ -17,3 +17,5 @@ export default function ViewBox ({ swapData, selectedDay, daySwapData }) {
         </>
     );
 };
+
+export default ViewBox;

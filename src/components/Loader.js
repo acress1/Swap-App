@@ -1,6 +1,8 @@
 
-export default function Loader () {
+const Loader = () => {
     return(
         <div className="loading-spinner"></div>
     );
 };
+
+export default Loader;

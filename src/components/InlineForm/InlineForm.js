@@ -6,7 +6,7 @@ import LinkedButtons from "./LinkedButtons";
 import { postSwapData } from "../../utils/functions";
 import 'styles/InlineForm.scss';
 
-export default function InlineForm ({ BASEURL, isOutdated }) {
+const InlineForm = ({ BASEURL, isOutdated }) => {
 
   const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
@@ -68,3 +68,5 @@ export default function InlineForm ({ BASEURL, isOutdated }) {
     </>
   )
 };
+
+export default InlineForm;

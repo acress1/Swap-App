@@ -11,7 +11,7 @@ import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
 import 'styles/App.scss';
 
 
-export default function App() {
+const App = () => {
 
   const { loading, swapData, daysWithData, daySwapData, getDaySwapData } = useGetSwapData(BASEURL);
 
@@ -62,4 +62,6 @@ export default function App() {
       <ToastContainer />
     </>
   );
-}
+};
+
+export default App;
