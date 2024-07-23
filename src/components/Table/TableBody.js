@@ -10,9 +10,9 @@ const TableBody = ({ swapData, search }) => {
             <tbody>
                 { filteredSwapData && filteredSwapData.length > 0 ? (
                     filteredSwapData
-                    .map(dataItem => (
+                    .map((dataItem, index) => (
 
-                        <tr key={dataItem.Swap_id}>
+                        <tr key={index}>
                             <td className="Date">{dataItem.Date}</td>
                             <td className="Outbound">{dataItem.Outbound}</td>
                             <td className="Inbound">{dataItem.Inbound}</td>
