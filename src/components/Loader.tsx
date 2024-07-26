@@ -1,6 +1,7 @@
+import React from "react";
 
-const Loader = () => {
-    return(
+const Loader: React.FC = () => {
+    return (
         <div className="loading-spinner"></div>
     );
 };

@@ -6,7 +6,7 @@ import Calendar from 'components/Calendar.js';
 import Greetings from "components/Greetings.js";
 import Version from "components/Version.js";
 import useGetSwapData from "hooks/useGetSwapData.js";
-import Loader from "components/Loader.js";
+import Loader from "components/Loader";
 import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
 import 'styles/App.scss';
 
@@ -27,7 +27,7 @@ const App = () => {
   
   const toggleDayBox = (day) => { 
     setSelectedDay(day);
-    setShowDayBox(true);
+    setShowDayBox(!showDayBox);
     setShowQuickView(false);
     getDaySwapData(day);
   };
