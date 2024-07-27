@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import InlineFormHead from "./InlineFormHead";
 import InlineFormBody from "./InlineFormBody";
 import LinkedButtons from "./LinkedButtons";
-import { postSwapData } from "../../utils/functions";
+import postSwapData from "utils/postSwapData";
 import 'styles/InlineForm.scss';
 
 const InlineForm = ({ BASEURL, isOutdated }) => {
@@ -17,7 +17,20 @@ const InlineForm = ({ BASEURL, isOutdated }) => {
   };
 
   const addShift = () => {
-    const newShifts = [...shifts, {isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}];
+    const newShifts = [
+      ...shifts, 
+      {
+        isOvernight: false, 
+        Date: '', 
+        Outbound: '', 
+        Inbound: '', 
+        Position:'', 
+        Early: false, 
+        Late: false, 
+        LTA: false, 
+        DO: false
+      }
+    ];
     setShifts(newShifts)
   };
 
@@ -44,27 +57,29 @@ const InlineForm = ({ BASEURL, isOutdated }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input 
-          name="Email"
-          type="email" 
-          placeholder="Email"  
-          style={{marginBottom: '4px'}} 
-        />
-        <div className="overflow">
-          <table>
-            <InlineFormHead />
-            <InlineFormBody
-              changeHandlers={{shifts, handleChange, addShift, deleteShift, ovSwitch}}
+      <div className="inlineForm">
+        <form onSubmit={handleSubmit}>
+            <input 
+              name="Email"
+              type="email" 
+              placeholder="Email"  
+              style={{marginBottom: '4px'}} 
             />
-          </table>
-        </div>
-        <button 
-          className="submit-button" 
-          type="submit"
-          >Submit</button>  
-      </form>
-      <LinkedButtons />
+            <div className="overflow">
+              <table>
+                <InlineFormHead />
+                <InlineFormBody
+                  changeHandlers={{shifts, handleChange, addShift, deleteShift, ovSwitch}}
+                />
+              </table>
+            </div>
+            <button 
+              className="submit-button" 
+              type="submit"
+              >Submit</button>  
+          </form>
+          <LinkedButtons />
+      </div>
     </>
   )
 };

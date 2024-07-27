@@ -1,5 +1,5 @@
 import React from "react";
-import { matchesSearch } from "utils/functions";
+import matchesSearch from "utils/matchesSearch";
 
 const TableBody = ({ swapData, search }) => {
 
