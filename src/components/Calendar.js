@@ -53,17 +53,17 @@ const Calendar = ({
                       <div 
                         key={day}
                         className={
-                          isOutdated(day) ? 'calendar-day outdated' : 
+                          isOutdated(todayDate, day) ? 'calendar-day outdated' : 
                             selectedDay && formatedDay === formatedSelectedDay ? 
                               'calendar-day selected' :
                               'calendar-day'
                         } 
-                        onClick={() => { isOutdated(day) ? toggleDayBox(null) : toggleDayBox(day) }}
+                        onClick={() => { isOutdated(todayDate, day) ? toggleDayBox(null) : toggleDayBox(day) }}
                       >
                         <div className='week-day'>{weekDay}</div>
                         <div className='day-number'>{dayNumber}</div>
                         <div className={
-                          isOutdated(day) ? '' :
+                          isOutdated(todayDate, day) ? '' :
                             hasDate ? 'dot' : 
                               null
                           }

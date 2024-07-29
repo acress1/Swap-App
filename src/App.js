@@ -5,13 +5,17 @@ import InlineForm from 'components/InlineForm/InlineForm.js';
 import Calendar from 'components/Calendar.js';
 import Greetings from "components/Greetings.js";
 import Version from "components/Version.js";
-import useGetSwapData from "hooks/useGetSwapData.js";
 import Loader from "components/Loader";
-import { BASEURL, todayDate, isOutdated } from "utils/functions.js";
+import useGetSwapData from "hooks/useGetSwapData.js";
+import isOutdated from "utils/isOutdated";
 import 'styles/App.scss';
 
 
 const App = () => {
+
+  const BASEURL = "https://swap-app-server.onrender.com";
+
+  const todayDate = new Date();
 
   const { loading, swapData, daysWithData, daySwapData, getDaySwapData } = useGetSwapData(BASEURL);
 
@@ -39,6 +43,7 @@ const App = () => {
       />
       <InlineForm 
         BASEURL={BASEURL}
+        todayDate={todayDate}
         isOutdated={isOutdated}
       />
       { loading ?
@@ -47,7 +52,7 @@ const App = () => {
         todayDate={todayDate} 
         swapData={swapData} 
         daysWithData={daysWithData} 
-        daySwapData={daySwapData} 
+        daySwapData={daySwapData}
         isOutdated={isOutdated} 
         showQuickView={showQuickView} 
         showDayBox={showDayBox} 

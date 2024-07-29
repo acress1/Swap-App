@@ -6,7 +6,7 @@ import LinkedButtons from "./LinkedButtons";
 import postSwapData from "utils/postSwapData";
 import 'styles/InlineForm.scss';
 
-const InlineForm = ({ BASEURL, isOutdated }) => {
+const InlineForm = ({ BASEURL, todayDate, isOutdated }) => {
 
   const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
@@ -48,7 +48,7 @@ const InlineForm = ({ BASEURL, isOutdated }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(new Date(shift.Date)));
+    const isAnyOutdated = shifts.some(shift => shift.Date && isOutdated(todayDate, new Date(shift.Date)));
 
     isAnyOutdated ? 
       toast.error('Oops... You can\'t submit an outdated swap 🤓') 
