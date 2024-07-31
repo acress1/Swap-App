@@ -21,26 +21,26 @@ const postSwapData = ({ BASEURL, shifts, e }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Form submission failed');
-          }
-          return response.json()
-        })
-        .then(data => {
-          console.log('Success', data);
-  
-          if (shift.Position === "AV" || shift.Position === "Platform") { toast.success(`${shift.Position} on ${shift.Date} submitted successfully!`) }
-          else { toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`) }
-  
-          setTimeout(function () { window.location.reload() }, 5000);
-        })
-        .catch(error => {
-          console.log(error);
-  
-          if (shift.Position === "AV" || shift.Position === "Platform") { toast.error(`${shift.Position} on ${shift.Date} submission failed`) }
-          else { toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`) }
-        });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Form submission failed');
+        }
+        return response.json()
+      })
+      .then(data => {
+        console.log('Success', data);
+
+        if (shift.Position === "AV" || shift.Position === "Platform") { toast.success(`${shift.Position} on ${shift.Date} submitted successfully!`) }
+        else { toast.success(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submitted successfully!`) }
+
+        setTimeout(function () { window.location.reload() }, 5000);
+      })
+      .catch(error => {
+        console.log(error);
+
+        if (shift.Position === "AV" || shift.Position === "Platform") { toast.error(`${shift.Position} on ${shift.Date} submission failed`) }
+        else { toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`) }
+      });
     });
 };
 
