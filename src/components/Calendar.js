@@ -1,23 +1,37 @@
+import { useState } from 'react';
 import { format, addMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth } from 'date-fns';
 import ViewBox from './ViewBox';
+import isOutdated from 'utils/isOutdated';
 import 'styles/Calendar.scss';
 
 const Calendar = ({ 
   todayDate, 
   swapData, 
   daysWithData, 
-  daySwapData, 
-  isOutdated, 
-  showQuickView, 
-  showDayBox, 
-  toggleQuickViewBox, 
-  selectedDay, 
-  toggleDayBox 
+  daySwapData,
+  getDaySwapData
 }) => {
   
   const currentMonth = startOfMonth(todayDate);
   const nextMonth = startOfMonth(addMonths(currentMonth, 1));
   const monthsInCalendar = [currentMonth, nextMonth];
+
+  const [showQuickView, setShowQuickView] = useState(false);
+  const [showDayBox, setShowDayBox] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(null);
+
+  const toggleQuickViewBox = () => {
+    setSelectedDay(null);
+    setShowQuickView(!showQuickView);
+    setShowDayBox(false);
+  };
+
+  const toggleDayBox = (day) => {
+    setSelectedDay(day);
+    setShowDayBox(!showDayBox);
+    setShowQuickView(false);
+    getDaySwapData(day);
+  };
 
   return (
     <>

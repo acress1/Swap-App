@@ -4,9 +4,10 @@ import InlineFormHead from "./InlineFormHead";
 import InlineFormBody from "./InlineFormBody";
 import LinkedButtons from "./LinkedButtons";
 import postSwapData from "utils/postSwapData";
+import isOutdated from "utils/isOutdated";
 import 'styles/InlineForm.scss';
 
-const InlineForm = ({ BASEURL, todayDate, isOutdated }) => {
+const InlineForm = ({ BASEURL, todayDate }) => {
 
   const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
 
