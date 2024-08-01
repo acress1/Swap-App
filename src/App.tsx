@@ -5,7 +5,7 @@ import Calendar from 'components/Calendar.js';
 import Greetings from "components/Greetings";
 import Version from "components/Version";
 import Loader from "components/Loader";
-import useGetSwapData from "hooks/useGetSwapData.js";
+import useGetSwapData from "hooks/useGetSwapData";
 import 'styles/App.scss';
 
 

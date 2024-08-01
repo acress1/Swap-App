@@ -9,7 +9,21 @@ import 'styles/InlineForm.scss';
 
 const InlineForm = ({ BASEURL, todayDate }) => {
 
-  const [shifts, setShifts] = useState([{isOvernight: false, Date: '', Outbound: '', Inbound: '', Position:'', Early: false, Late: false, LTA: false, DO: false}]);
+  const [shifts, setShifts] = useState(
+    [
+      {
+        isOvernight: false, 
+        Date: '', 
+        Outbound: '', 
+        Inbound: '', 
+        Position:'', 
+        Early: false, 
+        Late: false, 
+        LTA: false, 
+        DO: false
+      }
+    ]
+  );
 
   const handleChange = (index, fieldName, fieldValue) => {
     const updatedShifts = [...shifts];

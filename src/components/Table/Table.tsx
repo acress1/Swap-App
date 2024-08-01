@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { swapDataItems } from "types";
+import { swapDataItem } from "types";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import SearchBox from "./SearchBox";
 import 'styles/ViewBoxes.scss';
 
-const Table = ({ swapData }: { swapData: swapDataItems[] }) => {
+const Table = ({ swapData }: { swapData: swapDataItem[] }) => {
 
     const [search, setSearch] = useState('');
 

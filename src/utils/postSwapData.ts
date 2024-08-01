@@ -1,26 +1,31 @@
 import { toast } from "react-toastify";
+import { shiftsItem } from "types";
 
-const postSwapData = ({ BASEURL, shifts, e }) => {
+const postSwapData = ({ BASEURL, shifts, e }: {
+  BASEURL: string,
+  shifts: shiftsItem[],
+  e: React.BaseSyntheticEvent<HTMLInputElement>
+}) => {
 
-    shifts.forEach(shift => {
-      const formData = {
-        Email: e.target.elements.Email.value,
-        Date: shift.Date,
-        Outbound: shift.Outbound,
-        Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
-        Position: shift.Position,
-        Early: shift.Early,
-        Late: shift.Late,
-        LTA: shift.LTA,
-        DO: shift.DO,
-        Note: shift.Note
-      };
-  
-      fetch(`${BASEURL}/formData`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
+  shifts.forEach(shift => {
+    const formData = {
+      Email: e.target.elements.Email.value,
+      Date: shift.Date,
+      Outbound: shift.Outbound,
+      Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,
+      Position: shift.Position,
+      Early: shift.Early,
+      Late: shift.Late,
+      LTA: shift.LTA,
+      DO: shift.DO,
+      Note: shift.Note
+    };
+
+    fetch(`${BASEURL}/formData`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error('Form submission failed');
@@ -41,7 +46,7 @@ const postSwapData = ({ BASEURL, shifts, e }) => {
         if (shift.Position === "AV" || shift.Position === "Platform") { toast.error(`${shift.Position} on ${shift.Date} submission failed`) }
         else { toast.error(`${shift.Outbound} - ${shift.Inbound} on ${shift.Date} submission failed`) }
       });
-    });
+  });
 };
 
 export default postSwapData;

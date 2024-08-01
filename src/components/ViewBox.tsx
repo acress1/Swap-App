@@ -1,11 +1,11 @@
-import { swapDataItems } from "types";
+import { swapDataItem } from "types";
 import Table from "./Table/Table";
 import 'styles/ViewBoxes.scss';
 
 const ViewBox = ({ swapData, selectedDay, daySwapData }: {
-    swapData: swapDataItems[],
+    swapData: swapDataItem[],
     selectedDay: Date,
-    daySwapData: swapDataItems[]
+    daySwapData: swapDataItem[]
 }) => {
 
     return (
