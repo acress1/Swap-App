@@ -1,8 +1,8 @@
 
 export type swapDataItem = {
     Date: string;
-    Outbound: string;
-    Inbound: string;
+    Outbound?: number;
+    Inbound?: number;
     Position: string;
     Email: string;
     Early: boolean;
@@ -16,12 +16,12 @@ export type swapDataItem = {
 export type shiftsItem = {
     Date: string,
     isOvernight: boolean,
-    Outbound: number,
-    Inbound: number,
+    Outbound?: number,
+    Inbound?: number,
     Position: string,
     Early: boolean,
     Late: boolean,
     LTA: boolean,
     DO: boolean,
-    Note: string
+    Note?: string
 }

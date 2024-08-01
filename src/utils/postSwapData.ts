@@ -1,15 +1,15 @@
 import { toast } from "react-toastify";
 import { shiftsItem } from "types";
 
-const postSwapData = ({ BASEURL, shifts, e }: {
+const postSwapData = ({ BASEURL, shifts, event }: {
   BASEURL: string,
   shifts: shiftsItem[],
-  e: React.BaseSyntheticEvent<HTMLInputElement>
+  event: React.BaseSyntheticEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>
 }) => {
 
   shifts.forEach(shift => {
     const formData = {
-      Email: e.target.elements.Email.value,
+      Email: event.target.elements.Email.value,
       Date: shift.Date,
       Outbound: shift.Outbound,
       Inbound: shift.isOvernight ? shift.Inbound + '+1d' : shift.Inbound,

@@ -1,43 +1,55 @@
-import React from "react";
+import { shiftsItem } from "types";
 
-const InlineFormBody = ({changeHandlers}) => {
+type ChangeHandlers = {
+    shifts: shiftsItem[];
+    handleChange: (index: number, fieldName: keyof shiftsItem, fieldValue: string | boolean) => void;
+    addShift: () => void;
+    deleteShift: (index: number) => void;
+    ovSwitch: (index: number) => void;
+}
 
-    const {shifts, handleChange, addShift, deleteShift, ovSwitch} = changeHandlers;
+type InlineFormBodyProps = {
+    changeHandlers: ChangeHandlers;
+}
 
-    return(
+const InlineFormBody: React.FC<InlineFormBodyProps> = ({ changeHandlers }) => {
+
+    const { shifts, handleChange, addShift, deleteShift, ovSwitch } = changeHandlers;
+
+    return (
         <>
             {shifts.map((shift, index) => {
 
                 const hideInputs = shift.Position === "AV" || shift.Position === "Platform";
 
-                return(
+                return (
                     <tbody key={index}>
                         <tr>
                             <td>
-                                <button 
-                                    className="add-line" 
-                                    type="button" 
-                                    onClick= {addShift} />
-                                <button 
-                                    className="delete-line" 
-                                    type="button" 
-                                    onClick= {() => deleteShift(index)} 
+                                <button
+                                    className="add-line"
+                                    type="button"
+                                    onClick={addShift} />
+                                <button
+                                    className="delete-line"
+                                    type="button"
+                                    onClick={() => deleteShift(index)}
                                 />
                             </td>
-                            <td> 
+                            <td>
                                 <input
-                                    name={`Position-${index}`} 
-                                    type="radio" 
-                                    value="AV" 
+                                    name={`Position-${index}`}
+                                    type="radio"
+                                    value="AV"
                                     onChange={e => handleChange(index, 'Position', 'AV')}
                                 >
                                 </input>
                             </td>
-                            <td> 
+                            <td>
                                 <input
-                                    name={`Position-${index}`} 
-                                    type="radio" 
-                                    value="Platform" 
+                                    name={`Position-${index}`}
+                                    type="radio"
+                                    value="Platform"
                                     onChange={e => handleChange(index, 'Position', 'Platform')}
                                 >
                                 </input>
@@ -53,7 +65,7 @@ const InlineFormBody = ({changeHandlers}) => {
                             </td>
                             <td>
                                 <input
-                                    className={hideInputs ? "hidden": null}
+                                    className={hideInputs ? "hidden" : ''}
                                     type="number"
                                     placeholder="9###"
                                     min="9000"
@@ -65,7 +77,7 @@ const InlineFormBody = ({changeHandlers}) => {
                             </td>
                             <td>
                                 <input
-                                    className={hideInputs ? "hidden": null}
+                                    className={hideInputs ? "hidden" : ''}
                                     type="number"
                                     placeholder="9###"
                                     min="9000"
@@ -77,7 +89,7 @@ const InlineFormBody = ({changeHandlers}) => {
                             </td>
                             <td>
                                 <input
-                                    className={hideInputs ? "hidden": "switch"}
+                                    className={hideInputs ? "hidden" : "switch"}
                                     type="checkbox"
                                     onChange={() => ovSwitch(index)}
                                 >
@@ -115,7 +127,7 @@ const InlineFormBody = ({changeHandlers}) => {
                                 <input
                                     type="checkbox"
                                     checked={shift.Early}
-                                    onChange={e => handleChange(index, "Early",e.target.checked)}
+                                    onChange={e => handleChange(index, "Early", e.target.checked)}
                                 >
                                 </input>
                             </td>
@@ -123,7 +135,7 @@ const InlineFormBody = ({changeHandlers}) => {
                                 <input
                                     type="checkbox"
                                     checked={shift.Late}
-                                    onChange={e => handleChange(index, "Late",e.target.checked)}
+                                    onChange={e => handleChange(index, "Late", e.target.checked)}
                                 >
                                 </input>
                             </td>
@@ -131,7 +143,7 @@ const InlineFormBody = ({changeHandlers}) => {
                                 <input
                                     type="checkbox"
                                     checked={shift.LTA}
-                                    onChange={e => handleChange(index, "LTA",e.target.checked)}
+                                    onChange={e => handleChange(index, "LTA", e.target.checked)}
                                 >
                                 </input>
                             </td>
@@ -139,7 +151,7 @@ const InlineFormBody = ({changeHandlers}) => {
                                 <input
                                     type="checkbox"
                                     checked={shift.DO}
-                                    onChange={e => handleChange(index, "DO",e.target.checked)}
+                                    onChange={e => handleChange(index, "DO", e.target.checked)}
                                 >
                                 </input>
                             </td>
@@ -147,7 +159,7 @@ const InlineFormBody = ({changeHandlers}) => {
                                 <input
                                     type="text"
                                     placeholder="Note"
-                                    onChange={e => handleChange(index, "Note",e.target.value)}
+                                    onChange={e => handleChange(index, "Note", e.target.value)}
                                 >
                                 </input>
                             </td>

@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import InlineForm from 'components/InlineForm/InlineForm.js';
-import Calendar from 'components/Calendar.js';
+import InlineForm from 'components/InlineForm/InlineForm';
+import Calendar from 'components/Calendar';
 import Greetings from "components/Greetings";
 import Version from "components/Version";
 import Loader from "components/Loader";

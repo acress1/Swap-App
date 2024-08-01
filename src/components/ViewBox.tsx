@@ -4,7 +4,7 @@ import 'styles/ViewBoxes.scss';
 
 const ViewBox = ({ swapData, selectedDay, daySwapData }: {
     swapData: swapDataItem[],
-    selectedDay: Date,
+    selectedDay: Date | undefined,
     daySwapData: swapDataItem[]
 }) => {
 
