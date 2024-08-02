@@ -36,7 +36,7 @@ describe('postSwapData.ts', () => {
       json: () => ({ data: '12345' })
     });
 
-    postSwapData({ BASEURL, shifts, e: event });
+    postSwapData({ BASEURL, shifts, event });
 
     expect(fetch).toHaveBeenCalledWith(`${BASEURL}/formData`, {
       method: 'POST',
@@ -67,7 +67,7 @@ describe('postSwapData.ts', () => {
         json: async () => ({ data: '12345' })
       });
 
-      postSwapData({ BASEURL, shifts, e: event });
+      postSwapData({ BASEURL, shifts, event });
 
       jest.advanceTimersByTime(5000);
       expect(window.location.reload).toHaveBeenCalled();
