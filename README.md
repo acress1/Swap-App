@@ -2,6 +2,13 @@
 
 Branches:
 
+- 3.08.2024 > Update 7: https://github.com/MathieuBk0/swap-app/tree/3.08.2024
+
+  <div>
+    <img src="" height= 200 />
+    <span><img src="" height= 200 /></span>
+  </div>
+
 - 1.06.2024 > Update 6: https://github.com/MathieuBk0/swap-app/tree/1.06.2024
 
   <div>
