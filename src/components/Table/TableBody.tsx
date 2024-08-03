@@ -68,7 +68,7 @@ const TableBody = ({ swapData, search }: {
                         ))
                 ) : (
                     <tr>
-                        <td>
+                        <td colSpan={12}>
                             No shift yet. Add yours 🤓
                         </td>
                     </tr>
