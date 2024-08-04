@@ -5,7 +5,7 @@ import { swapDataItem } from "types";
 const useGetSwapData = (BASEURL: string) => {
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [swapData, setSwapData] = useState<swapDataItem[] | any>();
+  const [swapData, setSwapData] = useState<swapDataItem[]>();
   const [daysWithData, setDaysWithData] = useState<swapDataItem[]>();
   const [daySwapData, setDaySwapData] = useState<swapDataItem[]>();
 
@@ -21,7 +21,7 @@ const useGetSwapData = (BASEURL: string) => {
         return response.json();
       })
       .then(data => {
-        const daysWithData: swapDataItem[] = data.data.map((item: swapDataItem) => item.Date);
+        const daysWithData = data.data.map((item: swapDataItem) => item.Date);
         setDaysWithData(daysWithData);
         setSwapData(data.data);
         setLoading(false);
@@ -33,7 +33,7 @@ const useGetSwapData = (BASEURL: string) => {
 
   const getDaySwapData = (selectedDay: Date) => {
     const formatedSelectedDay = selectedDay ? format(selectedDay, 'dd/MM/yyyy') : null;
-    const daySwapData: swapDataItem[] = swapData.filter((item: swapDataItem) => item.Date === formatedSelectedDay);
+    const daySwapData = swapData?.filter((item: swapDataItem) => item.Date === formatedSelectedDay);
     setDaySwapData(daySwapData);
   };
 
